@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface text-primary antialiased selection:bg-accent/30 selection:text-primary font-sans;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    filter: url(#noiseFilter);
+  }
+
+  .glass-panel {
+    @apply bg-surface/80 backdrop-blur-xl border border-primary/10 shadow-lg;
+  }
+
+  .text-luxury-body {
+    @apply leading-relaxed tracking-tight opacity-90;
+    letter-spacing: -0.01em;
+  }
+
+  .text-luxury-description {
+    @apply leading-relaxed tracking-tight opacity-80 font-light;
+    letter-spacing: -0.02em;
+  }
+
+  .text-overline {
+    @apply font-sans uppercase font-semibold;
+    font-size: 0.66rem;
+    line-height: 1.2;
+    letter-spacing: 0.32em;
+  }
+
+  .text-overline-soft {
+    @apply font-sans uppercase font-medium;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    letter-spacing: 0.28em;
+  }
+
+  .text-copy-dark {
+    @apply font-sans;
+    font-size: 0.98rem;
+    line-height: 1.85;
+    letter-spacing: -0.015em;
+    color: rgb(46 38 26 / 0.74);
+  }
+
+  .text-copy-light {
+    @apply font-sans;
+    font-size: 0.98rem;
+    line-height: 1.85;
+    letter-spacing: -0.015em;
+    color: rgb(244 237 225 / 0.76);
+  }
+
+  .text-caption-dark {
+    @apply font-sans;
+    font-size: 0.78rem;
+    line-height: 1.65;
+    letter-spacing: 0.04em;
+    color: rgb(63 53 38 / 0.74);
+  }
+
+  .text-caption-light {
+    @apply font-sans;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+    color: rgb(244 237 225 / 0.66);
+  }
+
+  .text-ui-label {
+    @apply font-sans uppercase font-semibold;
+    font-size: 0.62rem;
+    line-height: 1.2;
+    letter-spacing: 0.18em;
+  }
+
+  .text-ui-value {
+    @apply font-sans font-medium;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-dark;
+  }
+}
+
+.magnetic-btn {
+  @apply relative overflow-hidden transition-transform duration-500 inline-flex items-center justify-center;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.03);
+}
+
+.magnetic-btn::before {
+  content: '';
+  @apply absolute inset-0 bg-accent translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] z-0 rounded-[inherit];
+}
+
+.magnetic-btn:hover::before {
+  @apply translate-y-0;
+}
+
+.magnetic-btn-content {
+  @apply relative z-10 transition-colors duration-300;
+}
+
+.magnetic-btn:hover .magnetic-btn-content.text-on-hover-change {
+  @apply text-surface;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
