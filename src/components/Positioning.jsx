@@ -52,10 +52,6 @@ export default function Positioning() {
       className="py-16 md:py-24 bg-surface text-primary border-b border-primary/10 overflow-hidden flex flex-col items-center scroll-mt-32"
     >
       <div className="w-full max-w-6xl px-6 mb-12 text-center md:text-left">
-        <h2 className="text-overline text-accent mb-4">
-          <span className="inline-block w-2 h-2 rounded-full bg-accent mr-3 animate-pulse"></span>
-          Matrix de Autoridad
-        </h2>
         <p className="font-serif italic text-2xl md:text-4xl text-primary/80 max-w-2xl leading-snug">
           El estándar más alto de la industria, avalado por décadas de experiencia e hitos internacionales.
         </p>

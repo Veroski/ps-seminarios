@@ -21,14 +21,15 @@ const casesData = [
 ];
 
 export default function Curriculum() {
-  const containerRef = useRef(null);
-  const cardsRef     = useRef([]);
+  const containerRef   = useRef(null);
+  const cardsRef       = useRef([]);
+  const arrowStripsRef = useRef([]);
 
   const syllabusShellStyle = {
     background: `
-      radial-gradient(circle at top left, rgba(201,168,76,0.18) 0%, transparent 26%),
-      radial-gradient(circle at 85% 18%, rgba(255,255,255,0.78) 0%, transparent 30%),
-      linear-gradient(180deg, #F6F1E8 0%, #EFE7DA 52%, #F8F4EC 100%)
+      radial-gradient(circle at 10% 18%, rgba(255,255,255,0.46) 0%, transparent 24%),
+      radial-gradient(circle at 82% 12%, rgba(201,168,76,0.14) 0%, transparent 26%),
+      linear-gradient(180deg, rgba(247,241,230,0.32) 0%, rgba(241,232,219,0.28) 52%, rgba(247,243,236,0.34) 100%)
     `,
   };
 
@@ -81,7 +82,7 @@ export default function Curriculum() {
           pin: true,
           pinSpacing: false,
           endTrigger: lastCard,
-          end: `bottom ${TOP_OFFSET}px`,
+          end: `top ${TOP_OFFSET}px`,
           invalidateOnRefresh: true,
         });
 
@@ -109,10 +110,71 @@ export default function Curriculum() {
         scrollTrigger: { trigger: '.cases-section', start: 'top 80%' },
       });
 
-      // ── 4. Scanner lines ────────────────────────────────────────
-      gsap.to('.scanning-line', {
-        y: '200%', duration: 3, repeat: -1, ease: 'none', stagger: 0.5,
-      });
+      // ── 4. Arrow strip scrollytelling ────────────────────────────
+      const strips = arrowStripsRef.current.filter(Boolean);
+      if (strips.length) {
+        const casesPin = document.querySelector('.cases-pin-area');
+        if (casesPin) {
+          const STEP_POS = 0.32;
+          const DEACTIVATE_OFFSET = 0.92;
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: casesPin,
+              start: 'top 70%',
+              end: 'bottom 20%',
+              scrub: true,
+              invalidateOnRefresh: true,
+            },
+          });
+
+          strips.forEach((strip, i) => {
+            const tip = strip.querySelector('.arrow-strip-tip');
+            const title = strip.querySelector('.strip-title');
+            const text = strip.querySelector('.strip-text');
+            const startPos = i * STEP_POS;
+
+            // Set initial state
+            gsap.set(strip, {
+              backgroundColor: '#F1EEE7',
+              z: 0,
+              scale: 1,
+              boxShadow: '0 8px 24px rgba(24, 20, 12, 0.08)'
+            });
+            gsap.set(tip, { backgroundColor: '#B8282E' });
+            gsap.set(title, { color: '#1A1A1A' });
+            gsap.set(text, { color: 'rgba(26, 26, 26, 0.55)' });
+
+            // Activate
+            tl.to(strip, {
+              backgroundColor: '#FFFFFF',
+              z: 20,
+              scale: 1.02,
+              boxShadow: '0 18px 36px rgba(24, 20, 12, 0.14), inset 0 1px 0 rgba(255,255,255,0.95)',
+              duration: 0.78,
+              ease: 'sine.inOut'
+            }, startPos)
+              .to(tip, { backgroundColor: '#C6A75C', duration: 0.78, ease: 'sine.inOut' }, startPos)
+              .to(title, { color: '#17120C', duration: 0.78, ease: 'sine.inOut' }, startPos)
+              .to(text, { color: 'rgba(23, 18, 12, 0.72)', duration: 0.78, ease: 'sine.inOut' }, startPos);
+
+            // Deactivate when next one starts (unless it's the last)
+            if (i < strips.length - 1) {
+              const deactivatePos = startPos + DEACTIVATE_OFFSET;
+              tl.to(strip, {
+                backgroundColor: '#F1EEE7',
+                z: 0,
+                scale: 1,
+                boxShadow: '0 8px 24px rgba(24, 20, 12, 0.08)',
+                duration: 0.78,
+                ease: 'sine.inOut'
+              }, deactivatePos)
+                .to(tip, { backgroundColor: '#B8282E', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
+                .to(title, { color: '#1A1A1A', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
+                .to(text, { color: 'rgba(26, 26, 26, 0.55)', duration: 0.78, ease: 'sine.inOut' }, deactivatePos);
+            }
+          });
+        }
+      }
 
     }, containerRef);
 
@@ -199,7 +261,15 @@ export default function Curriculum() {
         />
 
         {/* Section sub-header */}
-        <div className="relative px-6 md:px-16 max-w-5xl mx-auto pt-16 md:pt-20 pb-14 border-t border-[#C6A75C]/15">
+        <div className="sticky top-5 z-30 px-6 md:px-16 max-w-5xl mx-auto pt-16 md:pt-20 pb-14 border-t border-[#C6A75C]/15">
+          <div
+            className="absolute inset-x-0 inset-y-4 -z-10 rounded-[1.4rem] pointer-events-none"
+            style={{
+              background: 'linear-gradient(180deg, rgba(247,241,230,0.9) 0%, rgba(247,241,230,0.72) 100%)',
+              backdropFilter: 'blur(6px)',
+              WebkitBackdropFilter: 'blur(6px)',
+            }}
+          />
           <div className="flex flex-col gap-7 items-start">
             <h2 className="font-serif italic font-bold text-3xl md:text-4xl text-[#17120C] leading-tight max-w-3xl">
               Qué aprenderás.
@@ -298,152 +368,76 @@ export default function Curriculum() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════
-          CASOS COMPLICADOS — Aurum Clinic: surgical white, clinical precision
+          CASOS COMPLICADOS — Arrow Strip Scrollytelling
       ═══════════════════════════════════════════════════════════ */}
       <div
-        className="cases-section w-full py-14 md:py-20 px-6 md:px-16 relative overflow-hidden z-10"
+        className="cases-section w-full py-20 md:py-28 px-6 md:px-16 relative overflow-hidden"
         style={{
-          background: 'linear-gradient(180deg, #F7F7F5 0%, #ECEBE7 52%, #F7F7F5 100%)',
+          background: `
+            radial-gradient(circle at 8% 20%, rgba(255,255,255,0.45) 0%, transparent 22%),
+            radial-gradient(circle at 90% 75%, rgba(198,167,92,0.1) 0%, transparent 24%),
+            linear-gradient(180deg, rgba(247,241,230,0.22) 0%, rgba(241,232,219,0.18) 52%, rgba(247,243,236,0.24) 100%)
+          `,
         }}
       >
-        {/* Clinical dot grid — instrumentation texture */}
+        {/* Subtle dot grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(31,31,31,0.055) 0.8px, transparent 0.9px)',
-            backgroundSize: '26px 26px',
+            backgroundImage: 'radial-gradient(circle, rgba(31,31,31,0.045) 0.8px, transparent 0.9px)',
+            backgroundSize: '28px 28px',
           }}
         />
 
-        {/* Gold hairline separator — top */}
+        {/* Gold hairline — top */}
         <div
           className="absolute inset-x-0 top-0 h-px pointer-events-none"
-          style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(198,167,92,0.55) 30%, rgba(198,167,92,0.55) 70%, transparent 100%)' }}
+          style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(198,167,92,0.45) 30%, rgba(198,167,92,0.45) 70%, transparent 100%)' }}
         />
 
-        {/* Soft ambient light — top-right */}
-        <div
-          className="absolute top-0 right-0 pointer-events-none"
-          style={{
-            width: '55vw', height: '70%',
-            background: 'radial-gradient(ellipse at top right, rgba(198,167,92,0.07) 0%, transparent 65%)',
-          }}
-        />
-        {/* Secondary wash — bottom-left */}
-        <div
-          className="absolute bottom-0 left-0 pointer-events-none"
-          style={{
-            width: '40vw', height: '50%',
-            background: 'radial-gradient(ellipse at bottom left, rgba(198,167,92,0.04) 0%, transparent 60%)',
-          }}
-        />
+        {/* Pinned area for scrollytelling */}
+        <div className="cases-pin-area max-w-6xl mx-auto relative z-10">
 
-        <div className="max-w-6xl mx-auto relative z-10">
-
-          {/* Header row — headline + descriptor side-by-side on lg */}
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 items-start lg:items-end mb-8">
-
-            {/* Left: headline */}
-            <div className="w-full lg:w-[45%]">
-              <h2
-                className="cases-header font-serif italic font-bold text-4xl md:text-5xl lg:text-[3.1rem] leading-[1.05] text-[#1F1F1F]"
-              >
-                Trabajo sobre{' '}
-                <span style={{ color: '#C6A75C' }}>casos complicados</span>.
-              </h2>
-            </div>
-
-            {/* Right: descriptor */}
-            <div
-              className="cases-header w-full lg:w-[55%] lg:pl-8 lg:border-l"
-              style={{ borderColor: 'rgba(198,167,92,0.20)' }}
+          {/* ── Header ── */}
+          <div className="mb-10 md:mb-14">
+            <h2
+              className="cases-header font-serif italic font-bold text-4xl md:text-5xl lg:text-[3.1rem] leading-[1.05] text-[#1F1F1F] mb-6"
             >
-              <p
-                className="font-sans text-sm md:text-[15px] leading-[1.85] tracking-[-0.01em]"
-                style={{ color: 'rgba(31,31,31,0.58)' }}
-              >
-                Esta profesión no se trata solo de lienzos limpios. Aprenderás a abordar{' '}
-                <strong style={{ color: 'rgba(31,31,31,0.82)', fontWeight: 500 }}>casos críticos</strong>{' '}
-                con el máximo rigor clínico sobre pieles ya tratadas y dañadas.
-              </p>
-            </div>
+              Trabajo sobre{' '}
+              <span style={{ color: '#C6A75C' }}>casos complicados</span>.
+            </h2>
+            <p
+              className="cases-header font-sans text-sm md:text-[15px] leading-[1.85] tracking-[-0.01em] max-w-2xl"
+              style={{ color: 'rgba(31,31,31,0.58)' }}
+            >
+              Esta profesión no se trata solo de lienzos limpios. Aprenderás a abordar{' '}
+              <strong style={{ color: 'rgba(31,31,31,0.82)', fontWeight: 500 }}>casos críticos</strong>{' '}
+              con el máximo rigor clínico sobre pieles ya tratadas y dañadas.
+            </p>
           </div>
 
-          {/* Gold rule divider */}
-          <div
-            className="h-px w-full mb-6"
-            style={{ background: 'linear-gradient(90deg, rgba(198,167,92,0.35) 0%, rgba(184,184,178,0.18) 100%)' }}
-          />
-
-          {/* Luxury case cards */}
-          <div className="cases-grid relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-            {casesData.map((item, i) => {
-              const romanNumerals = ['I', 'II', 'III', 'IV'];
-              return (
-                <div
-                  key={i}
-                  className="case-card group relative flex flex-col p-6 rounded-2xl overflow-hidden cursor-default
-                    transition-all duration-300 hover:-translate-y-0.5"
-                  style={{
-                    background: 'linear-gradient(145deg, rgba(247,247,245,0.96) 0%, rgba(236,235,231,0.82) 100%)',
-                    border: '1px solid rgba(184,184,178,0.32)',
-                    boxShadow: '0 1px 0 rgba(255,255,255,0.90) inset, 0 2px 16px rgba(31,31,31,0.05), 0 8px 32px rgba(31,31,31,0.04)',
-                  }}
-                >
-                  {/* Top-edge gold accent */}
-                  <div
-                    className="absolute top-0 left-6 right-6 h-px pointer-events-none"
-                    style={{ background: 'linear-gradient(90deg, rgba(198,167,92,0.55) 0%, rgba(198,167,92,0.08) 100%)' }}
-                  />
-
-                  {/* Hover ambient glow */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-2xl"
-                    style={{ background: 'radial-gradient(ellipse at 80% 0%, rgba(198,167,92,0.07) 0%, transparent 65%)' }}
-                  />
-
-                  {/* Roman numeral + dot — luxury marker */}
-                  <div className="flex items-center justify-between mb-3 relative z-10">
-                    <span
-                      className="font-serif italic"
-                      style={{
-                        fontSize: '0.72rem',
-                        color: 'rgba(198,167,92,0.65)',
-                        letterSpacing: '0.06em',
-                        fontStyle: 'italic',
-                      }}
-                    >
-                      {romanNumerals[i]}
-                    </span>
-                    <div
-                      className="w-1 h-1 rounded-full transition-all duration-300 group-hover:scale-125"
-                      style={{ background: 'rgba(198,167,92,0.35)' }}
-                    />
-                  </div>
-
-                  {/* Title */}
-                  <h4
-                    className="relative z-10 font-serif italic font-bold text-[1.15rem] text-[#1F1F1F] mb-2
-                      transition-colors duration-300 group-hover:text-[#C6A75C]"
-                  >
-                    {item.title}
-                  </h4>
-
-                  {/* Description */}
-                  <p
-                    className="relative z-10 font-sans text-[13px] leading-[1.7] tracking-[-0.01em]"
-                    style={{ color: 'rgba(31,31,31,0.50)' }}
-                  >
-                    {item.text}
-                  </p>
-                </div>
-              );
-            })}
+          {/* ── Arrow Strips ── */}
+          <div className="arrow-strip-wrapper flex flex-col gap-3 items-end">
+            {casesData.map((item, i) => (
+              <div
+                key={i}
+                ref={el => { arrowStripsRef.current[i] = el; }}
+                className="arrow-strip w-full sm:w-[85%] md:w-[75%] lg:w-[65%]"
+              >
+                <div className="arrow-strip-tip" />
+                <h4 className="strip-title font-serif text-[1.1rem] md:text-[1.25rem] mb-1">
+                  {item.title}
+                </h4>
+                <p className="strip-text font-sans text-[13px] leading-[1.7] tracking-[-0.01em]">
+                  {item.text}
+                </p>
+              </div>
+            ))}
           </div>
 
         </div>
 
-        {/* Gold hairline separator — bottom */}
+        {/* Gold hairline — bottom */}
         <div
           className="absolute inset-x-0 bottom-0 h-px pointer-events-none"
           style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(198,167,92,0.45) 30%, rgba(198,167,92,0.45) 70%, transparent 100%)' }}

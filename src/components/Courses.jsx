@@ -23,6 +23,7 @@ const courses = [
         { name: "email",       label: "Correo electrónico", type: "email",    placeholder: "tu@correo.com",         required: true,  span: 1 },
         { name: "telefono",    label: "Teléfono",           type: "tel",      placeholder: "+34 000 000 000",       required: false, span: 1 },
         { name: "experiencia", label: "Experiencia previa", type: "select",   options: ["Sin experiencia", "Iniciado", "Intermedio / Avanzado"], required: true, span: 2 },
+        { name: "inversion",   label: "¿Cuánto estás dispuesto a invertir?", type: "select", options: ["Menos de 2000", "Entre 2000 y 3000", "Más de 3000€"], required: true, span: 2 },
         { name: "mensaje",     label: "¿Alguna pregunta?",  type: "textarea", placeholder: "Cuéntanos qué quieres saber...", span: 2 },
       ],
     },
@@ -41,6 +42,7 @@ const courses = [
         { name: "telefono", label: "Teléfono",                                  type: "tel",     placeholder: "+34 000 000 000",       required: false, span: 1 },
         { name: "activa",   label: "¿Practicas micropigmentación actualmente?", type: "select",  options: ["Sí, activamente", "Sí, esporádicamente", "No, aún no"], required: true, span: 2 },
         { name: "tecnica",  label: "Técnica de labios que practicas",           type: "select",  options: ["Ninguna", "Perfilado básico", "Acuarela / Difuminado", "Otra"], span: 2 },
+        { name: "inversion", label: "¿Cuánto estás dispuesto a invertir?",      type: "select",  options: ["Menos de 2000", "Entre 2000 y 3000", "Más de 3000€"], required: true, span: 2 },
         { name: "mensaje",  label: "¿Qué buscas mejorar?",                     type: "textarea", placeholder: "Describe tu objetivo...", span: 2 },
       ],
     },
@@ -57,7 +59,7 @@ function CourseModal({ course, index, onClose }) {
   const [submitted, setSubmitted] = useState(false);
 
   const dialogShellStyle = {
-    maxHeight: '92dvh',
+    maxHeight: '96dvh',
     background: `
       radial-gradient(circle at 12% 10%, rgba(255,255,255,0.88) 0%, transparent 18%),
       radial-gradient(circle at 86% 12%, rgba(198,167,92,0.18) 0%, transparent 22%),
@@ -117,12 +119,15 @@ function CourseModal({ course, index, onClose }) {
 
   // ── Body lock + Escape ────────────────────────────────────────────────────
   useEffect(() => {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
     const onKey = (e) => { if (e.key === 'Escape') doClose(); };
     window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -169,7 +174,7 @@ function CourseModal({ course, index, onClose }) {
   return (
     <div
       ref={backdropRef}
-      className="fixed inset-0 z-[200] flex items-end lg:items-center justify-center lg:p-8"
+      className="fixed inset-0 z-[200] flex items-end lg:items-center justify-center p-2 sm:p-4 lg:p-8"
       style={{
         background: 'linear-gradient(180deg, rgba(17,17,19,0.34) 0%, rgba(17,17,19,0.5) 100%)',
         backdropFilter: 'blur(18px)',
@@ -182,7 +187,7 @@ function CourseModal({ course, index, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={course.popup.headline}
-        className="relative w-full lg:max-w-[72rem] flex overflow-hidden
+        className="relative w-full max-w-[98vw] sm:max-w-[96vw] lg:max-w-[78rem] flex overflow-hidden
           rounded-t-[2rem] lg:rounded-[2rem]"
         style={dialogShellStyle}
       >
@@ -206,9 +211,10 @@ function CourseModal({ course, index, onClose }) {
         </button>
 
         {/* ══ COL 1 — Image ════════════════════════════════════════════════ */}
-        <div className="hidden lg:block w-[260px] xl:w-[300px] shrink-0 relative overflow-hidden">
+        <div className="hidden lg:block w-[280px] xl:w-[320px] shrink-0 relative overflow-hidden">
           <img
             src={course.img} alt={course.title}
+            decoding="async"
             className="modal-img w-full h-full object-cover object-top will-change-transform"
             style={{ minHeight: '100%' }}
           />
@@ -229,7 +235,7 @@ function CourseModal({ course, index, onClose }) {
 
         {/* ══ COL 2 — Content + Info form ══════════════════════════════════ */}
         <div className="flex-1 flex flex-col border-x border-[#111113]/[0.06]
-          overflow-y-auto lg:overflow-visible"
+          overflow-y-auto"
           style={{
             ...contentColumnStyle,
             scrollbarWidth: 'thin',
@@ -239,6 +245,7 @@ function CourseModal({ course, index, onClose }) {
           {/* Mobile image banner */}
           <div className="lg:hidden relative h-44 overflow-hidden shrink-0">
             <img src={course.img} alt={course.title}
+              decoding="async"
               className="w-full h-full object-cover object-top" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#111113]/50 to-transparent" />
           </div>
@@ -262,72 +269,88 @@ function CourseModal({ course, index, onClose }) {
             </p>
 
             {/* Divider + form label */}
-            <div className="m-item shrink-0 flex items-center gap-3 pt-1">
+            <div className="m-item shrink-0 flex items-center gap-3 pt-2">
               <div className="flex-1 h-px bg-[#111113]/[0.08]" />
               <span className="text-overline-soft text-[#8D6A26] whitespace-nowrap">
-                Más información
+                Solicita información
               </span>
               <div className="flex-1 h-px bg-[#111113]/[0.08]" />
             </div>
 
             {/* Form / Success */}
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="m-item grid grid-cols-2 gap-2 flex-1 content-start">
-                {course.popup.formFields.map(f => (
-                  <div
-                    key={f.name}
-                    className={`flex flex-col gap-1 ${f.span === 2 ? 'col-span-2' : 'col-span-2 sm:col-span-1'}`}
-                  >
-                    <label
-                      htmlFor={`f-${f.name}`}
-                      className="text-ui-label text-[#5B4A36]/74"
+              <form onSubmit={handleSubmit} className="m-item flex flex-col gap-4 flex-1">
+                <div className="grid grid-cols-2 gap-2 content-start">
+                  {course.popup.formFields.map(f => (
+                    <div
+                      key={f.name}
+                      className={`flex flex-col gap-1 ${f.span === 2 ? 'col-span-2' : 'col-span-2 sm:col-span-1'}`}
                     >
-                      {f.label}{f.required && <span className="text-[#C6A75C] ml-0.5">*</span>}
-                    </label>
-                    {renderField(f)}
-                  </div>
-                ))}
-                <div className="col-span-2 mt-0.5">
+                      <label
+                        htmlFor={`f-${f.name}`}
+                        className="text-ui-label text-[#5B4A36]/74"
+                      >
+                        {f.label}{f.required && <span className="text-[#C6A75C] ml-0.5">*</span>}
+                      </label>
+                      {renderField(f)}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col items-center gap-1.5 mt-1">
                   <button
                     type="submit"
                     className="w-full border border-[#111113]/14 text-[#17120C] bg-[#FFF8EC] font-sans font-medium
                       text-[11.5px] tracking-wide px-6 py-3 rounded-full cursor-pointer
                       hover:bg-[#F7EBD2] hover:border-[#C6A75C]/45 transition-all duration-300"
                   >
-                    Enviar consulta
+                    Solicitar información — sin compromiso
                   </button>
+                  <span className="font-sans text-[10px] text-[#6B5A43]/50 tracking-wide">
+                    No se realiza ningún cobro
+                  </span>
                 </div>
-                {/* Mobile CTA */}
-                <div className="lg:hidden col-span-2">
+
+                {/* Mobile — Reserva directa separator */}
+                <div className="lg:hidden flex flex-col items-center gap-5 mt-4 pt-5 border-t border-[#111113]/[0.06]">
+                  <p className="font-sans text-[11px] text-[#6B5A43]/60 tracking-wide text-center">
+                    También puedes reservar directamente
+                  </p>
                   <button
                     type="button"
-                    className="group w-full inline-flex items-center justify-center
-                      bg-[#111113] text-[#FFF8EC] font-sans font-semibold text-[12px] tracking-wide
-                      px-6 py-3.5 rounded-full cursor-pointer transition-all duration-300
-                      hover:shadow-[0_10px_30px_rgba(17,17,19,0.18)]"
+                    className="group w-full inline-flex items-center justify-center gap-2
+                      bg-[#181311] text-[#F8F1E3] font-sans font-semibold text-[11px] tracking-[0.1em]
+                      px-5 py-2.5 rounded-full cursor-pointer transition-all duration-300
+                      hover:bg-[#1E1816] hover:border-[#E3C678]/55 hover:shadow-[0_9px_22px_rgba(17,17,19,0.15)]
+                      shadow-[0_4px_14px_rgba(17,17,19,0.1)] border border-[#C6A75C]/32"
                   >
                     Reservar ahora
-                    <ArrowRight size={13} className="ml-2 text-[#E3C678] group-hover:translate-x-0.5 transition-transform duration-200" />
+                    <ArrowRight size={12} className="text-[#E3C678] group-hover:translate-x-0.5 transition-transform duration-200" />
                   </button>
+                  <span className="font-sans text-[10px] text-[#8E6A26]/80 tracking-[0.06em]">
+                    Confirmación inmediata · plazas limitadas
+                  </span>
                 </div>
               </form>
             ) : (
-              <div className="m-item flex flex-col items-center justify-center flex-1 gap-3 text-center py-6">
-                <div className="w-10 h-10 rounded-full bg-[#C6A75C]/10 border border-[#C6A75C]/30
+              <div className="m-item flex flex-col items-center justify-center flex-1 gap-4 text-center py-8">
+                <div className="w-12 h-12 rounded-full bg-[#C6A75C]/10 border border-[#C6A75C]/30
                   flex items-center justify-center">
-                  <Check size={14} className="text-[#C6A75C]" strokeWidth={2.5} />
+                  <Check size={16} className="text-[#C6A75C]" strokeWidth={2.5} />
                 </div>
-                <p className="font-serif italic text-base text-[#17120C]">Consulta enviada.</p>
-                <p className="font-sans text-[12px] text-[#4B4030]/68 max-w-[220px] leading-[1.75]">
-                  Nos pondremos en contacto en las próximas 24 h.
-                </p>
+                <div className="space-y-1.5">
+                  <p className="font-serif italic text-lg text-[#17120C]">Consulta recibida.</p>
+                  <p className="font-sans text-[12px] text-[#4B4030]/68 max-w-[240px] leading-[1.75]">
+                    Te contactaremos en las próximas 24 h. No se ha realizado ningún cobro.
+                  </p>
+                </div>
               </div>
             )}
           </div>
         </div>
 
         {/* ══ COL 3 — Reserva directa ══════════════════════════════════════ */}
-        <div className="hidden lg:flex w-[240px] xl:w-[272px] shrink-0 flex-col p-6 xl:p-7 gap-0">
+        <div className="hidden lg:flex w-[260px] xl:w-[300px] shrink-0 flex-col p-6 xl:p-7 gap-0">
           <div
             className="m-item relative flex flex-1 flex-col justify-between rounded-[1.85rem] border border-[#C9A84C]/28 p-6 xl:p-7 overflow-hidden"
             style={{
@@ -351,16 +374,19 @@ function CourseModal({ course, index, onClose }) {
             />
             <div className="absolute inset-[10px] rounded-[1.5rem] border border-[#F0D79D]/34 pointer-events-none" />
             <div>
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-5">
                 <span className="w-2 h-2 rounded-full bg-[#B91C1C]" />
                 <p className="text-overline-soft text-[#8E6A26]">
                   Reserva directa
                 </p>
               </div>
-              <h3 className="font-serif italic text-[1.72rem] leading-[1.06] text-[#17120C] mb-7 max-w-[12rem]">
+              <h3 className="font-serif italic text-[1.72rem] leading-[1.06] text-[#17120C] mb-4 max-w-[12rem]">
                 Confirma tu plaza sin esperar.
               </h3>
-              <div className="flex items-center gap-3 mb-12">
+              <p className="font-sans text-[11px] text-[#6B5A43]/55 leading-[1.7] mb-10 max-w-[11rem]">
+                También puedes reservar directamente si ya estás decidido/a.
+              </p>
+              <div className="flex items-center gap-3 mb-10">
                 <span className="w-10 h-px bg-gradient-to-r from-[#B91C1C]/55 to-transparent" />
                 <span className="text-overline-soft text-[#6E5641]/72">
                   Entrada prioritaria
@@ -370,18 +396,21 @@ function CourseModal({ course, index, onClose }) {
 
             <div className="space-y-4">
               <button
-                className="group w-full flex flex-col items-center justify-center gap-2
-                  bg-[#111113] text-[#F9F5EC] font-sans font-semibold text-[12.5px] tracking-wide
-                  px-4 py-6 rounded-[1.4rem] cursor-pointer transition-all duration-300
-                  hover:bg-[#17171A] hover:shadow-[0_10px_30px_rgba(17,17,19,0.24)]
-                  shadow-[0_8px_24px_rgba(17,17,19,0.18)] border border-[#B91C1C]/14"
+                className="group w-full inline-flex items-center justify-center gap-2.5
+                  bg-[#181311] text-[#F9F2E6] font-sans font-semibold text-[11px] tracking-[0.11em]
+                  px-5 py-[0.68rem] rounded-full cursor-pointer transition-all duration-300
+                  hover:bg-[#1F1917] hover:border-[#E5C980]/55 hover:shadow-[0_10px_24px_rgba(17,17,19,0.18)]
+                  shadow-[0_5px_15px_rgba(17,17,19,0.12)] border border-[#C6A75C]/34"
               >
                 <span>Reservar ahora</span>
                 <ArrowRight
-                  size={14}
+                  size={12}
                   className="text-[#E9D39E] group-hover:translate-x-0.5 transition-transform duration-200"
                 />
               </button>
+              <p className="text-center font-sans text-[10px] text-[#8E6A26]/78 tracking-[0.06em]">
+                Confirmación inmediata · plazas limitadas
+              </p>
             </div>
           </div>
         </div>
@@ -511,7 +540,7 @@ export default function Courses() {
               ref={el => {
                 courseRefs.current[idx] = el;
               }}
-              className="w-full min-h-[90vh] md:min-h-screen relative flex items-center py-20 md:py-0 border-t border-[#111113]/[0.08]"
+              className="w-full min-h-[90vh] md:min-h-[100svh] relative flex items-center py-20 md:py-0 border-t border-[#111113]/[0.08]"
               style={{ perspective: '1200px' }}
             >
               <div className={`w-full max-w-[100rem] mx-auto px-6 md:px-16 flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 xl:gap-24 relative z-10`}>
@@ -530,6 +559,8 @@ export default function Courses() {
                     <img
                       src={course.img}
                       alt={course.title}
+                      loading="lazy"
+                      decoding="async"
                       className="course-image absolute left-0 top-[-22%] w-full h-[146%] object-cover object-top grayscale-[10%] group-hover:grayscale-0 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform"
                     />
                   </div>

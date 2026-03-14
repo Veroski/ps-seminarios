@@ -52,6 +52,8 @@ export default function Biography() {
             <img 
               src="/patricia-portrait.webp" 
               alt="Patricia Songel" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none" />
@@ -62,6 +64,8 @@ export default function Biography() {
             <img 
               src="/patricia-premios.png.webp" 
               alt="Premios Internacionales" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto object-cover"
             />
           </div>
@@ -72,13 +76,16 @@ export default function Biography() {
         
         {/* Right Column: Copy */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center bio-content mt-12 lg:mt-0">
-          <h2 className="bio-text-part text-overline text-accent mb-6">
-            <span className="inline-block w-2 h-2 rounded-full bg-accent mr-3 animate-pulse"></span>
-            La Creadora
-          </h2>
           
           <h3 className="bio-text-part font-serif italic font-bold text-4xl md:text-5xl lg:text-6xl text-surface tracking-tight leading-[1.1] mb-8">
-            Patricia Songel
+            <a
+              href="https://instagram.com/patriciasongel_micro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-surface hover:text-[#E8CC86] transition-colors"
+            >
+              Patricia Songel
+            </a>
           </h3>
           
           <div className="bio-text-part font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F3ECE1]/74">

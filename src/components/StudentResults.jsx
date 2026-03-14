@@ -68,19 +68,36 @@ export default function StudentResults() {
     // but quickTo is performant and attached to GSAP's ticker
     const xTo = gsap.quickTo(card, "rotationY", { duration: 0.5, ease: "power3" });
     const yTo = gsap.quickTo(card, "rotationX", { duration: 0.5, ease: "power3" });
+    let rect = null;
+    let pointerX = 0;
+    let pointerY = 0;
+    let rafId = 0;
 
-    const handleMouseMove = (e) => {
-      const rect = card.getBoundingClientRect();
+    const updateRect = () => {
+      rect = card.getBoundingClientRect();
+    };
+
+    const renderTilt = () => {
+      if (!rect) updateRect();
+      if (!rect || !rect.width || !rect.height) {
+        rafId = 0;
+        return;
+      }
+
       const cardCenterX = rect.left + rect.width / 2;
       const cardCenterY = rect.top + rect.height / 2;
-
-      // Calculate distance from center (normalized from -1 to 1)
-      const moveX = (e.clientX - cardCenterX) / (rect.width / 2);
-      const moveY = (e.clientY - cardCenterY) / (rect.height / 2);
-
-      // Max rotation is 15 degrees
+      const moveX = (pointerX - cardCenterX) / (rect.width / 2);
+      const moveY = (pointerY - cardCenterY) / (rect.height / 2);
       xTo(moveX * 15);
       yTo(moveY * -15);
+      rafId = 0;
+    };
+
+    const handleMouseMove = (e) => {
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+      if (rafId) return;
+      rafId = requestAnimationFrame(renderTilt);
     };
 
     const handleMouseLeave = () => {
@@ -89,12 +106,19 @@ export default function StudentResults() {
       gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.8, ease: "power3.out" });
     };
 
-    card.addEventListener("mousemove", handleMouseMove);
+    const handleMouseEnter = () => updateRect();
+
+    card.addEventListener("mouseenter", handleMouseEnter);
+    card.addEventListener("mousemove", handleMouseMove, { passive: true });
     card.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("resize", updateRect, { passive: true });
 
     return () => {
+      card.removeEventListener("mouseenter", handleMouseEnter);
       card.removeEventListener("mousemove", handleMouseMove);
       card.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("resize", updateRect);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   };
 
@@ -152,6 +176,8 @@ export default function StudentResults() {
               <img
                 src="/casos exito near.png"
                 alt="Caso de éxito micropigmentación 1"
+                loading="lazy"
+                decoding="async"
                 className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)] pointer-events-none"
                 style={{ transform: 'translateZ(50px)' }}
               />
@@ -188,6 +214,8 @@ export default function StudentResults() {
               <img
                 src="/casos exito far.png"
                 alt="Caso de éxito micropigmentación 2"
+                loading="lazy"
+                decoding="async"
                 className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)] pointer-events-none"
                 style={{ transform: 'translateZ(50px)' }}
               />

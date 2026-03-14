@@ -4,32 +4,49 @@ import favicon from '../favicon.ico';
 const navItems = [
   { href: '#hero', label: 'Inicio' },
   { href: '#autoridad', label: 'Autoridad' },
-  { href: '#biography', label: 'Patricia' },
-  { href: '#philosophy', label: 'Filosofía' },
+  { href: '#biography', label: 'Biografía' },
   { href: '#programa', label: 'Programa' },
-  { href: '#formaciones', label: 'Formaciones' },
-  { href: '#perfil', label: 'Perfil' },
   { href: '#resultados', label: 'Resultados' },
 ];
 
 export default function Navbar() {
   const navRef = useRef(null);
+  const didScrollPastRef = useRef(false);
+  const rafRef = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!navRef.current) return;
+    const applyScrollState = () => {
+      const nav = navRef.current;
+      if (!nav) return;
 
-      if (window.scrollY > 50) {
-        navRef.current.classList.add('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
-        navRef.current.classList.remove('text-surface', 'border-transparent');
-      } else {
-        navRef.current.classList.remove('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
-        navRef.current.classList.add('text-surface', 'border-transparent');
+      const didScrollPast = window.scrollY > 50;
+      if (didScrollPast === didScrollPastRef.current) return;
+      didScrollPastRef.current = didScrollPast;
+
+      if (didScrollPast) {
+        nav.classList.add('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
+        nav.classList.remove('text-surface', 'border-transparent');
+        return;
       }
+
+      nav.classList.remove('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
+      nav.classList.add('text-surface', 'border-transparent');
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        applyScrollState();
+        rafRef.current = 0;
+      });
+    };
+
+    applyScrollState();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   return (
@@ -45,11 +62,14 @@ export default function Navbar() {
         >
           <img
             src={favicon}
-            alt="Patricia Songel Academy"
+            alt="Seminarios Patricia Songel"
+            width="40"
+            height="40"
+            decoding="async"
+            fetchPriority="high"
             className="h-10 w-10 object-contain"
           />
           <span className="hidden lg:block font-serif italic font-bold text-lg tracking-wide">
-            Patricia Songel
           </span>
         </a>
 
