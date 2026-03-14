@@ -393,7 +393,7 @@ export default function Hero() {
             </div>
 
             {/* ── Achievements carousel ── */}
-            <div className="relative h-[52px] md:h-[58px] mb-8 md:mb-12 overflow-hidden">
+            <div className="relative h-[52px] md:h-[58px] mb-14 md:mb-12 overflow-hidden">
               {/* Thin gold accent line */}
               <div
                 className="absolute top-0 left-0 w-8 h-px"
