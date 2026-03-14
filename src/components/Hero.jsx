@@ -247,7 +247,7 @@ export default function Hero() {
 
             <button
               data-reveal
-              className="magnetic-btn bg-accent text-primary px-7 py-3.5 rounded-[2rem] font-sans text-sm font-bold cursor-pointer"
+              className="magnetic-btn w-full sm:w-auto bg-accent text-primary px-7 py-3.5 rounded-[2rem] font-sans text-sm font-bold cursor-pointer text-center justify-center"
               style={{ boxShadow: '0 0 24px rgba(201,168,76,0.22)' }}
             >
               <span className="magnetic-btn-content">
@@ -271,7 +271,7 @@ export default function Hero() {
         <div
           ref={scrollIndicatorRef}
           aria-hidden="true"
-          className="absolute bottom-8 right-8 z-30 flex flex-col items-end gap-3 select-none"
+          className="hidden md:flex absolute bottom-8 right-8 z-30 flex-col items-end gap-3 select-none"
         >
           <span
             className="font-mono text-[0.56rem] tracking-[0.22em] uppercase"

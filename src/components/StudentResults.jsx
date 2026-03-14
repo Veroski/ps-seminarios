@@ -143,7 +143,7 @@ export default function StudentResults() {
 
            <div
              ref={leftCardRef}
-             className="relative flex items-center justify-center w-full aspect-[4/5] max-w-md bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm cursor-crosshair z-10"
+             className="relative flex items-center justify-center w-full aspect-[4/5] max-w-md bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm cursor-default md:cursor-crosshair z-10"
              style={{ transformStyle: 'preserve-3d' }}
            >
               {/* Inner depth layer */}
@@ -157,13 +157,13 @@ export default function StudentResults() {
               />
 
               <div
-                className="badge-float-left absolute bottom-10 left-[-20px] md:left-[-40px] z-30 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-full flex items-center gap-3 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-none"
+                className="badge-float-left absolute bottom-6 left-4 md:left-[-40px] z-30 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/10 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-none"
                 style={{ transform: 'translateZ(80px)' }}
               >
                   <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse"></div>
                   <div className="flex flex-col items-start gap-1">
                       <span className="text-overline-soft text-surface/[0.58] leading-none">Aplicación Diaria</span>
-                      <span className="font-sans font-bold text-sm text-white leading-none tracking-wide">Precisión 100%</span>
+                      <span className="font-sans font-bold text-xs md:text-sm text-white leading-none tracking-wide">Precisión 100%</span>
                   </div>
               </div>
            </div>
@@ -179,7 +179,7 @@ export default function StudentResults() {
 
            <div
              ref={rightCardRef}
-             className="relative flex items-center justify-center w-full aspect-[4/5] max-w-md bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm cursor-crosshair z-10"
+             className="relative flex items-center justify-center w-full aspect-[4/5] max-w-md bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm cursor-default md:cursor-crosshair z-10"
              style={{ transformStyle: 'preserve-3d' }}
            >
               {/* Inner depth layer */}
@@ -193,13 +193,13 @@ export default function StudentResults() {
               />
 
               <div
-                className="badge-float-right absolute top-10 right-[-20px] md:right-[-40px] z-30 bg-[#1A1A1A]/90 backdrop-blur-xl border border-[#C9A84C]/30 px-6 py-4 rounded-full flex items-center gap-3 drop-shadow-[0_10px_30px_rgba(201,168,76,0.15)] pointer-events-none"
+                className="badge-float-right absolute top-6 right-4 md:right-[-40px] z-30 bg-[#1A1A1A]/90 backdrop-blur-xl border border-[#C9A84C]/30 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(201,168,76,0.15)] pointer-events-none"
                 style={{ transform: 'translateZ(80px)' }}
               >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <div className="flex flex-col items-start gap-1">
                       <span className="text-overline-soft text-surface/[0.58] leading-none">Master Result</span>
-                      <span className="font-sans font-bold text-sm text-[#C9A84C] leading-none tracking-wide">Nivel Avanzado</span>
+                      <span className="font-sans font-bold text-xs md:text-sm text-[#C9A84C] leading-none tracking-wide">Nivel Avanzado</span>
                   </div>
               </div>
            </div>

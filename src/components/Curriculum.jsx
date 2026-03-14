@@ -109,11 +109,6 @@ export default function Curriculum() {
         scrollTrigger: { trigger: '.cases-section', start: 'top 80%' },
       });
 
-      gsap.from('.case-card', {
-        y: 32, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.cases-grid', start: 'top 82%' },
-      });
-
       // ── 4. Scanner lines ────────────────────────────────────────
       gsap.to('.scanning-line', {
         y: '200%', duration: 3, repeat: -1, ease: 'none', stagger: 0.5,
@@ -177,7 +172,7 @@ export default function Curriculum() {
       {/* ═══════════════════════════════════════════════════════════
           SYLLABUS — porcelain bg, glass stacking cards
       ═══════════════════════════════════════════════════════════ */}
-      <div className="relative w-full" style={syllabusShellStyle}>
+      <div className="relative w-full pb-14 md:pb-20" style={syllabusShellStyle}>
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.22]"
           style={{
@@ -306,7 +301,7 @@ export default function Curriculum() {
           CASOS COMPLICADOS — Aurum Clinic: surgical white, clinical precision
       ═══════════════════════════════════════════════════════════ */}
       <div
-        className="cases-section w-full py-14 md:py-20 px-6 md:px-16 relative overflow-hidden"
+        className="cases-section w-full py-14 md:py-20 px-6 md:px-16 relative overflow-hidden z-10"
         style={{
           background: 'linear-gradient(180deg, #F7F7F5 0%, #ECEBE7 52%, #F7F7F5 100%)',
         }}
@@ -381,7 +376,7 @@ export default function Curriculum() {
           />
 
           {/* Luxury case cards */}
-          <div className="cases-grid grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+          <div className="cases-grid relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
             {casesData.map((item, i) => {
               const romanNumerals = ['I', 'II', 'III', 'IV'];
               return (

@@ -76,7 +76,7 @@ export default function Closing() {
         <div className="closing-content mb-8">
             <button
                 onClick={scrollToCourses}
-                className="group relative inline-flex items-center justify-center bg-[#FAF8F5] text-[#0A0A0C] font-sans font-bold text-sm px-10 py-5 rounded-full overflow-hidden hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] shadow-[0_0_30px_rgba(250,248,245,0.1)]"
+                className="group relative inline-flex w-full sm:w-auto items-center justify-center bg-[#FAF8F5] text-[#0A0A0C] font-sans font-bold text-sm px-8 sm:px-10 py-5 rounded-full overflow-hidden hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] shadow-[0_0_30px_rgba(250,248,245,0.1)]"
             >
                 {/* Background sliding hover effect */}
                 <span className="absolute inset-0 w-full h-full bg-[#C9A84C] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"></span>

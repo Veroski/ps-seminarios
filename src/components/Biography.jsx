@@ -47,7 +47,7 @@ export default function Biography() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
         
         {/* Left Column: Images */}
-        <div className="w-full lg:w-1/2 relative">
+        <div className="w-full lg:w-1/2 relative pb-20 md:pb-0">
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 rounded-[2rem] overflow-hidden bio-image z-10">
             <img 
               src="/patricia-portrait.webp" 
@@ -58,7 +58,7 @@ export default function Biography() {
           </div>
           
           {/* Floating awards image */}
-          <div className="absolute -bottom-10 -right-4 md:-right-10 w-2/3 max-w-[280px] rounded-2xl overflow-hidden border border-accent/20 bio-image z-20 shadow-2xl">
+          <div className="absolute bottom-0 right-0 md:-bottom-10 md:-right-10 w-[58%] md:w-2/3 max-w-[220px] md:max-w-[280px] rounded-2xl overflow-hidden border border-accent/20 bio-image z-20 shadow-2xl">
             <img 
               src="/patricia-premios.png.webp" 
               alt="Premios Internacionales" 

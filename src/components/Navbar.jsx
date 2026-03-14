@@ -33,7 +33,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-5xl">
+    <div className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] md:w-[90%] max-w-5xl">
       <nav
         ref={navRef}
         className="flex items-center justify-between px-6 py-4 rounded-[2rem] transition-all duration-300 text-surface border border-transparent"

@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="grid grid-cols-2 gap-12 font-sans text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-12 font-sans text-sm w-full md:w-auto">
           <div className="flex flex-col gap-4">
             <h4 className="text-overline-soft text-surface/[0.42] mb-2">Explorar</h4>
             <a href="#autoridad" className="hover:text-accent transition-colors">Autoridad</a>
@@ -35,7 +35,7 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="max-w-6xl mx-auto pt-8 border-t border-surface/10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="max-w-6xl mx-auto pt-8 border-t border-surface/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <span className="font-sans text-xs text-surface/40">© {new Date().getFullYear()} Patricia Songel Academy. All rights reserved.</span>
         <span className="text-overline-soft text-surface/20">Edición clínica 2026</span>
       </div>
