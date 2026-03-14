@@ -53,8 +53,9 @@ export default function FloatingCTA() {
         />
         <a
           href="#formaciones"
-          className="relative z-10 w-full px-8 py-3.5 md:px-10 md:py-4 rounded-full
-                     font-sans text-[0.82rem] md:text-[0.85rem] font-semibold tracking-[0.04em] uppercase
+          className="relative z-10 inline-flex items-center justify-center whitespace-nowrap min-w-[12.5rem]
+                     px-6 py-3 sm:px-7 sm:py-3.5 md:px-10 md:py-4 rounded-full
+                     font-sans text-[0.76rem] sm:text-[0.82rem] md:text-[0.85rem] font-semibold tracking-[0.03em] uppercase
                      cursor-pointer transition-all duration-500"
           style={{
             background: 'linear-gradient(135deg, #C9A84C 0%, #D4B65E 50%, #C9A84C 100%)',
