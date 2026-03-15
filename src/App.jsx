@@ -15,6 +15,8 @@ import FloatingCTA from './components/FloatingCTA';
 import AvisoLegal from './pages/AvisoLegal';
 import Privacidad from './pages/Privacidad';
 import Terminos from './pages/Terminos';
+import MicropigmentacionPage from './pages/MicropigmentacionPage';
+import GlowlipsPage from './pages/GlowlipsPage';
 
 function Home() {
   return (
@@ -42,6 +44,8 @@ function App() {
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/privacidad" element={<Privacidad />} />
         <Route path="/terminos" element={<Terminos />} />
+        <Route path="/formacion/micropigmentacion" element={<MicropigmentacionPage />} />
+        <Route path="/formacion/glowlips" element={<GlowlipsPage />} />
       </Routes>
       <CookieBanner />
     </>
