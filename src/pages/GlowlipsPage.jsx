@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowLeft, ArrowRight, Check, Star, Camera } from 'lucide-react';
 import favicon from '../favicon.ico';
 import Footer from '../components/Footer';
 
@@ -10,26 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const G = {
-  bgLight:  '#F3F1EE',
-  bgNude:   '#E2B8A8',
-  bgPink:   '#D89B9A',
-  bgRed:    '#B33A4A',
-  bgWine:   '#8F2D3A',
-  text:     '#1A0D10',
-  textLight:'#F3F1EE',
-  muted:    '#7C5C52',
+  bgLight:   '#F3F1EE',
+  bgNude:    '#E2B8A8',
+  bgRed:     '#B33A4A',
+  bgWine:    '#8F2D3A',
+  text:      '#1A0D10',
+  textLight: '#F3F1EE',
+  muted:     '#7C5C52',
   mutedLight:'rgba(243,241,238,0.62)',
-  gold:     '#D7B56A',
-  white:    '#FFFFFF',
+  gold:      '#D7B56A',
+  white:     '#FFFFFF',
 };
 
-/* ─── DATA ─────────────────────────────────────────────────── */
-const awards = [
-  { year: '2023', title: 'New Generation', role: 'Ganadora' },
-  { year: '2024', title: 'Wulop Dubai',    role: 'Ganadora' },
-  { year: '2025', title: 'New Generation', role: 'Ganadora' },
-];
+/* Stripe payment link — replace with your live Stripe Checkout URL */
+const STRIPE_URL = '#stripe-checkout';
 
+/* ─── DATA ─────────────────────────────────────────────────── */
 const outcomes = [
   'Trabajar con naturalidad y precisión',
   'Realizar trabajos perfectos en apenas dos horas',
@@ -38,10 +33,10 @@ const outcomes = [
 ];
 
 const tecnicas = [
-  'Uso de magnum',        'Dosier técnico completo',
+  'Uso de magnum',           'Dosier técnico completo',
   'Uso de 3 puntas abanico', 'Posición de la mano y máquina',
-  'Velocidad de trabajo', 'Estiramientos correctos',
-  'Diseño de competición','Contornos perfectos',
+  'Velocidad de trabajo',    'Estiramientos correctos',
+  'Diseño de competición',   'Contornos perfectos',
 ];
 
 const dia1 = [
@@ -68,18 +63,18 @@ const capabilities = [
 ];
 
 const formFields = [
-  { name: 'nombre',    label: 'Nombre completo',                         type: 'text',     placeholder: 'Tu nombre',             required: true,  span: 2 },
-  { name: 'email',     label: 'Correo electrónico',                      type: 'email',    placeholder: 'tu@correo.com',          required: true,  span: 1 },
-  { name: 'telefono',  label: 'Teléfono',                                type: 'tel',      placeholder: '+34 000 000 000',        required: false, span: 1 },
-  { name: 'activa',    label: '¿Practicas micropigmentación actualmente?',type: 'select',   options: ['Sí, activamente', 'Sí, esporádicamente', 'No, aún no'], required: true, span: 2 },
-  { name: 'tecnica',   label: 'Técnica de labios que practicas',          type: 'select',   options: ['Ninguna', 'Perfilado básico', 'Acuarela / Difuminado', 'Otra'], span: 2 },
-  { name: 'inversion', label: '¿Cuánto estás dispuesto/a a invertir?',   type: 'select',   options: ['Menos de 2000€', 'Entre 2000 y 3000€', 'Más de 3000€'], required: true, span: 2 },
-  { name: 'mensaje',   label: '¿Qué buscas mejorar?',                    type: 'textarea', placeholder: 'Describe tu objetivo...', span: 2 },
+  { name: 'nombre',    label: 'Nombre completo',                          type: 'text',     placeholder: 'Tu nombre',              required: true,  span: 2 },
+  { name: 'email',     label: 'Correo electrónico',                       type: 'email',    placeholder: 'tu@correo.com',           required: true,  span: 1 },
+  { name: 'telefono',  label: 'Teléfono',                                 type: 'tel',      placeholder: '+34 000 000 000',         required: false, span: 1 },
+  { name: 'activa',    label: '¿Practicas micropigmentación actualmente?', type: 'select',   options: ['Sí, activamente', 'Sí, esporádicamente', 'No, aún no'], required: true, span: 2 },
+  { name: 'tecnica',   label: 'Técnica de labios que practicas',           type: 'select',   options: ['Ninguna', 'Perfilado básico', 'Acuarela / Difuminado', 'Otra'], span: 2 },
+  { name: 'inversion', label: '¿Cuánto estás dispuesto/a a invertir?',    type: 'select',   options: ['Menos de 2000€', 'Entre 2000 y 3000€', 'Más de 3000€'], required: true, span: 2 },
+  { name: 'mensaje',   label: '¿Qué buscas mejorar?',                     type: 'textarea', placeholder: 'Describe tu objetivo...', span: 2 },
 ];
 
 /* ─── PAGE NAV ─────────────────────────────────────────────── */
 function PageNav() {
-  const navRef = useRef(null);
+  const navRef   = useRef(null);
   const scrolled = useRef(false);
   useEffect(() => {
     const nav = navRef.current;
@@ -105,16 +100,11 @@ function PageNav() {
   return (
     <div className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] md:w-[90%] max-w-5xl">
       <nav ref={navRef} className="flex items-center justify-between px-6 py-3.5 rounded-[2rem] transition-all duration-300 border border-transparent">
-        <Link to="/" className="flex items-center gap-2 group" aria-label="Volver al inicio">
-          <span className="flex items-center justify-center w-8 h-8 rounded-full transition-colors duration-200"
-            style={{ background: 'rgba(243,241,238,0.12)' }}>
-            <ArrowLeft size={13} style={{ color: G.textLight }} />
-          </span>
-          <span className="font-sans text-xs font-medium hidden sm:block" style={{ color: G.mutedLight }}>Volver</span>
+        <Link to="/" className="font-sans text-sm font-medium transition-opacity duration-200 hover:opacity-60" style={{ color: G.mutedLight }}>
+          ← Volver
         </Link>
         <Link to="/" className="flex items-center gap-2.5">
           <img src={favicon} alt="Patricia Songel" width="34" height="34" className="h-[34px] w-[34px] object-contain" />
-          <span className="font-serif italic font-bold text-base hidden lg:block" style={{ color: G.textLight }}>Patricia Songel</span>
         </Link>
         <a href="#formulario"
           className="font-sans font-semibold text-xs tracking-wide px-5 py-2.5 rounded-full transition-all duration-300"
@@ -122,6 +112,32 @@ function PageNav() {
           Reservar plaza
         </a>
       </nav>
+    </div>
+  );
+}
+
+/* ─── STICKY MOBILE CTA ────────────────────────────────────── */
+function StickyMobileCTA() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 200);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <div
+      className={`lg:hidden fixed bottom-0 left-0 right-0 z-[90] transition-transform duration-300 ${visible ? 'translate-y-0' : 'translate-y-full'}`}
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+    >
+      <div className="px-4 py-3" style={{ background: G.bgWine, borderTop: `1px solid ${G.gold}30` }}>
+        <a
+          href="#formulario"
+          className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-3.5 rounded-full"
+          style={{ background: G.gold, color: '#1A0D10' }}
+        >
+          Reservar plaza →
+        </a>
+      </div>
     </div>
   );
 }
@@ -176,7 +192,7 @@ export default function GlowlipsPage() {
   };
 
   return (
-    <div ref={pageRef} style={{ background: G.bgLight, color: G.text, overflowX: 'hidden' }}>
+    <div ref={pageRef} className="pb-24 lg:pb-0" style={{ background: G.bgLight, color: G.text, overflowX: 'hidden' }}>
       <PageNav />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
@@ -187,17 +203,12 @@ export default function GlowlipsPage() {
         <div className="absolute inset-0" style={{
           background: `linear-gradient(180deg, rgba(143,45,58,0.15) 0%, rgba(143,45,58,0.6) 50%, rgba(26,13,16,0.98) 100%)`
         }} />
-        {/* Atmospheric glow */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at 70% 30%, rgba(215,181,106,0.08) 0%, transparent 60%)' }} />
-        {/* Vertical gold line */}
         <div className="absolute top-32 right-[12%] w-px h-52 hidden lg:block pointer-events-none"
           style={{ background: `linear-gradient(180deg, transparent, ${G.gold}60, transparent)` }} />
-        {/* Diagonal decorative lines */}
-        <div className="absolute bottom-0 left-0 w-full h-32 pointer-events-none"
-          style={{ background: 'linear-gradient(180deg, transparent, rgba(26,13,16,0.6))' }} />
 
-        <div className="relative z-10 px-6 md:px-16 pb-20 md:pb-28 pt-44 max-w-6xl mx-auto w-full">
+        <div className="relative z-10 px-6 md:px-16 pb-16 md:pb-28 pt-36 max-w-6xl mx-auto w-full">
           <div className="ghero">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-4 h-px" style={{ background: G.gold }} />
@@ -213,24 +224,21 @@ export default function GlowlipsPage() {
             <p className="font-sans text-sm max-w-md mb-10 leading-[1.75]" style={{ color: 'rgba(243,241,238,0.45)' }}>
               Técnica basada en un acabado fullips. Agujas de diferentes calibres, pigmentos variados y un solo movimiento preciso.
             </p>
-            <div className="flex flex-wrap gap-4 items-center">
-              <a href="#formulario"
-                className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300"
-                style={{ background: G.gold, color: '#1A0D10' }}>
-                Reservar plaza <ArrowRight size={14} />
-              </a>
-            </div>
+            <a href="#formulario"
+              className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300"
+              style={{ background: G.gold, color: '#1A0D10' }}>
+              Reservar plaza →
+            </a>
           </div>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-35">
-          <span className="font-mono text-[8px] tracking-[0.35em] uppercase" style={{ color: G.textLight }}>Scroll</span>
           <div className="w-px h-8" style={{ background: `linear-gradient(180deg, ${G.gold}, transparent)` }} />
         </div>
       </section>
 
       {/* ══ INTRO ═════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-28 md:py-40" style={{ background: G.bgLight }}>
+      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgLight }}>
         <div className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${G.bgNude}60 0%, transparent 70%)`, transform: 'translate(-30%, -30%)' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -245,19 +253,20 @@ export default function GlowlipsPage() {
                 Diseños, acabados y curados perfectos.
               </h2>
               <p className="rv font-sans leading-[1.9] text-[0.97rem]" style={{ color: G.muted }}>
-                En esta formación recibirás toda la información para realizar diseños, acabados y curados perfectos en la técnica de micropigmentación labial más demandada del mercado.
+                En esta formación recibirás toda la información para realizar diseños, acabados y curados perfectos
+                en la técnica de micropigmentación labial más demandada del mercado.
               </p>
             </div>
-            <div className="rvn grid grid-cols-2 gap-3">
+            <div className="rv grid grid-cols-2 gap-3">
               {[
-                { val: '6+', label: 'Años de experiencia' },
-                { val: '20', label: 'Años en belleza' },
-                { val: '3',  label: 'Premios internacionales' },
-                { val: '2D', label: 'Formación intensiva' },
+                { val: 'fullips', label: 'Acabado característico' },
+                { val: '2 días',  label: 'Formación intensiva' },
+                { val: 'live',    label: 'Modelo real incluido' },
+                { val: 'cert.',   label: 'Certificado oficial' },
               ].map(({ val, label }, i) => (
                 <div key={i} className="flex flex-col gap-1.5 p-5 rounded-2xl"
                   style={{ background: i % 2 === 0 ? G.bgNude : G.bgLight, border: '1px solid rgba(143,45,58,0.1)' }}>
-                  <span className="font-mono font-bold text-2xl" style={{ color: G.bgWine }}>{val}</span>
+                  <span className="font-mono font-bold text-base" style={{ color: G.bgWine }}>{val}</span>
                   <span className="font-sans text-xs leading-snug" style={{ color: G.muted }}>{label}</span>
                 </div>
               ))}
@@ -266,55 +275,8 @@ export default function GlowlipsPage() {
         </div>
       </section>
 
-      {/* ══ AUTORIDAD ═════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-28 md:py-40" style={{ background: G.bgWine }}>
-        <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(215,181,106,0.8) 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-        <div className="absolute top-1/2 -translate-y-1/2 left-0 pointer-events-none select-none hidden xl:block"
-          style={{ fontFamily: 'serif', fontStyle: 'italic', fontWeight: 700, fontSize: '20vw', color: `${G.gold}06`, lineHeight: 1, letterSpacing: '-0.04em', transform: 'translate(-10%, -50%)' }}>
-          PS
-        </div>
-        <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
-          <div className="rv flex items-center gap-3 mb-10">
-            <span className="w-8 h-px" style={{ background: G.gold }} />
-            <span className="text-overline" style={{ color: G.gold }}>Autoridad</span>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-            <div>
-              <h2 className="rv font-serif italic font-bold mb-6 leading-[1.04]"
-                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', color: G.textLight }}>
-                Más de 6 años perfeccionando la técnica ideal.
-              </h2>
-              <p className="rv font-sans leading-[1.9] text-[0.93rem]" style={{ color: G.mutedLight }}>
-                Después de más de 6 años trabajando como micropigmentadora y 20 años en el mundo de la belleza, Patricia Songel ha desarrollado una técnica ideal para trabajar el maquillaje permanente en labios.
-              </p>
-            </div>
-            <div>
-              <p className="rv font-sans font-semibold text-xs tracking-widest uppercase mb-6" style={{ color: `${G.gold}80` }}>
-                Reconocimientos
-              </p>
-              <div className="rvs space-y-3">
-                {awards.map(({ year, title, role }, i) => (
-                  <div key={i} className="flex items-center justify-between px-6 py-4 rounded-2xl"
-                    style={{ background: 'rgba(243,241,238,0.07)', border: '1px solid rgba(215,181,106,0.18)' }}>
-                    <div className="flex items-center gap-4">
-                      <Star size={14} style={{ color: G.gold, flexShrink: 0 }} fill={G.gold} />
-                      <div>
-                        <p className="font-sans font-semibold text-sm" style={{ color: G.textLight }}>{title}</p>
-                        <p className="font-sans text-xs mt-0.5" style={{ color: G.mutedLight }}>{role}</p>
-                      </div>
-                    </div>
-                    <span className="font-mono text-sm font-bold" style={{ color: G.gold }}>{year}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ══ A QUIÉN VA DIRIGIDA ═══════════════════════════════ */}
-      <section className="relative overflow-hidden py-28 md:py-40" style={{ background: G.bgNude }}>
+      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgNude }}>
         <div className="rvn absolute -right-8 top-1/2 -translate-y-1/2 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
           style={{ fontSize: '16vw', color: `${G.bgWine}09`, lineHeight: 1, letterSpacing: '-0.04em' }}>
           lips
@@ -331,7 +293,8 @@ export default function GlowlipsPage() {
                 Para profesionales que buscan excelencia.
               </h2>
               <p className="rv font-sans leading-[1.9] text-[0.93rem] mb-8" style={{ color: G.muted }}>
-                Esta formación está destinada a micropigmentadoras/es que quieran mejorar sus tiempos y resultados en tratamientos labiales.
+                Esta formación está destinada a micropigmentadoras/es que quieran mejorar sus tiempos y resultados
+                en tratamientos labiales.
               </p>
               <p className="rv font-sans font-semibold text-xs tracking-widest uppercase mb-4" style={{ color: `${G.bgWine}80` }}>
                 La micropigmentación labial puede
@@ -362,7 +325,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ QUÉ APRENDERÁS ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-28 md:py-40" style={{ background: G.bgRed }}>
+      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgRed }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(243,241,238,0.7) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -382,20 +345,15 @@ export default function GlowlipsPage() {
               <ul className="rvs space-y-4">
                 {outcomes.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span className="mt-1 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(215,181,106,0.18)', border: `1px solid ${G.gold}40` }}>
-                      <Check size={8} style={{ color: G.gold }} strokeWidth={3} />
-                    </span>
+                    <span className="flex-shrink-0 font-mono text-sm font-medium mt-0.5" style={{ color: G.gold }}>—</span>
                     <span className="font-sans text-[0.92rem] leading-relaxed" style={{ color: G.mutedLight }}>{item}</span>
                   </li>
                 ))}
               </ul>
-              <div className="rv mt-8 flex items-start gap-3 pt-6" style={{ borderTop: '1px solid rgba(243,241,238,0.1)' }}>
-                <Camera size={16} style={{ color: G.gold, flexShrink: 0, marginTop: 2 }} />
-                <p className="font-sans text-[0.88rem] leading-relaxed" style={{ color: G.mutedLight }}>
-                  También aprenderás a realizar fotografías de alto impacto para redes sociales.
-                </p>
-              </div>
+              <p className="rv mt-8 font-sans text-[0.88rem] leading-relaxed pt-6"
+                style={{ color: G.mutedLight, borderTop: '1px solid rgba(243,241,238,0.1)' }}>
+                También aprenderás a realizar fotografías de alto impacto para redes sociales.
+              </p>
             </div>
             <div>
               <p className="rv font-sans font-semibold text-xs tracking-widest uppercase mb-6" style={{ color: `${G.gold}70` }}>
@@ -415,7 +373,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 1 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-24 md:py-36" style={{ background: G.bgLight }}>
+      <section className="relative overflow-hidden py-12 md:py-36" style={{ background: G.bgLight }}>
         <div className="rvn absolute top-8 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.045]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: G.bgRed, lineHeight: 0.85 }}>
           D1
@@ -431,7 +389,7 @@ export default function GlowlipsPage() {
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: G.text }}>
             Teoría, técnica y modelo real.
           </h2>
-          <div className="rvs grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+          <div className="rvs grid grid-cols-2 lg:grid-cols-3 gap-2.5">
             {dia1.map((item, i) => (
               <div key={i} className="flex items-start gap-2.5 px-4 py-3 rounded-xl border"
                 style={{ background: 'rgba(255,255,255,0.7)', borderColor: 'rgba(143,45,58,0.08)' }}>
@@ -446,7 +404,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 2 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-24 md:py-36 border-t" style={{ background: G.bgWine, borderColor: 'rgba(215,181,106,0.12)' }}>
+      <section className="relative overflow-hidden py-12 md:py-36 border-t" style={{ background: G.bgWine, borderColor: 'rgba(215,181,106,0.12)' }}>
         <div className="rvn absolute bottom-8 right-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.05]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: G.gold, lineHeight: 0.85 }}>
           D2
@@ -466,7 +424,7 @@ export default function GlowlipsPage() {
             {dia2.map((item, i) => (
               <div key={i} className="flex items-start gap-3 px-6 py-4 rounded-2xl"
                 style={{ background: 'rgba(243,241,238,0.07)', border: '1px solid rgba(215,181,106,0.14)' }}>
-                <Check size={14} style={{ color: G.gold, flexShrink: 0, marginTop: 2 }} strokeWidth={2.4} />
+                <span className="flex-shrink-0 font-mono text-sm font-medium mt-0.5" style={{ color: G.gold }}>—</span>
                 <span className="font-sans text-[0.9rem] leading-relaxed" style={{ color: G.mutedLight }}>{item}</span>
               </div>
             ))}
@@ -475,7 +433,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
-      <section id="formulario" className="relative overflow-hidden py-28 md:py-40" style={{ background: G.bgLight }}>
+      <section id="formulario" className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgLight }}>
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${G.bgNude}50 0%, transparent 70%)`, transform: 'translate(30%, -30%)' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-2xl mx-auto">
@@ -515,7 +473,7 @@ export default function GlowlipsPage() {
             <div className="rv flex flex-col items-center gap-5 text-center py-12">
               <div className="w-14 h-14 rounded-full flex items-center justify-center border"
                 style={{ background: `${G.bgWine}12`, borderColor: `${G.bgWine}35` }}>
-                <Check size={20} style={{ color: G.bgWine }} strokeWidth={2.2} />
+                <span className="font-serif italic font-bold text-xl" style={{ color: G.bgWine }}>&#10003;</span>
               </div>
               <div>
                 <p className="font-serif italic text-xl mb-2" style={{ color: G.text }}>Consulta recibida.</p>
@@ -529,7 +487,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ RESERVA ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-28 md:py-40" style={{ background: G.bgWine }}>
+      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgWine }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.06]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(215,181,106,0.7) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"
@@ -541,36 +499,34 @@ export default function GlowlipsPage() {
             Confirma tu plaza.
           </h2>
 
-          <div className="rv grid sm:grid-cols-2 gap-4 my-10 text-left">
-            <div className="p-6 rounded-2xl" style={{ background: 'rgba(243,241,238,0.07)', border: '1px solid rgba(215,181,106,0.18)' }}>
+          {/* Deposit info */}
+          <div className="rv mb-10 max-w-sm mx-auto">
+            <div className="p-8 rounded-2xl text-left" style={{ background: 'rgba(243,241,238,0.07)', border: '1px solid rgba(215,181,106,0.18)' }}>
               <p className="font-sans font-semibold text-xs mb-1" style={{ color: G.mutedLight }}>Reserva previa</p>
-              <p className="font-serif italic font-bold text-3xl" style={{ color: G.textLight }}>300 €</p>
-              <p className="font-sans text-xs mt-1.5" style={{ color: G.mutedLight }}>El resto el día de la formación</p>
-            </div>
-            <div className="p-6 rounded-2xl" style={{ background: 'rgba(243,241,238,0.07)', border: '1px solid rgba(215,181,106,0.18)' }}>
-              <p className="font-sans font-semibold text-xs mb-2" style={{ color: G.mutedLight }}>Pago por IBAN</p>
-              <p className="font-mono text-[0.78rem] font-bold leading-tight" style={{ color: G.gold }}>
-                ES14 2100 7348 5602<br />0042 5031
-              </p>
-              <p className="font-sans text-[10px] mt-2 leading-snug" style={{ color: G.mutedLight }}>
-                Beneficiaria: Patricia Songel<br />Micropigmentación y belleza
+              <p className="font-serif italic font-bold text-4xl mb-2" style={{ color: G.textLight }}>300 €</p>
+              <p className="font-sans text-xs leading-relaxed" style={{ color: G.mutedLight }}>
+                El resto se abona el día de la formación.<br />Formación exenta de IVA.
               </p>
             </div>
           </div>
 
-          <p className="rv font-sans text-xs mb-6" style={{ color: G.mutedLight }}>
-            Concepto: Nombre y apellido
-          </p>
-
-          <a href="mailto:info@patriciasongel.com"
-            className="rv inline-flex items-center gap-2.5 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300"
-            style={{ background: G.gold, color: '#1A0D10' }}>
-            Reservar plaza ahora <ArrowRight size={14} />
+          {/* Stripe CTA */}
+          <a
+            href={STRIPE_URL}
+            className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
+            style={{ background: G.gold, color: '#1A0D10' }}
+          >
+            <span>Pagar reserva con tarjeta</span>
+            <span className="font-mono text-xs opacity-60">→</span>
           </a>
+          <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: G.mutedLight }}>
+            Pago seguro gestionado por Stripe
+          </p>
         </div>
       </section>
 
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }
