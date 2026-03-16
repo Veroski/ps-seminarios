@@ -539,6 +539,35 @@ export default function MicropigmentacionPage() {
               </div>
             </div>
           )}
+
+          {/* ── Pago Stripe ─────────────────────────────────── */}
+          <div className="rv mt-10 pt-10" style={{ borderTop: `1px solid rgba(31,31,31,0.08)` }}>
+            <p className="font-sans font-semibold text-xs tracking-widest uppercase text-center mb-6" style={{ color: P.muted }}>
+              ¿Ya lo tienes claro? Reserva tu plaza
+            </p>
+            <div className="p-6 rounded-2xl text-center mb-4" style={{ background: 'rgba(31,31,31,0.04)', border: '1px solid rgba(31,31,31,0.07)' }}>
+              <p className="font-sans text-xs mb-1" style={{ color: P.muted }}>Reserva previa</p>
+              <p className="font-serif italic font-bold text-3xl" style={{ color: P.text }}>250 €</p>
+              <p className="font-sans text-[10px] mt-1" style={{ color: `${P.muted}80` }}>El resto se abona el día de la formación</p>
+            </div>
+            {STRIPE_URL ? (
+              <>
+                <a href={STRIPE_URL}
+                  className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-4 rounded-full transition-all duration-300"
+                  style={{ background: P.accent, color: P.white }}>
+                  Pagar reserva con tarjeta →
+                </a>
+                <p className="text-center font-sans text-[10px] mt-2" style={{ color: `${P.muted}70` }}>
+                  Pago seguro gestionado por Stripe
+                </p>
+              </>
+            ) : (
+              <p className="text-center font-sans text-sm" style={{ color: `${P.muted}70` }}>
+                Pago con tarjeta próximamente disponible
+              </p>
+            )}
+          </div>
+
         </div>
       </section>
 

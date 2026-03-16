@@ -525,6 +525,35 @@ export default function GlowlipsPage() {
               </div>
             </div>
           )}
+
+          {/* ── Pago Stripe ─────────────────────────────────── */}
+          <div className="rv mt-10 pt-10" style={{ borderTop: `1px solid rgba(143,45,58,0.1)` }}>
+            <p className="font-sans font-semibold text-xs tracking-widest uppercase text-center mb-6" style={{ color: G.muted }}>
+              ¿Ya lo tienes claro? Reserva tu plaza
+            </p>
+            <div className="p-6 rounded-2xl text-center mb-4" style={{ background: `${G.bgNude}40`, border: `1px solid rgba(143,45,58,0.08)` }}>
+              <p className="font-sans text-xs mb-1" style={{ color: G.muted }}>Reserva previa</p>
+              <p className="font-serif italic font-bold text-3xl" style={{ color: G.text }}>300 €</p>
+              <p className="font-sans text-[10px] mt-1" style={{ color: `${G.muted}80` }}>El resto se abona el día de la formación</p>
+            </div>
+            {STRIPE_URL ? (
+              <>
+                <a href={STRIPE_URL}
+                  className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-4 rounded-full transition-all duration-300"
+                  style={{ background: G.bgWine, color: G.textLight }}>
+                  Pagar reserva con tarjeta →
+                </a>
+                <p className="text-center font-sans text-[10px] mt-2" style={{ color: `${G.muted}70` }}>
+                  Pago seguro gestionado por Stripe
+                </p>
+              </>
+            ) : (
+              <p className="text-center font-sans text-sm" style={{ color: `${G.muted}70` }}>
+                Pago con tarjeta próximamente disponible
+              </p>
+            )}
+          </div>
+
         </div>
       </section>
 
