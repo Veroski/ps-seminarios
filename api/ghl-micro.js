@@ -21,6 +21,36 @@ export default async function handler(req, res) {
     return p;
   };
 
+  const headers = {
+    Authorization: `Bearer ${process.env.GHL_PRIVATE_KEY}`,
+    Version: '2021-07-28',
+    'Content-Type': 'application/json',
+  };
+
+  // 1. Obtener IDs reales de los custom fields del location
+  const cfRes = await fetch(
+    `https://services.leadconnectorhq.com/locations/${process.env.GHL_LOCATION_ID}/customFields`,
+    { headers }
+  );
+  const cfData = await cfRes.json();
+
+  // Construir mapa fieldKey → id (normalizamos quitando el prefijo "contact.")
+  const fieldMap = {};
+  for (const f of (cfData.customFields || [])) {
+    const key = (f.fieldKey || '').replace(/^contact\./, '');
+    fieldMap[key] = f.id;
+  }
+
+  // 2. Construir customFields solo con los campos que tienen ID
+  const customFields = [
+    { key: 'experiencia_micropigmentacion', value: data.experiencia },
+    { key: 'presupuesto_inversion',         value: data.inversion   },
+    { key: 'mensaje_seminario',             value: data.mensaje     },
+  ]
+    .filter(f => f.value && fieldMap[f.key])
+    .map(f => ({ id: fieldMap[f.key], field_value: f.value }));
+
+  // 3. Upsert del contacto
   const payload = {
     locationId: process.env.GHL_LOCATION_ID,
     firstName,
@@ -30,20 +60,12 @@ export default async function handler(req, res) {
     phone: normalizePhone(data.telefono),
     source: 'Landing Micropigmentacion 3.0',
     tags: ['lead-micropigmentacion'],
-    customFields: [
-      { key: 'contact.experiencia_micropigmentacion', field_value: data.experiencia || '' },
-      { key: 'contact.presupuesto_inversion',         field_value: data.inversion   || '' },
-      { key: 'contact.mensaje_seminario',             field_value: data.mensaje     || '' },
-    ],
+    customFields,
   };
 
   const ghlRes = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.GHL_PRIVATE_KEY}`,
-      Version: '2021-07-28',
-      'Content-Type': 'application/json',
-    },
+    headers,
     body: JSON.stringify(payload),
   });
 
