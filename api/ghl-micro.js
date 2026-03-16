@@ -13,13 +13,21 @@ export default async function handler(req, res) {
   const firstName = parts[0] || '';
   const lastName = parts.length > 1 ? parts.slice(1).join(' ') : '.';
 
+  const normalizePhone = (raw = '') => {
+    let p = raw.replace(/\s+/g, '').replace(/-/g, '');
+    if (p.startsWith('0034')) p = '+34' + p.slice(4);
+    if (p.startsWith('34') && !p.startsWith('+')) p = '+' + p;
+    if (!p.startsWith('+')) p = '+34' + p;
+    return p;
+  };
+
   const payload = {
     locationId: process.env.GHL_LOCATION_ID,
     firstName,
     lastName,
     name: data.nombre,
     email: data.email,
-    phone: data.telefono,
+    phone: normalizePhone(data.telefono),
     source: 'Landing Micropigmentacion 3.0',
     tags: ['lead-micropigmentacion'],
     customFields: [
