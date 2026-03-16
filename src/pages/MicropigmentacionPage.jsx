@@ -1,11 +1,14 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Loader2, AlertCircle } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import favicon from '../favicon.ico';
 import Footer from '../components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const STRIPE_URL = import.meta.env.VITE_STRIPE_MICRO || null;
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const P = {
@@ -128,8 +131,8 @@ function StickyMobileCTA() {
 /* ─── MAIN PAGE ─────────────────────────────────────────────── */
 export default function MicropigmentacionPage() {
   const pageRef  = useRef(null);
-  const [formData,  setFormData]  = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -154,8 +157,36 @@ export default function MicropigmentacionPage() {
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const handleInput  = e => setFormData(p => ({ ...p, [e.target.name]: e.target.value }));
-  const handleSubmit = e => { e.preventDefault(); setSubmitted(true); };
+  const handleInput = e => setFormData(p => ({ ...p, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const payload = {
+        nombre:      formData.nombre,
+        email:       formData.email,
+        telefono:    formData.telefono,
+        experiencia: formData.experiencia,
+        inversion:   formData.inversion,
+        mensaje:     formData.mensaje,
+      };
+
+      const res = await fetch('/api/ghl-micro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+      } else {
+        throw new Error('Error de red');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
 
   const inputCls = 'w-full border text-sm px-3.5 py-2.5 rounded-lg transition-colors duration-200 focus:outline-none font-sans';
 
@@ -460,7 +491,7 @@ export default function MicropigmentacionPage() {
             </p>
           </div>
 
-          {!submitted ? (
+          {status !== 'success' ? (
             <form onSubmit={handleSubmit} className="rv space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 {formFields.map(f => (
@@ -472,25 +503,38 @@ export default function MicropigmentacionPage() {
                   </div>
                 ))}
               </div>
+              {status === 'error' && (
+                <div className="flex items-center gap-2 text-sm p-3 rounded-lg" style={{ background: '#FEE2E2', color: '#B91C1C' }}>
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  Hubo un error al enviar. Por favor, inténtalo de nuevo.
+                </div>
+              )}
               <button type="submit"
-                className="w-full font-sans font-semibold text-sm py-4 rounded-full mt-2 transition-all duration-300"
-                style={{ background: P.accent, color: P.white }}>
-                Solicitar información — sin compromiso
+                disabled={status === 'loading'}
+                className="w-full font-sans font-semibold text-sm py-4 rounded-full mt-2 transition-all duration-300 flex items-center justify-center gap-2"
+                style={{ background: P.accent, color: P.white, opacity: status === 'loading' ? 0.7 : 1 }}>
+                {status === 'loading' ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" />Enviando...</>
+                ) : 'Solicitar información — sin compromiso'}
               </button>
               <p className="text-center font-sans text-[10px] tracking-wide" style={{ color: `${P.muted}80` }}>
                 No se realiza ningún cobro
               </p>
             </form>
           ) : (
-            <div className="rv flex flex-col items-center gap-5 text-center py-12">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center border"
-                style={{ background: `${P.accent}12`, borderColor: `${P.accent}35` }}>
-                <span className="font-serif italic font-bold text-xl" style={{ color: P.accent }}>&#10003;</span>
+            <div className="rv flex flex-col items-center justify-center gap-6 text-center"
+              style={{ minHeight: '420px' }}>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center"
+                style={{ background: `${P.accent}15`, border: `1px solid ${P.accent}30` }}>
+                <span className="font-serif italic font-bold text-2xl" style={{ color: P.accent }}>✓</span>
               </div>
-              <div>
-                <p className="font-serif italic text-xl mb-2" style={{ color: P.text }}>Consulta recibida.</p>
+              <div className="space-y-3">
+                <p className="font-serif italic font-bold leading-tight"
+                  style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', color: P.text }}>
+                  ¡Gracias por tu interés!
+                </p>
                 <p className="font-sans text-sm leading-relaxed max-w-xs mx-auto" style={{ color: P.muted }}>
-                  Te contactaremos en las próximas 24 h. No se ha realizado ningún cobro.
+                  Hemos recibido tu solicitud.<br />Nos pondremos en contacto contigo en las próximas 24 h.
                 </p>
               </div>
             </div>
@@ -511,25 +555,37 @@ export default function MicropigmentacionPage() {
             Confirma tu plaza.
           </h2>
 
-          <div className="rv grid sm:grid-cols-2 gap-4 mb-12 text-left">
-            <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="rv mb-12 max-w-sm mx-auto">
+            <div className="p-8 rounded-2xl text-left" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <p className="font-sans font-semibold text-xs mb-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Reserva previa</p>
-              <p className="font-serif italic font-bold text-3xl" style={{ color: P.white }}>250 €</p>
-            </div>
-            <div className="p-6 rounded-2xl" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>
-              <p className="font-sans font-semibold text-xs mb-2" style={{ color: 'rgba(255,255,255,0.5)' }}>Pago mediante Bizum</p>
-              <p className="font-mono text-lg font-bold" style={{ color: P.white }}>647 122 470</p>
-              <p className="font-sans text-xs mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>Concepto: Nombre y apellido</p>
+              <p className="font-serif italic font-bold text-4xl mb-2" style={{ color: P.white }}>250 €</p>
+              <p className="font-sans text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                El resto se abona el día de la formación.<br />Formación exenta de IVA.
+              </p>
             </div>
           </div>
 
           <p className="rv font-sans text-sm mb-6" style={{ color: 'rgba(255,255,255,0.55)' }}>La Eliana, Valencia</p>
 
-          <a href="tel:647122470"
-            className="rv inline-flex items-center gap-2.5 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 mt-2"
-            style={{ background: P.white, color: P.accent }}>
-            Reservar plaza ahora →
-          </a>
+          {STRIPE_URL ? (
+            <>
+              <a
+                href={STRIPE_URL}
+                className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
+                style={{ background: P.white, color: P.accent }}
+              >
+                <span>Pagar reserva con tarjeta</span>
+                <span className="font-mono text-xs opacity-60">→</span>
+              </a>
+              <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                Pago seguro gestionado por Stripe
+              </p>
+            </>
+          ) : (
+            <p className="rv font-sans text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
+              Próximamente — reserva por teléfono
+            </p>
+          )}
         </div>
       </section>
 

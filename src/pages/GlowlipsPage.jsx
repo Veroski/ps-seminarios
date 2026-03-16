@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Loader2, AlertCircle } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import favicon from '../favicon.ico';
@@ -21,8 +22,7 @@ const G = {
   white:     '#FFFFFF',
 };
 
-/* Stripe payment link — replace with your live Stripe Checkout URL */
-const STRIPE_URL = '#stripe-checkout';
+const STRIPE_URL = import.meta.env.VITE_STRIPE_GLOWLIPS || null;
 
 /* ─── DATA ─────────────────────────────────────────────────── */
 const outcomes = [
@@ -145,8 +145,8 @@ function StickyMobileCTA() {
 /* ─── MAIN PAGE ─────────────────────────────────────────────── */
 export default function GlowlipsPage() {
   const pageRef  = useRef(null);
-  const [formData,  setFormData]  = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -171,8 +171,37 @@ export default function GlowlipsPage() {
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  const handleInput  = e => setFormData(p => ({ ...p, [e.target.name]: e.target.value }));
-  const handleSubmit = e => { e.preventDefault(); setSubmitted(true); };
+  const handleInput = e => setFormData(p => ({ ...p, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const payload = {
+        nombre:   formData.nombre,
+        email:    formData.email,
+        telefono: formData.telefono,
+        activa:   formData.activa,
+        tecnica:  formData.tecnica,
+        inversion: formData.inversion,
+        mensaje:  formData.mensaje,
+      };
+
+      const res = await fetch('/api/ghl-glowlips', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+      } else {
+        throw new Error('Error de red');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
 
   const inputCls = 'w-full border text-sm px-3.5 py-2.5 rounded-lg transition-colors duration-200 focus:outline-none font-sans';
 
@@ -448,7 +477,7 @@ export default function GlowlipsPage() {
             </p>
           </div>
 
-          {!submitted ? (
+          {status !== 'success' ? (
             <form onSubmit={handleSubmit} className="rv space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 {formFields.map(f => (
@@ -460,25 +489,38 @@ export default function GlowlipsPage() {
                   </div>
                 ))}
               </div>
+              {status === 'error' && (
+                <div className="flex items-center gap-2 text-sm p-3 rounded-lg" style={{ background: '#FEE2E2', color: '#B91C1C' }}>
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  Hubo un error al enviar. Por favor, inténtalo de nuevo.
+                </div>
+              )}
               <button type="submit"
-                className="w-full font-sans font-semibold text-sm py-4 rounded-full mt-2 transition-all duration-300"
-                style={{ background: G.bgWine, color: G.textLight }}>
-                Solicitar información — sin compromiso
+                disabled={status === 'loading'}
+                className="w-full font-sans font-semibold text-sm py-4 rounded-full mt-2 transition-all duration-300 flex items-center justify-center gap-2"
+                style={{ background: G.bgWine, color: G.textLight, opacity: status === 'loading' ? 0.7 : 1 }}>
+                {status === 'loading' ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" />Enviando...</>
+                ) : 'Solicitar información — sin compromiso'}
               </button>
               <p className="text-center font-sans text-[10px] tracking-wide" style={{ color: `${G.muted}70` }}>
                 No se realiza ningún cobro
               </p>
             </form>
           ) : (
-            <div className="rv flex flex-col items-center gap-5 text-center py-12">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center border"
-                style={{ background: `${G.bgWine}12`, borderColor: `${G.bgWine}35` }}>
-                <span className="font-serif italic font-bold text-xl" style={{ color: G.bgWine }}>&#10003;</span>
+            <div className="rv flex flex-col items-center justify-center gap-6 text-center"
+              style={{ minHeight: '420px' }}>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center"
+                style={{ background: `${G.bgWine}15`, border: `1px solid ${G.bgWine}30` }}>
+                <span className="font-serif italic font-bold text-2xl" style={{ color: G.bgWine }}>✓</span>
               </div>
-              <div>
-                <p className="font-serif italic text-xl mb-2" style={{ color: G.text }}>Consulta recibida.</p>
+              <div className="space-y-3">
+                <p className="font-serif italic font-bold leading-tight"
+                  style={{ fontSize: 'clamp(1.6rem, 4vw, 2.2rem)', color: G.text }}>
+                  ¡Gracias por tu interés!
+                </p>
                 <p className="font-sans text-sm leading-relaxed max-w-xs mx-auto" style={{ color: G.muted }}>
-                  Te contactaremos en las próximas 24 h. No se ha realizado ningún cobro.
+                  Hemos recibido tu solicitud.<br />Nos pondremos en contacto contigo en las próximas 24 h.
                 </p>
               </div>
             </div>
@@ -511,16 +553,25 @@ export default function GlowlipsPage() {
           </div>
 
           {/* Stripe CTA */}
-          <a
-            href={STRIPE_URL}
-            className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
-            style={{ background: G.gold, color: '#1A0D10' }}
-          >
-            <span>Pagar reserva con tarjeta</span>
-            <span className="font-mono text-xs opacity-60">→</span>
-          </a>
-          <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: G.mutedLight }}>
-            Pago seguro gestionado por Stripe
+          {STRIPE_URL ? (
+            <>
+              <a
+                href={STRIPE_URL}
+                className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
+                style={{ background: G.gold, color: '#1A0D10' }}
+              >
+                <span>Pagar reserva con tarjeta</span>
+                <span className="font-mono text-xs opacity-60">→</span>
+              </a>
+              <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: G.mutedLight }}>
+                Pago seguro gestionado por Stripe
+              </p>
+            </>
+          ) : (
+            <p className="rv font-sans text-sm" style={{ color: G.mutedLight }}>
+              Próximamente — reserva por teléfono
+            </p>
+          )}
           </p>
         </div>
       </section>
