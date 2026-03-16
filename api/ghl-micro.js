@@ -31,9 +31,9 @@ export default async function handler(req, res) {
     source: 'Landing Micropigmentacion 3.0',
     tags: ['lead-micropigmentacion'],
     customFields: [
-      { key: 'contact.experiencia_micropigmentacion', field_value: data.experiencia || '' },
-      { key: 'contact.presupuesto_inversion',         field_value: data.inversion   || '' },
-      { key: 'contact.mensaje_seminario',             field_value: data.mensaje     || '' },
+      { id: 'contact.experiencia_micropigmentacion', field_value: data.experiencia || '' },
+      { id: 'contact.presupuesto_inversion',         field_value: data.inversion   || '' },
+      { id: 'contact.mensaje_seminario',             field_value: data.mensaje     || '' },
     ],
   };
 
