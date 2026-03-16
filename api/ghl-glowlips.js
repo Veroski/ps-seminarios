@@ -31,12 +31,15 @@ export default async function handler(req, res) {
     source: 'Landing Glowlips Masterclass',
     tags: ['lead-glowlips'],
     customFields: [
-      { id: 'contact.micropig_activa',      field_value: data.activa    || '' },
-      { id: 'contact.tecnica_labios',        field_value: data.tecnica   || '' },
-      { id: 'contact.presupuesto_inversion', field_value: data.inversion || '' },
-      { id: 'contact.mensaje_seminario',     field_value: data.mensaje   || '' },
+      { key: 'contact.micropig_activa',      value: data.activa    || '' },
+      { key: 'contact.tecnica_labios',        value: data.tecnica   || '' },
+      { key: 'contact.presupuesto_inversion', value: data.inversion || '' },
+      { key: 'contact.mensaje_seminario',     value: data.mensaje   || '' },
     ],
   };
+
+  const isBarato = (data.inversion || '').toLowerCase().includes('menos');
+  if (isBarato) payload.tags.push('lead-barato');
 
   const ghlRes = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {
     method: 'POST',

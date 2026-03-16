@@ -31,11 +31,14 @@ export default async function handler(req, res) {
     source: 'Landing Micropigmentacion 3.0',
     tags: ['lead-micropigmentacion'],
     customFields: [
-      { id: 'contact.experiencia_micropigmentacion', field_value: data.experiencia || '' },
-      { id: 'contact.presupuesto_inversion',         field_value: data.inversion   || '' },
-      { id: 'contact.mensaje_seminario',             field_value: data.mensaje     || '' },
+      { key: 'contact.experiencia_micropigmentacion', value: data.experiencia || '' },
+      { key: 'contact.presupuesto_inversion',         value: data.inversion   || '' },
+      { key: 'contact.mensaje_seminario',             value: data.mensaje     || '' },
     ],
   };
+
+  const isBarato = (data.inversion || '').toLowerCase().includes('menos');
+  if (isBarato) payload.tags.push('lead-barato');
 
   const ghlRes = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {
     method: 'POST',
