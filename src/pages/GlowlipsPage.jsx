@@ -572,7 +572,6 @@ export default function GlowlipsPage() {
               Próximamente — reserva por teléfono
             </p>
           )}
-          </p>
         </div>
       </section>
 
