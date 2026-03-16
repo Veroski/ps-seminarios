@@ -31,10 +31,10 @@ export default async function handler(req, res) {
     source: 'Landing Glowlips Masterclass',
     tags: ['lead-glowlips'],
     customFields: [
-      { key: 'contact.micropig_activa',      field_value: data.activa    || '' },
-      { key: 'contact.tecnica_labios',        field_value: data.tecnica   || '' },
-      { key: 'contact.presupuesto_inversion', field_value: data.inversion || '' },
-      { key: 'contact.mensaje_seminario',     field_value: data.mensaje   || '' },
+      { id: 'contact.micropig_activa',      field_value: data.activa    || '' },
+      { id: 'contact.tecnica_labios',        field_value: data.tecnica   || '' },
+      { id: 'contact.presupuesto_inversion', field_value: data.inversion || '' },
+      { id: 'contact.mensaje_seminario',     field_value: data.mensaje   || '' },
     ],
   };
 
