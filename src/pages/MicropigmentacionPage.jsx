@@ -56,7 +56,7 @@ const seguimientoItems = [
 const formFields = [
   { name: 'nombre',      label: 'Nombre completo',    type: 'text',     placeholder: 'Tu nombre',               required: true,  span: 2 },
   { name: 'email',       label: 'Correo electrónico', type: 'email',    placeholder: 'tu@correo.com',            required: true,  span: 1 },
-  { name: 'telefono',    label: 'Teléfono',           type: 'tel',      placeholder: '+34 000 000 000',          required: false, span: 1 },
+  { name: 'telefono',    label: 'Teléfono',           type: 'tel',      placeholder: '+34 000 000 000',          required: true,  span: 1 },
   { name: 'experiencia', label: 'Experiencia previa', type: 'select',   options: ['Sin experiencia', 'Iniciado', 'Intermedio / Avanzado'], required: true, span: 2 },
   { name: 'inversion',   label: '¿Cuánto estás dispuesto/a a invertir?', type: 'select', options: ['Menos de 2000€', 'Entre 2000 y 3000€', 'Más de 3000€'], required: true, span: 2 },
   { name: 'mensaje',     label: '¿Alguna pregunta?',  type: 'textarea', placeholder: 'Cuéntanos qué quieres saber...', span: 2 },
