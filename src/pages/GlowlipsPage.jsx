@@ -68,7 +68,7 @@ const formFields = [
   { name: 'telefono',  label: 'Teléfono',                                 type: 'tel',      placeholder: '+34 000 000 000',         required: false, span: 1 },
   { name: 'activa',    label: '¿Practicas micropigmentación actualmente?', type: 'select',   options: ['Sí, activamente', 'Sí, esporádicamente', 'No, aún no'], required: true, span: 2 },
   { name: 'tecnica',   label: 'Técnica de labios que practicas',           type: 'select',   options: ['Ninguna', 'Perfilado básico', 'Acuarela / Difuminado', 'Otra'], span: 2 },
-  { name: 'inversion', label: '¿Cuánto estás dispuesto/a a invertir?',    type: 'select',   options: ['Menos de 2000€', 'Entre 2000 y 3000€', 'Más de 3000€'], required: true, span: 2 },
+  { name: 'inversion', label: '¿Cuánto estás dispuesto/a a invertir?',    type: 'select',   options: ['Menos de 1000', 'Entre 1000 y 1500', 'Más de 1500'], required: true, span: 2 },
   { name: 'mensaje',   label: '¿Qué buscas mejorar?',                     type: 'textarea', placeholder: 'Describe tu objetivo...', span: 2 },
 ];
 
