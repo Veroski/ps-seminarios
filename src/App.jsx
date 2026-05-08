@@ -17,6 +17,7 @@ import Privacidad from './pages/Privacidad';
 import Terminos from './pages/Terminos';
 import MicropigmentacionPage from './pages/MicropigmentacionPage';
 import GlowlipsPage from './pages/GlowlipsPage';
+import CejasPage from './pages/CejasPage';
 
 function Home() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/terminos" element={<Terminos />} />
         <Route path="/formacion/micropigmentacion" element={<MicropigmentacionPage />} />
         <Route path="/formacion/glowlips" element={<GlowlipsPage />} />
+        <Route path="/formacion/hairstrokes" element={<CejasPage />} />
       </Routes>
       <CookieBanner />
     </>

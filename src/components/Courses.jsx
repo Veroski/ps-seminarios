@@ -22,6 +22,13 @@ const courses = [
     img: "/glowlips_pagina1.webp",
     path: "/formacion/glowlips",
   },
+  {
+    title: "Hairstrokes",
+    desc: "Donde empieza el realismo. Formación avanzada en micropigmentación de cejas pelo a pelo con técnica hiperrealista, precisión y diseño estratégico.",
+    tag: "Masterclass",
+    img: "/cejas_pagina1.webp",
+    path: "/formacion/hairstrokes",
+  },
 ];
 
 // ─── COURSES SECTION ──────────────────────────────────────────────────────────
