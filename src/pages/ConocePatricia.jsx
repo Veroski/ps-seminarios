@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles, ShieldCheck, HeartHandshake, Gem } from 'lucide-r
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
-import PageTopBar from '../components/PageTopBar';
+import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,14 +55,22 @@ export default function ConocePatricia() {
     const ctx = gsap.context(() => {
       gsap.from('.chero > *', { y: 46, opacity: 0, duration: 1.1, stagger: 0.12, ease: 'power3.out', delay: 0.15 });
       gsap.utils.toArray('.rv').forEach((el) =>
-        gsap.from(el, { y: 52, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } })
+        gsap.from(el, { y: 52, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'opacity,transform', scrollTrigger: { trigger: el, start: 'top 90%', once: true } })
       );
       gsap.utils.toArray('.rvs').forEach((el) =>
-        gsap.from(Array.from(el.children), { y: 26, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 84%' } })
+        gsap.from(Array.from(el.children), { y: 26, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', clearProps: 'opacity,transform', scrollTrigger: { trigger: el, start: 'top 90%', once: true } })
       );
     }, pageRef);
-    ScrollTrigger.refresh();
-    return () => ctx.revert();
+    const refresh = () => ScrollTrigger.refresh();
+    requestAnimationFrame(refresh);
+    const t1 = setTimeout(refresh, 400);
+    const t2 = setTimeout(refresh, 1200);
+    window.addEventListener('load', refresh);
+    return () => {
+      clearTimeout(t1); clearTimeout(t2);
+      window.removeEventListener('load', refresh);
+      ctx.revert();
+    };
   }, []);
 
   const jsonLd = [
@@ -111,7 +119,7 @@ export default function ConocePatricia() {
         jsonLd={jsonLd}
       />
 
-      <PageTopBar ctaLabel="Pedir cita" ctaHref="/pedir-cita" />
+      <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24 px-6 md:px-16">
@@ -162,7 +170,7 @@ export default function ConocePatricia() {
 
       {/* ══ MÉTRICAS ══════════════════════════════════════════ */}
       <section className="border-y border-primary/10 bg-surface">
-        <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16 rvs grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+        <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
           {METRICS.map((m) => (
             <div key={m.label} className="flex flex-col">
               <span className="font-serif italic text-4xl md:text-5xl text-accent mb-2">{m.value}</span>

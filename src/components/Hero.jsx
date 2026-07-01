@@ -97,7 +97,6 @@ export default function Hero() {
   const taglineRef = useRef(null);
   const progressRef = useRef(null);
   const currentFrame = useRef(0);
-  const rafPending = useRef(false);
   const loaderRef = useRef(null);
   const canvasSizeRef = useRef({ width: 0, height: 0 });
   const resizeRafRef = useRef(0);
@@ -172,17 +171,12 @@ export default function Hero() {
           const progress = self.progress;
           const targetIdx = Math.min(TOTAL_FRAMES - 1, Math.round(progress * (TOTAL_FRAMES - 1)));
 
-          /* Achievement index from scroll progress */
           if (targetIdx === currentFrame.current) return;
           currentFrame.current = targetIdx;
 
-          if (!rafPending.current) {
-            rafPending.current = true;
-            requestAnimationFrame(() => {
-              renderFrame();
-              rafPending.current = false;
-            });
-          }
+          // Render synchronously with the scroll update — no deferred rAF —
+          // so the frame tracks the scroll position 1:1 without lag.
+          renderFrame();
         },
       });
 

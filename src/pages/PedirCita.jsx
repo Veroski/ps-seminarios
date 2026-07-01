@@ -4,7 +4,7 @@ import { Loader2, AlertCircle, Phone, Mail, MapPin, Clock, MessageCircle, Instag
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
-import PageTopBar from '../components/PageTopBar';
+import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,14 +55,24 @@ export default function PedirCita() {
     const ctx = gsap.context(() => {
       gsap.from('.chero > *', { y: 44, opacity: 0, duration: 1.1, stagger: 0.12, ease: 'power3.out', delay: 0.15 });
       gsap.utils.toArray('.rv').forEach((el) =>
-        gsap.from(el, { y: 50, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 86%' } })
+        gsap.from(el, { y: 50, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'opacity,transform', scrollTrigger: { trigger: el, start: 'top 90%', once: true } })
       );
       gsap.utils.toArray('.rvs').forEach((el) =>
-        gsap.from(Array.from(el.children), { y: 26, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } })
+        gsap.from(Array.from(el.children), { y: 26, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out', clearProps: 'opacity,transform', scrollTrigger: { trigger: el, start: 'top 90%', once: true } })
       );
     }, pageRef);
-    ScrollTrigger.refresh();
-    return () => ctx.revert();
+    // Recalculate trigger positions after images/iframe/fonts settle so
+    // nothing stays stuck in its hidden state.
+    const refresh = () => ScrollTrigger.refresh();
+    requestAnimationFrame(refresh);
+    const t1 = setTimeout(refresh, 400);
+    const t2 = setTimeout(refresh, 1200);
+    window.addEventListener('load', refresh);
+    return () => {
+      clearTimeout(t1); clearTimeout(t2);
+      window.removeEventListener('load', refresh);
+      ctx.revert();
+    };
   }, []);
 
   const handleInput = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
@@ -150,7 +160,7 @@ export default function PedirCita() {
         jsonLd={jsonLd}
       />
 
-      <PageTopBar ctaLabel="Escríbenos" ctaHref={CLINIC.whatsapp} ctaAnchor />
+      <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative overflow-hidden pt-32 pb-14 md:pt-44 md:pb-20 px-6 md:px-16">
@@ -187,7 +197,7 @@ export default function PedirCita() {
 
       {/* ══ CONTACTO RÁPIDO ═══════════════════════════════════ */}
       <section className="border-y border-primary/10 bg-surface">
-        <div className="max-w-6xl mx-auto px-6 md:px-16 py-10 md:py-12 rvs grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="max-w-6xl mx-auto px-6 md:px-16 py-10 md:py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { Icon: Phone, label: 'Llámanos', value: CLINIC.phoneDisplay, href: `tel:${CLINIC.phoneTel}` },
             { Icon: MessageCircle, label: 'WhatsApp', value: 'Escríbenos ahora', href: CLINIC.whatsapp, ext: true },
@@ -195,13 +205,13 @@ export default function PedirCita() {
             { Icon: MapPin, label: 'Dónde estamos', value: 'La Eliana, Valencia', href: CLINIC.maps, ext: true },
           ].map(({ Icon, label, value, href, ext }) => (
             <a key={label} href={href} {...(ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="group flex items-center gap-4 p-5 rounded-2xl border border-primary/10 hover:border-accent/40 hover:bg-white/50 transition-all duration-300">
+              className="group flex items-center gap-3.5 p-5 rounded-2xl border border-primary/10 hover:border-accent/40 hover:bg-white/50 transition-all duration-300 min-w-0">
               <span className="shrink-0 w-11 h-11 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                 <Icon size={17} className="text-accent" />
               </span>
-              <span className="flex flex-col">
-                <span className="font-mono text-[0.6rem] tracking-[0.2em] uppercase text-primary/45">{label}</span>
-                <span className="font-sans text-[0.92rem] font-medium text-primary tracking-[-0.01em]">{value}</span>
+              <span className="flex flex-col min-w-0">
+                <span className="font-mono text-[0.58rem] tracking-[0.18em] uppercase text-primary/45">{label}</span>
+                <span className="font-sans text-[0.9rem] font-medium text-primary tracking-[-0.01em] truncate">{value}</span>
               </span>
             </a>
           ))}

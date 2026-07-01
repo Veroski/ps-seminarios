@@ -1,97 +1,151 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import favicon from '../favicon.ico';
 
-const navItems = [
-  { href: '#hero', label: 'Inicio' },
-  { href: '#autoridad', label: 'Autoridad' },
-  { href: '#programa', label: 'Programa' },
-  { href: '#resultados', label: 'Resultados' },
-];
+/* Unified site navbar — identical on every page. A "Formación"
+   dropdown keeps the bar uncluttered; dark text on a glass pill
+   stays legible on any background; full mobile menu included. */
 
-const routeItems = [
-  { to: '/conoce-a-patricia', label: 'Conoce a Patricia' },
-  { to: '/pedir-cita', label: 'Pedir cita' },
+const FORMACIONES = [
+  { to: '/formacion/micropigmentacion', label: 'Micropigmentación' },
+  { to: '/formacion/glowlips', label: 'Glow Lips' },
+  { to: '/formacion/hairstrokes', label: 'Cejas · Hairstrokes' },
 ];
 
 export default function Navbar() {
   const navRef = useRef(null);
-  const didScrollPastRef = useRef(false);
   const rafRef = useRef(0);
+  const scrolledRef = useRef(false);
+  const [formOpen, setFormOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    const applyScrollState = () => {
+    setMobileOpen(false);
+    setFormOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const apply = () => {
       const nav = navRef.current;
       if (!nav) return;
-      const didScrollPast = window.scrollY > 50;
-      if (didScrollPast === didScrollPastRef.current) return;
-      didScrollPastRef.current = didScrollPast;
-      if (didScrollPast) {
-        nav.classList.add('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
-        nav.classList.remove('text-surface', 'border-transparent');
-        return;
+      const scrolled = window.scrollY > 40;
+      if (scrolled === scrolledRef.current) return;
+      scrolledRef.current = scrolled;
+      if (scrolled) {
+        nav.style.background = 'rgba(250,248,245,0.82)';
+        nav.style.backdropFilter = 'blur(20px)';
+        nav.style.borderColor = 'rgba(13,13,18,0.08)';
+        nav.style.boxShadow = '0 8px 30px rgba(24,20,12,0.06)';
+      } else {
+        nav.style.background = 'rgba(250,248,245,0.30)';
+        nav.style.backdropFilter = 'blur(10px)';
+        nav.style.borderColor = 'transparent';
+        nav.style.boxShadow = 'none';
       }
-      nav.classList.remove('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
-      nav.classList.add('text-surface', 'border-transparent');
     };
-    const handleScroll = () => {
+    const onScroll = () => {
       if (rafRef.current) return;
       rafRef.current = requestAnimationFrame(() => {
-        applyScrollState();
+        apply();
         rafRef.current = 0;
       });
     };
-    applyScrollState();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    apply();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', onScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
+
+  const linkCls = 'font-sans text-[0.82rem] lg:text-sm font-medium tracking-wide text-primary/80 hover:text-accent transition-colors whitespace-nowrap';
 
   return (
     <div className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] md:w-[90%] max-w-5xl">
       <nav
         ref={navRef}
-        className="flex items-center justify-between px-6 py-4 rounded-[2rem] transition-all duration-300 text-surface border border-transparent"
+        className="flex items-center justify-between px-5 md:px-6 py-3.5 rounded-[2rem] border border-transparent transition-all duration-300"
+        style={{ color: '#0D0D12' }}
       >
-        <a
-          href="#hero"
-          aria-label="Ir al inicio"
-          className="flex items-center gap-3 transition-transform duration-300 hover:-translate-y-0.5"
-        >
-          <img
-            src={favicon}
-            alt="Seminarios Patricia Songel"
-            width="40"
-            height="40"
-            decoding="async"
-            fetchPriority="high"
-            className="h-10 w-10 object-contain"
-          />
-          <span className="hidden lg:block font-serif italic font-bold text-lg tracking-wide"></span>
-        </a>
+        <Link to="/" aria-label="Inicio" className="flex items-center gap-2.5 transition-transform duration-300 hover:-translate-y-0.5 shrink-0">
+          <img src={favicon} alt="Patricia Songel" width="38" height="38" decoding="async" fetchPriority="high" className="h-9 w-9 md:h-10 md:w-10 object-contain" />
+        </Link>
 
-        <div className="hidden md:flex items-center gap-4 lg:gap-5 font-sans text-xs lg:text-sm font-medium tracking-wide">
-          {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="hover-lift whitespace-nowrap">
-              {item.label}
-            </a>
-          ))}
-          {routeItems.map((item) => (
-            <Link key={item.to} to={item.to} className="hover-lift whitespace-nowrap">
-              {item.label}
-            </Link>
-          ))}
+        <div className="hidden md:flex items-center gap-6 lg:gap-7">
+          <Link to="/" className={linkCls}>Inicio</Link>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setFormOpen(true)}
+            onMouseLeave={() => setFormOpen(false)}
+          >
+            <button
+              type="button"
+              onClick={() => setFormOpen((v) => !v)}
+              className={`${linkCls} flex items-center gap-1`}
+              aria-expanded={formOpen}
+              aria-haspopup="true"
+            >
+              Formación
+              <ChevronDown size={14} className={`transition-transform duration-300 ${formOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div
+              className={`absolute left-1/2 -translate-x-1/2 top-full pt-3 w-60 transition-all duration-200 ${formOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1 pointer-events-none'}`}
+            >
+              <div className="rounded-2xl bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-xl p-2">
+                {FORMACIONES.map((f) => (
+                  <Link
+                    key={f.to}
+                    to={f.to}
+                    className="block px-4 py-2.5 rounded-xl font-sans text-[0.85rem] text-primary/80 hover:text-accent hover:bg-primary/[0.04] transition-colors"
+                  >
+                    {f.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <Link to="/conoce-a-patricia" className={linkCls}>Conoce a Patricia</Link>
         </div>
 
-        <Link
-          to="/pedir-cita"
-          className="magnetic-btn bg-accent text-primary px-5 py-2.5 rounded-[2rem] font-sans text-sm font-semibold"
-        >
-          <span className="magnetic-btn-content">Pedir cita</span>
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/pedir-cita"
+            className="magnetic-btn bg-accent text-primary px-4 md:px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold whitespace-nowrap"
+          >
+            <span className="magnetic-btn-content">Pedir cita</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-primary/80 hover:text-accent transition-colors"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
+
+      <div
+        className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+      >
+        <div className="rounded-3xl bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-xl p-4 flex flex-col">
+          <Link to="/" className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>
+          <Link to="/conoce-a-patricia" className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Conoce a Patricia</Link>
+          <p className="px-3 pt-3 pb-1 text-overline-soft text-primary/40">Formación</p>
+          {FORMACIONES.map((f) => (
+            <Link key={f.to} to={f.to} className="px-3 py-2.5 rounded-xl font-sans text-[0.9rem] text-primary/75 hover:text-accent hover:bg-primary/[0.04] transition-colors">
+              {f.label}
+            </Link>
+          ))}
+          <Link to="/pedir-cita" className="mt-3 text-center bg-accent text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
+            Pedir cita
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
