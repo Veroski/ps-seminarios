@@ -1,12 +1,17 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import favicon from '../favicon.ico';
 
 const navItems = [
   { href: '#hero', label: 'Inicio' },
   { href: '#autoridad', label: 'Autoridad' },
-  { href: '#biography', label: 'Biografía' },
   { href: '#programa', label: 'Programa' },
   { href: '#resultados', label: 'Resultados' },
+];
+
+const routeItems = [
+  { to: '/conoce-a-patricia', label: 'Conoce a Patricia' },
+  { to: '/pedir-cita', label: 'Pedir cita' },
 ];
 
 export default function Navbar() {
@@ -18,21 +23,17 @@ export default function Navbar() {
     const applyScrollState = () => {
       const nav = navRef.current;
       if (!nav) return;
-
       const didScrollPast = window.scrollY > 50;
       if (didScrollPast === didScrollPastRef.current) return;
       didScrollPastRef.current = didScrollPast;
-
       if (didScrollPast) {
         nav.classList.add('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
         nav.classList.remove('text-surface', 'border-transparent');
         return;
       }
-
       nav.classList.remove('bg-surface/60', 'backdrop-blur-xl', 'border', 'border-dark/10', 'text-primary');
       nav.classList.add('text-surface', 'border-transparent');
     };
-
     const handleScroll = () => {
       if (rafRef.current) return;
       rafRef.current = requestAnimationFrame(() => {
@@ -40,7 +41,6 @@ export default function Navbar() {
         rafRef.current = 0;
       });
     };
-
     applyScrollState();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -69,8 +69,7 @@ export default function Navbar() {
             fetchPriority="high"
             className="h-10 w-10 object-contain"
           />
-          <span className="hidden lg:block font-serif italic font-bold text-lg tracking-wide">
-          </span>
+          <span className="hidden lg:block font-serif italic font-bold text-lg tracking-wide"></span>
         </a>
 
         <div className="hidden md:flex items-center gap-4 lg:gap-5 font-sans text-xs lg:text-sm font-medium tracking-wide">
@@ -79,14 +78,19 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+          {routeItems.map((item) => (
+            <Link key={item.to} to={item.to} className="hover-lift whitespace-nowrap">
+              {item.label}
+            </Link>
+          ))}
         </div>
 
-        <a
-          href="#formaciones"
+        <Link
+          to="/pedir-cita"
           className="magnetic-btn bg-accent text-primary px-5 py-2.5 rounded-[2rem] font-sans text-sm font-semibold"
         >
-          <span className="magnetic-btn-content">Reservar plaza</span>
-        </a>
+          <span className="magnetic-btn-content">Pedir cita</span>
+        </Link>
       </nav>
     </div>
   );

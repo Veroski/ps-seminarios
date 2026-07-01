@@ -6,16 +6,12 @@ export default function Footer() {
   const scrollToCourses = () => {
     const coursesSection = document.getElementById('formaciones');
     if (coursesSection) {
-      window.scrollTo({
-        top: coursesSection.offsetTop,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: coursesSection.offsetTop, behavior: 'smooth' });
     }
   };
 
   return (
     <footer className="w-full bg-[#0A0A0C] pt-24 pb-12 px-6 md:px-16 rounded-t-[4rem] text-surface mt-10 relative overflow-hidden">
-      {/* Ambient glow in footer */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] max-w-2xl aspect-square bg-[radial-gradient(circle,rgba(201,168,76,0.05)_0%,transparent_70%)] rounded-full blur-[60px] pointer-events-none"></div>
 
       <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center mb-20">
@@ -37,17 +33,16 @@ export default function Footer() {
             Si quieres aprender micropigmentación con una base técnica sólida, comprender realmente cómo funciona la piel y desarrollar criterio profesional en tu trabajo, <span className="text-accent">estaré encantada de acompañarte en ese proceso.</span>
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-12 font-sans text-sm w-full md:w-auto">
           <div className="flex flex-col gap-4">
             <h4 className="text-overline-soft text-surface/[0.42] mb-2">Explorar</h4>
-            <a href="#autoridad" className="hover:text-accent transition-colors">Autoridad</a>
-            <a href="#biography" className="hover:text-accent transition-colors">Patricia</a>
-            <a href="#philosophy" className="hover:text-accent transition-colors">Filosofía</a>
-            <a href="#programa" className="hover:text-accent transition-colors">Programa</a>
-            <a href="#formaciones" className="hover:text-accent transition-colors">Formaciones</a>
+            <Link to="/conoce-a-patricia" className="hover:text-accent transition-colors">Conoce a Patricia</Link>
+            <Link to="/pedir-cita" className="hover:text-accent transition-colors">Pedir cita</Link>
+            <a href="/#autoridad" className="hover:text-accent transition-colors">Autoridad</a>
+            <a href="/#programa" className="hover:text-accent transition-colors">Programa</a>
+            <a href="/#formaciones" className="hover:text-accent transition-colors">Formaciones</a>
           </div>
-          
           <div className="flex flex-col gap-4">
             <h4 className="text-overline-soft text-surface/[0.42] mb-2">Información</h4>
             <Link to="/aviso-legal" className="hover:text-accent transition-colors">Aviso Legal</Link>
@@ -56,7 +51,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto pt-8 border-t border-surface/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative z-10">
         <span className="font-sans text-xs text-surface/40">© {new Date().getFullYear()} Patricia Songel Academy. All rights reserved.</span>
         <span className="text-overline-soft text-surface/20">Edición clínica 2026</span>
@@ -64,4 +59,3 @@ export default function Footer() {
     </footer>
   );
 }
-

@@ -18,6 +18,8 @@ import Terminos from './pages/Terminos';
 import MicropigmentacionPage from './pages/MicropigmentacionPage';
 import GlowlipsPage from './pages/GlowlipsPage';
 import CejasPage from './pages/CejasPage';
+import ConocePatricia from './pages/ConocePatricia';
+import PedirCita from './pages/PedirCita';
 
 function Home() {
   return (
@@ -42,6 +44,8 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/conoce-a-patricia" element={<ConocePatricia />} />
+        <Route path="/pedir-cita" element={<PedirCita />} />
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/privacidad" element={<Privacidad />} />
         <Route path="/terminos" element={<Terminos />} />
