@@ -5,10 +5,14 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import favicon from '../favicon.ico';
 import Footer from '../components/Footer';
+import Seo from '../components/Seo';
+import { studentAreaConfig } from '../config/studentArea';
+
+const SITE = 'https://patriciasongel.es';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const STRIPE_URL = import.meta.env.VITE_STRIPE_MICRO || null;
+const CHECKOUT_URL = studentAreaConfig.checkout.micropigmentacion || null;
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const P = {
@@ -205,13 +209,66 @@ export default function MicropigmentacionPage() {
     return <input {...base} type={f.type} placeholder={f.placeholder} className={inputCls} style={style} />;
   };
 
+  const jsonLdMicro = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Course',
+      name: 'Curso de Micropigmentación 3.0 — Patricia Songel',
+      description: 'Formación presencial completa en micropigmentación facial: cejas, labios y ojos. Impartida por Patricia Songel, campeona de España 2023 y 2025.',
+      provider: {
+        '@type': 'Person',
+        name: 'Patricia Songel',
+        url: SITE,
+      },
+      url: `${SITE}/formacion/micropigmentacion`,
+      image: `${SITE}/micro20_pagina1.webp`,
+      inLanguage: 'es-ES',
+      teaches: ['Micropigmentación de cejas', 'Hairstrokes', 'Glowlips', 'Maquillaje permanente de ojos', 'Colorimetría y pigmentología'],
+      courseMode: 'onsite',
+      availableLanguage: 'Spanish',
+      educationalLevel: 'beginner',
+      hasCourseInstance: {
+        '@type': 'CourseInstance',
+        courseMode: 'onsite',
+        location: {
+          '@type': 'Place',
+          name: 'Centro Patricia Songel',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Calle Molino 7',
+            addressLocality: 'La Eliana',
+            addressRegion: 'Valencia',
+            addressCountry: 'ES',
+          },
+        },
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Formación', item: `${SITE}/formacion/micropigmentacion` },
+        { '@type': 'ListItem', position: 3, name: 'Micropigmentación 3.0', item: `${SITE}/formacion/micropigmentacion` },
+      ],
+    },
+  ];
+
   return (
     <div ref={pageRef} className="pb-24 lg:pb-0" style={{ background: P.bgMain, color: P.text, overflowX: 'hidden' }}>
+      <Seo
+        title="Curso de Micropigmentación 3.0 | Patricia Songel — Valencia"
+        description="Formación presencial completa en micropigmentación facial: cejas, labios y ojos. Impartida por Patricia Songel, campeona de España 2023 y 2025. Diploma acreditativo + 35 días de prácticas + seguimiento."
+        canonical={`${SITE}/formacion/micropigmentacion`}
+        image={`${SITE}/micro20_pagina1.webp`}
+        imageAlt="Curso de Micropigmentación 3.0 con Patricia Songel en Valencia"
+        jsonLd={jsonLdMicro}
+      />
       <PageNav />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative flex flex-col justify-end overflow-hidden" style={{ height: '100svh', background: P.bgDark }}>
-        <img src="/micro20_pagina1.webp" alt="Micropigmentación 3.0"
+        <img src="/micro20_pagina1.webp" alt="Curso de Micropigmentación 3.0 con Patricia Songel — formación presencial en Valencia"
           className="absolute inset-0 w-full h-full object-cover object-top"
           style={{ opacity: 0.28 }} />
         <div className="absolute inset-0" style={{
@@ -550,15 +607,15 @@ export default function MicropigmentacionPage() {
               <p className="font-serif italic font-bold text-3xl" style={{ color: P.text }}>250 €</p>
               <p className="font-sans text-[10px] mt-1" style={{ color: `${P.muted}80` }}>El resto se abona el día de la formación</p>
             </div>
-            {STRIPE_URL ? (
+            {CHECKOUT_URL ? (
               <>
-                <a href={STRIPE_URL}
+                <a href={CHECKOUT_URL}
                   className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-4 rounded-full transition-all duration-300"
                   style={{ background: P.accent, color: P.white }}>
                   Pagar reserva con tarjeta →
                 </a>
                 <p className="text-center font-sans text-[10px] mt-2" style={{ color: `${P.muted}70` }}>
-                  Pago seguro gestionado por Stripe
+                  Pago seguro gestionado por la plataforma de checkout
                 </p>
               </>
             ) : (
@@ -596,10 +653,10 @@ export default function MicropigmentacionPage() {
 
           <p className="rv font-sans text-sm mb-6" style={{ color: 'rgba(255,255,255,0.55)' }}>La Eliana, Valencia</p>
 
-          {STRIPE_URL ? (
+          {CHECKOUT_URL ? (
             <>
               <a
-                href={STRIPE_URL}
+                href={CHECKOUT_URL}
                 className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
                 style={{ background: P.white, color: P.accent }}
               >
@@ -607,7 +664,7 @@ export default function MicropigmentacionPage() {
                 <span className="font-mono text-xs opacity-60">→</span>
               </a>
               <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                Pago seguro gestionado por Stripe
+                Pago seguro gestionado por la plataforma de checkout
               </p>
             </>
           ) : (

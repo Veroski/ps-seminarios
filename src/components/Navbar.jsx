@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import favicon from '../favicon.ico';
+import { studentAreaConfig } from '../config/studentArea';
 
 /* Unified site navbar — identical on every page. A "Formación"
    dropdown keeps the bar uncluttered; dark text on a glass pill
@@ -19,12 +20,6 @@ export default function Navbar() {
   const scrolledRef = useRef(false);
   const [formOpen, setFormOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    setMobileOpen(false);
-    setFormOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     const apply = () => {
@@ -61,6 +56,10 @@ export default function Navbar() {
   }, []);
 
   const linkCls = 'font-sans text-[0.82rem] lg:text-sm font-medium tracking-wide text-primary/80 hover:text-accent transition-colors whitespace-nowrap';
+  const closeMenus = () => {
+    setMobileOpen(false);
+    setFormOpen(false);
+  };
 
   return (
     <div className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] md:w-[90%] max-w-5xl">
@@ -74,7 +73,7 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-7">
-          <Link to="/" className={linkCls}>Inicio</Link>
+          <Link to="/" onClick={closeMenus} className={linkCls}>Inicio</Link>
 
           <div
             className="relative"
@@ -108,7 +107,12 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link to="/conoce-a-patricia" className={linkCls}>Conoce a Patricia</Link>
+          <Link to="/conoce-a-patricia" onClick={closeMenus} className={linkCls}>Conoce a Patricia</Link>
+          {studentAreaConfig.portalUrl ? (
+            <a href={studentAreaConfig.portalUrl} onClick={closeMenus} className={linkCls} rel="noreferrer">
+              Área de alumnos
+            </a>
+          ) : null}
         </div>
 
         <div className="flex items-center gap-2">
@@ -133,15 +137,20 @@ export default function Navbar() {
         className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
         <div className="rounded-3xl bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-xl p-4 flex flex-col">
-          <Link to="/" className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>
-          <Link to="/conoce-a-patricia" className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Conoce a Patricia</Link>
+          <Link to="/" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>
+          <Link to="/conoce-a-patricia" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Conoce a Patricia</Link>
           <p className="px-3 pt-3 pb-1 text-overline-soft text-primary/40">Formación</p>
           {FORMACIONES.map((f) => (
-            <Link key={f.to} to={f.to} className="px-3 py-2.5 rounded-xl font-sans text-[0.9rem] text-primary/75 hover:text-accent hover:bg-primary/[0.04] transition-colors">
+            <Link key={f.to} to={f.to} onClick={closeMenus} className="px-3 py-2.5 rounded-xl font-sans text-[0.9rem] text-primary/75 hover:text-accent hover:bg-primary/[0.04] transition-colors">
               {f.label}
             </Link>
           ))}
-          <Link to="/pedir-cita" className="mt-3 text-center bg-accent text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
+          {studentAreaConfig.portalUrl ? (
+            <a href={studentAreaConfig.portalUrl} onClick={closeMenus} rel="noreferrer" className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">
+              Área de alumnos
+            </a>
+          ) : null}
+          <Link to="/pedir-cita" onClick={closeMenus} className="mt-3 text-center bg-accent text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Pedir cita
           </Link>
         </div>

@@ -8,7 +8,8 @@ import { useEffect } from 'react';
    ═══════════════════════════════════════════════════════════ */
 
 const SITE_NAME = 'Patricia Songel';
-const DEFAULT_IMAGE = 'https://patriciasongel.com/wp-content/uploads/Patricia-Songel_micropigmentacion-cejas-e1748856196123.jpg';
+export const SITE = 'https://patriciasongel.es';
+const DEFAULT_IMAGE = 'https://patriciasongel.es/patricia-portrait.webp';
 
 function upsertMeta(attr, key, content) {
   if (!content) return;
@@ -39,6 +40,7 @@ export default function Seo({
   description,
   canonical,
   image = DEFAULT_IMAGE,
+  imageAlt,
   type = 'website',
   jsonLd = [],
 }) {
@@ -56,6 +58,7 @@ export default function Seo({
     upsertMeta('property', 'og:type', type);
     upsertMeta('property', 'og:url', canonical);
     upsertMeta('property', 'og:image', image);
+    upsertMeta('property', 'og:image:alt', imageAlt || title);
     upsertMeta('property', 'og:locale', 'es_ES');
 
     // Twitter
@@ -63,6 +66,7 @@ export default function Seo({
     upsertMeta('name', 'twitter:title', title);
     upsertMeta('name', 'twitter:description', description);
     upsertMeta('name', 'twitter:image', image);
+    upsertMeta('name', 'twitter:image:alt', imageAlt || title);
 
     // JSON-LD structured data
     const blocks = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
@@ -79,7 +83,7 @@ export default function Seo({
       document.title = previousTitle;
       scripts.forEach((s) => s.remove());
     };
-  }, [title, description, canonical, image, type, jsonLd]);
+  }, [title, description, canonical, image, imageAlt, type, jsonLd]);
 
   return null;
 }

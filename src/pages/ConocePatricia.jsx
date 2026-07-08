@@ -44,7 +44,7 @@ const BENEFITS = [
   'Recuperas la seguridad de verte bien en cualquier momento, sin retoques.',
 ];
 
-const SITE = 'https://patriciasongel.com';
+const SITE = 'https://patriciasongel.es';
 
 export default function ConocePatricia() {
   const pageRef = useRef(null);
@@ -80,7 +80,7 @@ export default function ConocePatricia() {
       name: 'Patricia Songel',
       jobTitle: 'Especialista en micropigmentación y diseño facial',
       description: 'Especialista en micropigmentación facial y formadora en Valencia. Campeona internacional de maquillaje permanente, ponente y juez.',
-      image: 'https://patriciasongel.com/wp-content/uploads/BW_beauty_02.png',
+      image: 'https://patriciasongel.es/patricia-portrait.webp',
       url: `${SITE}/conoce-a-patricia`,
       sameAs: [
         'https://www.instagram.com/patriciasongel_micro/',

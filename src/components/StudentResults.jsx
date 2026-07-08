@@ -175,9 +175,11 @@ export default function StudentResults() {
 
               <img
                 src="/casos exito near.png"
-                alt="Caso de éxito micropigmentación 1"
+                alt="Caso de éxito alumna — micropigmentación de cejas hairstrokes realizada en formación con Patricia Songel"
                 loading="lazy"
                 decoding="async"
+                width="400"
+                height="500"
                 className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)] pointer-events-none"
                 style={{ transform: 'translateZ(50px)' }}
               />
@@ -213,9 +215,11 @@ export default function StudentResults() {
 
               <img
                 src="/casos exito far.png"
-                alt="Caso de éxito micropigmentación 2"
+                alt="Caso de éxito alumna — resultado final de micropigmentación de cejas después de la formación con Patricia Songel"
                 loading="lazy"
                 decoding="async"
+                width="400"
+                height="500"
                 className="w-[90%] h-[90%] object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.8)] pointer-events-none"
                 style={{ transform: 'translateZ(50px)' }}
               />

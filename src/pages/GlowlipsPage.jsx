@@ -5,6 +5,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import favicon from '../favicon.ico';
 import Footer from '../components/Footer';
+import Seo from '../components/Seo';
+import { studentAreaConfig } from '../config/studentArea';
+
+const SITE = 'https://patriciasongel.es';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +26,7 @@ const G = {
   white:     '#FFFFFF',
 };
 
-const STRIPE_URL = import.meta.env.VITE_STRIPE_GLOWLIPS || null;
+const CHECKOUT_URL = studentAreaConfig.checkout.glowlips || null;
 
 /* ─── DATA ─────────────────────────────────────────────────── */
 const outcomes = [
@@ -220,13 +224,61 @@ export default function GlowlipsPage() {
     return <input {...base} type={f.type} placeholder={f.placeholder} className={inputCls} style={style} />;
   };
 
+  const jsonLdGlowlips = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Course',
+      name: 'Glowlips Masterclass — Patricia Songel',
+      description: 'Masterclass presencial de micropigmentación de labios con la técnica Glowlips. Impartida por Patricia Songel, campeona WULOP Dubái 2024 en categoría Lipstick Effect.',
+      provider: { '@type': 'Person', name: 'Patricia Songel', url: SITE },
+      url: `${SITE}/formacion/glowlips`,
+      image: `${SITE}/glowlips_pagina1.webp`,
+      inLanguage: 'es-ES',
+      teaches: ['Micropigmentación de labios', 'Técnica Glowlips', 'Colorimetría de labios', 'Diseño y simetría labial'],
+      courseMode: 'onsite',
+      availableLanguage: 'Spanish',
+      hasCourseInstance: {
+        '@type': 'CourseInstance',
+        courseMode: 'onsite',
+        location: {
+          '@type': 'Place',
+          name: 'Centro Patricia Songel',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Calle Molino 7',
+            addressLocality: 'La Eliana',
+            addressRegion: 'Valencia',
+            addressCountry: 'ES',
+          },
+        },
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: 'Formación', item: `${SITE}/formacion/glowlips` },
+        { '@type': 'ListItem', position: 3, name: 'Glowlips Masterclass', item: `${SITE}/formacion/glowlips` },
+      ],
+    },
+  ];
+
   return (
     <div ref={pageRef} className="pb-24 lg:pb-0" style={{ background: G.bgLight, color: G.text, overflowX: 'hidden' }}>
+      <Seo
+        title="Glowlips Masterclass | Labios con micropigmentación — Patricia Songel"
+        description="Masterclass de micropigmentación de labios con la técnica Glowlips. Impartida por Patricia Songel, campeona WULOP Dubái 2024. Aprende a trabajar con naturalidad y precisión. Plazas limitadas."
+        canonical={`${SITE}/formacion/glowlips`}
+        image={`${SITE}/glowlips_pagina1.webp`}
+        imageAlt="Glowlips Masterclass — curso de micropigmentación de labios con Patricia Songel"
+        jsonLd={jsonLdGlowlips}
+      />
       <PageNav />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative flex flex-col justify-end overflow-hidden" style={{ height: '100svh', background: G.bgWine }}>
-        <img src="/glowlips_pagina1.webp" alt="Glowlips Masterclass"
+        <img src="/glowlips_pagina1.webp" alt="Glowlips Masterclass — micropigmentación de labios con Patricia Songel en Valencia"
           className="absolute inset-0 w-full h-full object-cover object-top"
           style={{ opacity: 0.3, mixBlendMode: 'luminosity' }} />
         <div className="absolute inset-0" style={{
@@ -536,15 +588,15 @@ export default function GlowlipsPage() {
               <p className="font-serif italic font-bold text-3xl" style={{ color: G.text }}>300 €</p>
               <p className="font-sans text-[10px] mt-1" style={{ color: `${G.muted}80` }}>El resto se abona el día de la formación</p>
             </div>
-            {STRIPE_URL ? (
+            {CHECKOUT_URL ? (
               <>
-                <a href={STRIPE_URL}
+                <a href={CHECKOUT_URL}
                   className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-4 rounded-full transition-all duration-300"
                   style={{ background: G.bgWine, color: G.textLight }}>
                   Pagar reserva con tarjeta →
                 </a>
                 <p className="text-center font-sans text-[10px] mt-2" style={{ color: `${G.muted}70` }}>
-                  Pago seguro gestionado por Stripe
+                  Pago seguro gestionado por la plataforma de checkout
                 </p>
               </>
             ) : (
@@ -582,10 +634,10 @@ export default function GlowlipsPage() {
           </div>
 
           {/* Stripe CTA */}
-          {STRIPE_URL ? (
+          {CHECKOUT_URL ? (
             <>
               <a
-                href={STRIPE_URL}
+                href={CHECKOUT_URL}
                 className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
                 style={{ background: G.gold, color: '#1A0D10' }}
               >
@@ -593,7 +645,7 @@ export default function GlowlipsPage() {
                 <span className="font-mono text-xs opacity-60">→</span>
               </a>
               <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: G.mutedLight }}>
-                Pago seguro gestionado por Stripe
+                Pago seguro gestionado por la plataforma de checkout
               </p>
             </>
           ) : (

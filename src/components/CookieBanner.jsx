@@ -207,7 +207,7 @@ export default function CookieBanner() {
                       <div className="flex items-center gap-3 flex-shrink-0">
                         <Toggle
                           checked={required ? true : prefs[key]}
-                          onChange={(v) => toggle(key)}
+                          onChange={() => toggle(key)}
                           disabled={required}
                         />
                         {!required && (

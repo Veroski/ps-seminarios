@@ -49,11 +49,13 @@ export default function Biography() {
         {/* Left Column: Images */}
         <div className="w-full lg:w-1/2 relative pb-20 md:pb-0">
           <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 rounded-[2rem] overflow-hidden bio-image z-10">
-            <img 
-              src="/patricia-portrait.webp" 
-              alt="Patricia Songel" 
+            <img
+              src="/patricia-portrait.webp"
+              alt="Patricia Songel, especialista en micropigmentación facial en La Eliana, Valencia"
               loading="lazy"
               decoding="async"
+              width="400"
+              height="500"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none" />
@@ -61,11 +63,13 @@ export default function Biography() {
           
           {/* Floating awards image */}
           <div className="absolute bottom-0 right-0 md:-bottom-10 md:-right-10 w-[58%] md:w-2/3 max-w-[220px] md:max-w-[280px] rounded-2xl overflow-hidden border border-accent/20 bio-image z-20 shadow-2xl">
-            <img 
-              src="/patricia-premios.png.webp" 
-              alt="Premios Internacionales" 
+            <img
+              src="/patricia-premios.png.webp"
+              alt="Premios internacionales de micropigmentación — Patricia Songel, Campeona de España 2023 y 2025"
               loading="lazy"
               decoding="async"
+              width="280"
+              height="210"
               className="w-full h-auto object-cover"
             />
           </div>
