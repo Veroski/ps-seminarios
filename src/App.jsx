@@ -21,6 +21,7 @@ import GlowlipsPage from './pages/GlowlipsPage';
 import CejasPage from './pages/CejasPage';
 import ConocePatricia from './pages/ConocePatricia';
 import PedirCita from './pages/PedirCita';
+import AlumnosPage from './pages/AlumnosPage';
 import NotFound from './pages/NotFound';
 
 const SITE = 'https://patriciasongel.es';
@@ -100,6 +101,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/conoce-a-patricia" element={<ConocePatricia />} />
         <Route path="/pedir-cita" element={<PedirCita />} />
+        <Route path="/alumnos" element={<AlumnosPage />} />
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/privacidad" element={<Privacidad />} />
         <Route path="/terminos" element={<Terminos />} />

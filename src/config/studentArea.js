@@ -17,8 +17,18 @@ function optionalHttpsUrl(env, key) {
 }
 
 export function buildStudentAreaConfig(env) {
+  const portalUrl = optionalHttpsUrl(env, 'VITE_GHL_PORTAL_URL');
+
   return Object.freeze({
-    portalUrl: optionalHttpsUrl(env, 'VITE_GHL_PORTAL_URL'),
+    internalPath: '/alumnos',
+    portalUrl,
+    loginUrl: portalUrl || '/alumnos',
+    auth: Object.freeze({
+      provider: 'GoHighLevel Client Portal',
+      learnerApp: 'GoKollab',
+      requiresPortalUrl: true,
+      publicSiteRole: 'redirect-only',
+    }),
     checkout: Object.freeze({
       micropigmentacion:
         optionalHttpsUrl(env, 'VITE_GHL_CHECKOUT_MICRO') ||

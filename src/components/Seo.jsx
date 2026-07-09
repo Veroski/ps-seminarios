@@ -13,25 +13,29 @@ const DEFAULT_IMAGE = 'https://patriciasongel.es/patricia-portrait.webp';
 
 function upsertMeta(attr, key, content) {
   if (!content) return;
-  let el = document.head.querySelector(`meta[${attr}="${key}"][data-seo]`);
+  let el =
+    document.head.querySelector(`meta[${attr}="${key}"]`) ||
+    document.head.querySelector(`meta[${attr}="${key}"][data-seo]`);
   if (!el) {
     el = document.createElement('meta');
     el.setAttribute(attr, key);
-    el.setAttribute('data-seo', '');
     document.head.appendChild(el);
   }
+  el.setAttribute('data-seo', '');
   el.setAttribute('content', content);
 }
 
 function upsertLink(rel, href) {
   if (!href) return;
-  let el = document.head.querySelector(`link[rel="${rel}"][data-seo]`);
+  let el =
+    document.head.querySelector(`link[rel="${rel}"]`) ||
+    document.head.querySelector(`link[rel="${rel}"][data-seo]`);
   if (!el) {
     el = document.createElement('link');
     el.setAttribute('rel', rel);
-    el.setAttribute('data-seo', '');
     document.head.appendChild(el);
   }
+  el.setAttribute('data-seo', '');
   el.setAttribute('href', href);
 }
 

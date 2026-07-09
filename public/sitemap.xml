@@ -29,6 +29,15 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://patriciasongel.es/pedir-cita"/>
   </url>
 
+  <!-- Área de alumnos -->
+  <url>
+    <loc>https://patriciasongel.es/alumnos</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://patriciasongel.es/alumnos"/>
+  </url>
+
   <!-- Formación: Micropigmentación 3.0 -->
   <url>
     <loc>https://patriciasongel.es/formacion/micropigmentacion</loc>
