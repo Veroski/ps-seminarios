@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://patriciasongel.es/sitemap.xml
+Sitemap: https://www.patriciasongel.es/sitemap.xml

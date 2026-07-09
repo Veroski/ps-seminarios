@@ -20,7 +20,7 @@ const CLINIC = {
   maps: 'https://maps.app.goo.gl/zPEwEZH21ywXT2Ue8',
   mapsEmbed: 'https://www.google.com/maps?q=Calle+Molino+7,+La+Eliana,+Valencia&output=embed',
 };
-const SITE = 'https://patriciasongel.es';
+const SITE = 'https://www.patriciasongel.es';
 
 const TREATMENTS = [
   { name: 'Cejas', img: '/cejas_pagina1.webp', desc: 'Rediseña la forma de tus cejas con técnicas precisas y naturales — efecto polvo o pelo a pelo.' },
@@ -107,7 +107,7 @@ export default function PedirCita() {
       '@context': 'https://schema.org',
       '@type': 'BeautySalon',
       name: 'Patricia Songel Micropigmentación & Belleza',
-      image: 'https://patriciasongel.es/patricia-portrait.webp',
+      image: 'https://www.patriciasongel.es/patricia-portrait.webp',
       url: `${SITE}/pedir-cita`,
       telephone: CLINIC.phoneTel,
       email: CLINIC.email,

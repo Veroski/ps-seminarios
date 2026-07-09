@@ -12,6 +12,7 @@ export default function NotFound() {
         title="Página no encontrada | Patricia Songel"
         description="La página que buscas no existe. Vuelve al inicio de Patricia Songel — micropigmentación y formación en Valencia."
         canonical={`${SITE}/404`}
+        robots="noindex, follow"
       />
       <p
         className="font-mono text-[9px] tracking-[0.3em] uppercase mb-4"

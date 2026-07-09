@@ -24,7 +24,7 @@ import PedirCita from './pages/PedirCita';
 import AlumnosPage from './pages/AlumnosPage';
 import NotFound from './pages/NotFound';
 
-const SITE = 'https://patriciasongel.es';
+const SITE = 'https://www.patriciasongel.es';
 
 const HOME_JSON_LD = [
   {

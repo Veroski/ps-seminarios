@@ -8,8 +8,8 @@ import { useEffect } from 'react';
    ═══════════════════════════════════════════════════════════ */
 
 const SITE_NAME = 'Patricia Songel';
-export const SITE = 'https://patriciasongel.es';
-const DEFAULT_IMAGE = 'https://patriciasongel.es/patricia-portrait.webp';
+export const SITE = 'https://www.patriciasongel.es';
+const DEFAULT_IMAGE = 'https://www.patriciasongel.es/patricia-portrait.webp';
 
 function upsertMeta(attr, key, content) {
   if (!content) return;
@@ -46,6 +46,7 @@ export default function Seo({
   image = DEFAULT_IMAGE,
   imageAlt,
   type = 'website',
+  robots = 'index, follow',
   jsonLd = [],
 }) {
   useEffect(() => {
@@ -53,6 +54,7 @@ export default function Seo({
     if (title) document.title = title;
 
     upsertMeta('name', 'description', description);
+    upsertMeta('name', 'robots', robots);
     upsertLink('canonical', canonical);
 
     // Open Graph
@@ -87,7 +89,7 @@ export default function Seo({
       document.title = previousTitle;
       scripts.forEach((s) => s.remove());
     };
-  }, [title, description, canonical, image, imageAlt, type, jsonLd]);
+  }, [title, description, canonical, image, imageAlt, type, robots, jsonLd]);
 
   return null;
 }

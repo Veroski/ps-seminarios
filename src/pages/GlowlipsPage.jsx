@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 import { studentAreaConfig } from '../config/studentArea';
 
-const SITE = 'https://patriciasongel.es';
+const SITE = 'https://www.patriciasongel.es';
 
 gsap.registerPlugin(ScrollTrigger);
 

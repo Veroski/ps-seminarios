@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import Seo from '../components/Seo';
+
+const SITE = 'https://www.patriciasongel.es';
 
 const Section = ({ num, title, children }) => (
   <div className="mb-12">
@@ -21,6 +24,12 @@ export default function Privacidad() {
 
   return (
     <div className="min-h-[100svh] bg-[#F7F7F5]">
+      <Seo
+        title="Política de Privacidad | Patricia Songel"
+        description="Política de privacidad y tratamiento de datos personales del sitio web de Patricia Songel — micropigmentación y formación en Valencia."
+        canonical={`${SITE}/privacidad`}
+        robots="noindex, follow"
+      />
       {/* Top bar */}
       <div className="border-b border-[#0D0D12]/8 bg-[#F7F7F5]/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">

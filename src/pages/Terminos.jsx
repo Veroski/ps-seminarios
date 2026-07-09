@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import Seo from '../components/Seo';
+
+const SITE = 'https://www.patriciasongel.es';
 
 const Section = ({ num, title, children }) => (
   <div className="mb-12">
@@ -21,6 +24,12 @@ export default function Terminos() {
 
   return (
     <div className="min-h-[100svh] bg-[#F7F7F5]">
+      <Seo
+        title="Términos y Condiciones | Patricia Songel"
+        description="Términos y condiciones de uso del sitio web y de las formaciones de Patricia Songel — micropigmentación en La Eliana, Valencia."
+        canonical={`${SITE}/terminos`}
+        robots="noindex, follow"
+      />
       {/* Top bar */}
       <div className="border-b border-[#0D0D12]/8 bg-[#F7F7F5]/90 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
