@@ -142,11 +142,6 @@
   transform: translateY(-2px);
 }
 
-/* ── Arrow Strip Scrollytelling ──────────────────────────── */
-.arrow-strip-wrapper {
-  perspective: 900px;
-}
-
 .arrow-strip {
   position: relative;
   /* Arrow shape: rectangle with left side cut into a point */

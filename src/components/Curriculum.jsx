@@ -23,7 +23,6 @@ const casesData = [
 export default function Curriculum() {
   const containerRef   = useRef(null);
   const cardsRef       = useRef([]);
-  const arrowStripsRef = useRef([]);
 
   const syllabusShellStyle = {
     background: `
@@ -67,13 +66,9 @@ export default function Curriculum() {
         scrollTrigger: { trigger: '.intro-section', start: 'top 80%' },
       });
 
-      // ── 2. Sticky stacking — pin and scale are SEPARATE triggers
-      //    This eliminates the sync drift caused by coupling animation
-      //    to the endTrigger scrub range across the entire stack.
-      cards.forEach((card, i) => {
-        const isLast  = i === cards.length - 1;
+      // ── 2. Sticky stacking ─────────────────────────────────────
+      cards.forEach((card) => {
         const lastCard = cards[cards.length - 1];
-        const panel   = card.querySelector('.glass-panel');
 
         // Pin this card until the last card is done
         ScrollTrigger.create({
@@ -86,22 +81,6 @@ export default function Curriculum() {
           invalidateOnRefresh: true,
         });
 
-        // Scale down precisely as the NEXT card scrolls into place
-        if (!isLast && panel) {
-          gsap.to(panel, {
-            scale: 0.93,
-            opacity: 0.25,
-              filter: 'blur(8px)',
-              ease: 'none',
-              scrollTrigger: {
-              trigger: cards[i + 1],
-              start: 'top 80%',
-              end: `top ${TOP_OFFSET}px`,
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          });
-        }
       });
 
       // ── 3. Cases section reveal ─────────────────────────────────
@@ -109,72 +88,6 @@ export default function Curriculum() {
         y: 28, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out',
         scrollTrigger: { trigger: '.cases-section', start: 'top 80%' },
       });
-
-      // ── 4. Arrow strip scrollytelling ────────────────────────────
-      const strips = arrowStripsRef.current.filter(Boolean);
-      if (strips.length) {
-        const casesPin = document.querySelector('.cases-pin-area');
-        if (casesPin) {
-          const STEP_POS = 0.32;
-          const DEACTIVATE_OFFSET = 0.92;
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: casesPin,
-              start: 'top 70%',
-              end: 'bottom 20%',
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          });
-
-          strips.forEach((strip, i) => {
-            const tip = strip.querySelector('.arrow-strip-tip');
-            const title = strip.querySelector('.strip-title');
-            const text = strip.querySelector('.strip-text');
-            const startPos = i * STEP_POS;
-
-            // Set initial state
-            gsap.set(strip, {
-              backgroundColor: '#F1EDED',
-              z: 0,
-              scale: 1,
-              boxShadow: '0 8px 24px rgba(24, 20, 12, 0.08)'
-            });
-            gsap.set(tip, { backgroundColor: '#0A0A0A' });
-            gsap.set(title, { color: '#0A0A0A' });
-            gsap.set(text, { color: 'rgba(26, 26, 26, 0.55)' });
-
-            // Activate
-            tl.to(strip, {
-              backgroundColor: '#F7F4F4',
-              z: 20,
-              scale: 1.02,
-              boxShadow: '0 18px 36px rgba(24, 20, 12, 0.14), inset 0 1px 0 rgba(255,255,255,0.95)',
-              duration: 0.78,
-              ease: 'sine.inOut'
-            }, startPos)
-              .to(tip, { backgroundColor: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, startPos)
-              .to(title, { color: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, startPos)
-              .to(text, { color: 'rgba(23, 18, 12, 0.72)', duration: 0.78, ease: 'sine.inOut' }, startPos);
-
-            // Deactivate when next one starts (unless it's the last)
-            if (i < strips.length - 1) {
-              const deactivatePos = startPos + DEACTIVATE_OFFSET;
-              tl.to(strip, {
-                backgroundColor: '#F1EDED',
-                z: 0,
-                scale: 1,
-                boxShadow: '0 8px 24px rgba(24, 20, 12, 0.08)',
-                duration: 0.78,
-                ease: 'sine.inOut'
-              }, deactivatePos)
-                .to(tip, { backgroundColor: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
-                .to(title, { color: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
-                .to(text, { color: 'rgba(26, 26, 26, 0.55)', duration: 0.78, ease: 'sine.inOut' }, deactivatePos);
-            }
-          });
-        }
-      }
 
     }, containerRef);
 
@@ -421,7 +334,6 @@ export default function Curriculum() {
             {casesData.map((item, i) => (
               <div
                 key={i}
-                ref={el => { arrowStripsRef.current[i] = el; }}
                 className="arrow-strip w-full sm:w-[85%] md:w-[75%] lg:w-[65%]"
               >
                 <div className="arrow-strip-tip" />
