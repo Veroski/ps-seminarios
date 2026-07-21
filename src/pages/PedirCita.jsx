@@ -449,21 +449,21 @@ export default function PedirCita() {
       </section>
 
       {/* ══ CTA FINAL ═════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-24 md:py-32 px-6 md:px-16 bg-accent">
+      <section className="relative overflow-hidden py-24 md:py-32 px-6 md:px-16 bg-primary text-surface">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-[0.08]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 max-w-3xl mx-auto text-center">
-          <p className="rv text-overline mb-6" style={{ color: 'rgba(13,13,18,0.5)' }}>Tu belleza, en las mejores manos</p>
-          <h2 className="rv font-serif italic font-bold text-4xl md:text-6xl leading-[1.05] mb-8 text-primary">
+          <p className="rv text-overline mb-6 text-surface/60">Tu belleza, en las mejores manos</p>
+          <h2 className="rv font-serif italic font-bold text-4xl md:text-6xl leading-[1.05] mb-8 text-surface">
             Reserva tu cita hoy.
           </h2>
           <div className="rv flex flex-wrap items-center justify-center gap-3">
             <a href={CLINIC.whatsapp} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-9 py-4 rounded-full bg-primary text-surface hover:scale-[1.03] transition-transform duration-500">
+            className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-9 py-4 rounded-full bg-surface text-primary hover:scale-[1.03] transition-transform duration-500">
               <MessageCircle size={16} /> Escríbenos por WhatsApp
             </a>
             <a href={`tel:${CLINIC.phoneTel}`}
-              className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-9 py-4 rounded-full border border-primary/25 text-primary hover:bg-primary/5 transition-colors">
+            className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-9 py-4 rounded-full border border-surface/30 text-surface hover:bg-surface/10 transition-colors">
               <Phone size={16} /> {CLINIC.phoneDisplay}
             </a>
           </div>
