@@ -1,8 +1,49 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+
+const FRAME_COUNT = 97;
+const frameSource = (frame) => `/hero-ps/frame_${String(frame).padStart(6, '0')}.webp`;
 
 export default function Hero() {
+  const sectionRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const image = imageRef.current;
+    const frames = Array.from({ length: FRAME_COUNT }, (_, index) => {
+      const frame = new Image();
+      frame.src = frameSource(index + 1);
+      return frame;
+    });
+    let activeFrame = 0;
+    let animationFrame = 0;
+
+    const updateFrame = () => {
+      animationFrame = 0;
+      const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / section.offsetHeight));
+      const nextFrame = Math.round(progress * (FRAME_COUNT - 1));
+
+      if (nextFrame !== activeFrame) {
+        activeFrame = nextFrame;
+        image.src = frames[nextFrame].src;
+      }
+    };
+
+    const onScroll = () => {
+      if (!animationFrame) animationFrame = requestAnimationFrame(updateFrame);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateFrame();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return (
-    <section id="hero" className="relative min-h-[100svh] md:h-screen" aria-label="Hero">
+    <section ref={sectionRef} id="hero" className="relative min-h-[100svh] md:h-screen" aria-label="Hero">
       <div className="min-h-[100svh] md:h-screen w-full overflow-hidden flex flex-col md:flex-row">
         <div
           className="relative z-10 w-full md:w-[46%] min-h-[50svh] md:h-full flex flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 order-2 md:order-1"
@@ -49,6 +90,7 @@ export default function Hero() {
 
         <div className="relative w-full md:w-[54%] h-[55vh] md:h-full order-1 md:order-2 bg-[#F1EDED]">
           <img
+            ref={imageRef}
             src="/hero-ps/frame_000001.webp"
             alt="Patricia Songel, especialista en micropigmentación"
             width="1200"
