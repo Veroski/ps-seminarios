@@ -5,27 +5,60 @@ const frameSource = (frame) => `/hero-ps/frame_${String(frame).padStart(6, '0')}
 
 export default function Hero() {
   const sectionRef = useRef(null);
-  const imageRef = useRef(null);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const image = imageRef.current;
-    const frames = Array.from({ length: FRAME_COUNT }, (_, index) => {
-      const frame = new Image();
-      frame.src = frameSource(index + 1);
-      return frame;
-    });
-    let activeFrame = 0;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    const frames = Array.from({ length: FRAME_COUNT }, () => new Image());
+    let targetFrame = 0;
+    let renderedFrame = 0;
     let animationFrame = 0;
+
+    const drawFrame = (frameIndex) => {
+      const frame = frames[frameIndex];
+      if (!frame.complete || !frame.naturalWidth) return;
+
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      const imageRatio = frame.naturalWidth / frame.naturalHeight;
+      const canvasRatio = width / height;
+      const sourceWidth = imageRatio > canvasRatio ? frame.naturalHeight * canvasRatio : frame.naturalWidth;
+      const sourceHeight = imageRatio > canvasRatio ? frame.naturalHeight : frame.naturalWidth / canvasRatio;
+      const sourceX = (frame.naturalWidth - sourceWidth) / 2;
+      const sourceY = (frame.naturalHeight - sourceHeight) / 2;
+
+      context.clearRect(0, 0, width, height);
+      context.drawImage(frame, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, width, height);
+      renderedFrame = frameIndex;
+    };
+
+    const resizeCanvas = () => {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+      drawFrame(renderedFrame);
+    };
+
+    frames.forEach((frame, index) => {
+      frame.onload = () => {
+        if (index === targetFrame) drawFrame(index);
+      };
+      frame.src = frameSource(index + 1);
+    });
 
     const updateFrame = () => {
       animationFrame = 0;
       const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / section.offsetHeight));
       const nextFrame = Math.round(progress * (FRAME_COUNT - 1));
 
-      if (nextFrame !== activeFrame) {
-        activeFrame = nextFrame;
-        image.src = frames[nextFrame].src;
+      if (nextFrame !== targetFrame) {
+        targetFrame = nextFrame;
+        drawFrame(nextFrame);
       }
     };
 
@@ -34,10 +67,13 @@ export default function Hero() {
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    resizeCanvas();
     updateFrame();
 
     return () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', resizeCanvas);
       if (animationFrame) cancelAnimationFrame(animationFrame);
     };
   }, []);
@@ -90,7 +126,6 @@ export default function Hero() {
 
         <div className="relative w-full md:w-[54%] h-[55vh] md:h-full order-1 md:order-2 bg-[#F1EDED]">
           <img
-            ref={imageRef}
             src="/hero-ps/frame_000001.webp"
             alt="Patricia Songel, especialista en micropigmentación"
             width="1200"
@@ -99,6 +134,7 @@ export default function Hero() {
             decoding="async"
             className="w-full h-full object-cover"
           />
+          <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 w-full h-full" />
           <div
             aria-hidden="true"
             className="absolute inset-y-0 left-0 hidden md:block w-1/4 pointer-events-none"
