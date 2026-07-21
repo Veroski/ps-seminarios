@@ -114,12 +114,12 @@ export default function TargetAudience() {
       ═══════════════════════════════════════════════════════════ */}
       <div className="absolute inset-0 hidden md:flex pointer-events-none">
         {/* Dark half */}
-        <div className="w-1/2 bg-[#0A0A0F] relative">
+        <div className="w-1/2 bg-[#0A0A0A] relative">
           <div
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(ellipse at 100% 50%, rgba(201,168,76,0.04) 0%, transparent 50%)',
+                'radial-gradient(ellipse at 100% 50%, rgba(10,10,10,0.04) 0%, transparent 50%)',
             }}
           />
         </div>
@@ -129,7 +129,7 @@ export default function TargetAudience() {
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(ellipse at 0% 50%, rgba(201,168,76,0.05) 0%, transparent 50%)',
+                'radial-gradient(ellipse at 0% 50%, rgba(10,10,10,0.05) 0%, transparent 50%)',
             }}
           />
         </div>
@@ -149,7 +149,7 @@ export default function TargetAudience() {
           style={{
             width: '280px',
             background:
-              'radial-gradient(ellipse at center, rgba(201,168,76,0.18) 0%, transparent 65%)',
+              'radial-gradient(ellipse at center, rgba(10,10,10,0.18) 0%, transparent 65%)',
             filter: 'blur(28px)',
             opacity: 0.6,
           }}
@@ -162,9 +162,9 @@ export default function TargetAudience() {
           style={{
             width: '1px',
             background:
-              'linear-gradient(to bottom, transparent 5%, rgba(201,168,76,0.4) 18%, rgba(255,255,255,0.92) 50%, rgba(201,168,76,0.4) 82%, transparent 95%)',
+              'linear-gradient(to bottom, transparent 5%, rgba(10,10,10,0.4) 18%, rgba(255,255,255,0.92) 50%, rgba(10,10,10,0.4) 82%, transparent 95%)',
             boxShadow:
-              '0 0 6px rgba(201,168,76,0.65), 0 0 24px rgba(201,168,76,0.2)',
+              '0 0 6px rgba(10,10,10,0.65), 0 0 24px rgba(10,10,10,0.2)',
             transformOrigin: 'center center',
           }}
         />
@@ -179,7 +179,7 @@ export default function TargetAudience() {
             borderRadius: '50%',
             background: '#fff',
             boxShadow:
-              '0 0 8px #fff, 0 0 24px rgba(201,168,76,0.9), 0 0 60px rgba(201,168,76,0.25)',
+              '0 0 8px #fff, 0 0 24px rgba(10,10,10,0.9), 0 0 60px rgba(10,10,10,0.25)',
           }}
         />
       </div>
@@ -192,7 +192,7 @@ export default function TargetAudience() {
         {/* ─────────────────────────────────────────────────────────
             NO side
         ───────────────────────────────────────────────────────── */}
-        <div className="w-full md:w-1/2 bg-[#0A0A0F] md:bg-transparent py-20 sm:py-24 md:pt-32 md:pb-28 px-6 sm:px-10 md:px-0">
+        <div className="w-full md:w-1/2 bg-[#0A0A0A] md:bg-transparent py-20 sm:py-24 md:pt-32 md:pb-28 px-6 sm:px-10 md:px-0">
           <div className="w-full max-w-[380px] mx-auto md:ml-auto md:mr-14 lg:mr-20 xl:mr-28">
 
             {/* Header */}
@@ -269,7 +269,7 @@ export default function TargetAudience() {
             className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-20"
             style={{
               background:
-                'radial-gradient(ellipse at center, rgba(201,168,76,0.12) 0%, transparent 65%)',
+                'radial-gradient(ellipse at center, rgba(10,10,10,0.12) 0%, transparent 65%)',
               filter: 'blur(14px)',
             }}
           />
@@ -278,8 +278,8 @@ export default function TargetAudience() {
             className="relative h-px mx-10"
             style={{
               background:
-                'linear-gradient(to right, transparent 0%, rgba(201,168,76,0.45) 20%, rgba(255,255,255,0.8) 50%, rgba(201,168,76,0.45) 80%, transparent 100%)',
-              boxShadow: '0 0 8px rgba(201,168,76,0.4)',
+                'linear-gradient(to right, transparent 0%, rgba(10,10,10,0.45) 20%, rgba(255,255,255,0.8) 50%, rgba(10,10,10,0.45) 80%, transparent 100%)',
+              boxShadow: '0 0 8px rgba(10,10,10,0.4)',
             }}
           />
           {/* Spark */}
@@ -291,7 +291,7 @@ export default function TargetAudience() {
               borderRadius: '50%',
               background: '#fff',
               boxShadow:
-                '0 0 8px rgba(255,255,255,0.85), 0 0 24px rgba(201,168,76,0.7)',
+                '0 0 8px rgba(255,255,255,0.85), 0 0 24px rgba(10,10,10,0.7)',
             }}
           />
         </div>
@@ -320,7 +320,7 @@ export default function TargetAudience() {
               <div
                 className="w-10 h-10 rounded-full border border-primary/6 bg-white flex items-center justify-center
                            transition-all duration-300 hover:border-accent/35 cursor-default"
-                style={{ boxShadow: '0 3px 16px rgba(201,168,76,0.08)' }}
+                style={{ boxShadow: '0 3px 16px rgba(10,10,10,0.08)' }}
               >
                 <Check size={14} className="text-primary/45" />
               </div>
@@ -350,7 +350,7 @@ export default function TargetAudience() {
                   <span
                     className="font-mono text-[0.6rem] mt-[7px] shrink-0 select-none
                                transition-colors duration-300 group-hover:text-accent/65"
-                    style={{ color: 'rgba(201,168,76,0.24)' }}
+                    style={{ color: 'rgba(10,10,10,0.24)' }}
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>

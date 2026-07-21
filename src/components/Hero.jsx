@@ -264,10 +264,10 @@ export default function Hero() {
                      order-2 md:order-1 overflow-visible md:overflow-hidden"
           style={{
             background: `
-              radial-gradient(ellipse at 15% 85%, rgba(201,168,76,0.12) 0%, transparent 45%),
-              radial-gradient(ellipse at 85% 20%, rgba(201,168,76,0.1) 0%, transparent 40%),
+              radial-gradient(ellipse at 15% 85%, rgba(10,10,10,0.12) 0%, transparent 45%),
+              radial-gradient(ellipse at 85% 20%, rgba(10,10,10,0.1) 0%, transparent 40%),
               radial-gradient(ellipse at 50% 50%, rgba(246,244,236,0.8) 0%, transparent 70%),
-              linear-gradient(155deg, #F9F7F2 0%, #F5F1E8 35%, #F0EBE0 100%)
+              linear-gradient(155deg, #F1EDED 0%, #F1EDED 35%, #F1EDED 100%)
             `,
           }}
         >
@@ -290,7 +290,7 @@ export default function Hero() {
             aria-hidden="true"
             className="absolute inset-y-0 right-0 w-[50%] pointer-events-none hidden md:block"
             style={{
-              background: 'linear-gradient(to left, rgba(201,168,76,0.04) 0%, transparent 100%)',
+              background: 'linear-gradient(to left, rgba(10,10,10,0.04) 0%, transparent 100%)',
             }}
           />
           {/* Subtle quartz shimmer (Light edition) */}
@@ -314,7 +314,7 @@ export default function Hero() {
             <p
               ref={taglineRef}
               className="font-mono text-[0.58rem] md:text-[0.64rem] tracking-[0.35em] uppercase mb-5 md:mb-7"
-              style={{ color: '#8E6A26' }}
+              style={{ color: '#625C5C' }}
             >
               Patricia Songel
             </p>
@@ -326,13 +326,13 @@ export default function Hero() {
             >
               <span
                 className="block font-sans font-semibold text-[1.4rem] sm:text-[1.6rem] md:text-[1.75rem] lg:text-[2rem] leading-[1.15] tracking-[-0.02em]"
-                style={{ color: '#17120C' }}
+                style={{ color: '#0A0A0A' }}
               >
                 Formación profesional
               </span>
               <span
                 className="block font-serif italic text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.8rem] leading-[1] tracking-[-0.03em] mt-1"
-                style={{ color: '#C9A84C' }}
+                style={{ color: '#0A0A0A' }}
               >
                 en micropigmentación
               </span>
@@ -342,7 +342,7 @@ export default function Hero() {
             <p
               ref={descRef}
               className="font-sans text-[0.82rem] md:text-[0.88rem] leading-[1.85] tracking-[-0.01em] max-w-sm mb-8 md:mb-12"
-              style={{ color: '#5B4A36' }}
+              style={{ color: '#625C5C' }}
             >
               Aprende micropigmentación con Patricia Songel, campeona internacional,
               ponente y juez en competiciones del sector.
@@ -365,9 +365,9 @@ export default function Hero() {
                              font-sans text-[0.82rem] font-semibold tracking-[0.04em] uppercase
                              cursor-pointer transition-all duration-500"
                   style={{
-                    background: 'linear-gradient(135deg, #C9A84C 0%, #D4B65E 50%, #C9A84C 100%)',
-                    color: '#0D0D12',
-                    boxShadow: '0 4px 24px rgba(201,168,76,0.25), 0 1px 3px rgba(0,0,0,0.3)',
+                    background: 'linear-gradient(135deg, #0A0A0A 0%, #0A0A0A 50%, #0A0A0A 100%)',
+                    color: '#0A0A0A',
+                    boxShadow: '0 4px 24px rgba(10,10,10,0.25), 0 1px 3px rgba(0,0,0,0.3)',
                   }}
                 >
                   <span
@@ -391,7 +391,7 @@ export default function Hero() {
               {/* Thin gold accent line */}
               <div
                 className="absolute top-0 left-0 w-8 h-px"
-                style={{ background: '#C9A84C' }}
+                style={{ background: '#0A0A0A' }}
               />
 
               {ACHIEVEMENTS.map((ach, i) => (
@@ -403,13 +403,13 @@ export default function Hero() {
                 >
                   <span
                     className="block font-sans font-semibold text-[0.82rem] md:text-[0.9rem] tracking-[-0.01em]"
-                    style={{ color: '#17120C' }}
+                    style={{ color: '#0A0A0A' }}
                   >
                     {ach.label}
                   </span>
                   <span
                     className="block font-serif italic text-[0.78rem] md:text-[0.84rem] mt-0.5"
-                    style={{ color: '#8E6A26' }}
+                    style={{ color: '#625C5C' }}
                   >
                     {ach.year}
                   </span>
@@ -426,7 +426,7 @@ export default function Hero() {
               className="h-full origin-left"
               style={{
                 transform: 'scaleX(0)',
-                background: 'linear-gradient(to right, rgba(201,168,76,0.4), rgba(201,168,76,0.15))',
+                background: 'linear-gradient(to right, rgba(10,10,10,0.4), rgba(10,10,10,0.15))',
               }}
             />
           </div>
@@ -435,7 +435,7 @@ export default function Hero() {
         {/* ══════════════════════════════════════════════════════
             RIGHT PANEL — Frame canvas
         ══════════════════════════════════════════════════════ */}
-        <div className="relative w-full md:w-[54%] h-[55vh] md:h-full order-1 md:order-2 bg-[#F9F7F2]">
+        <div className="relative w-full md:w-[54%] h-[55vh] md:h-full order-1 md:order-2 bg-[#F1EDED]">
 
           {/* Left feather — blends canvas into left panel */}
           <div
@@ -443,7 +443,7 @@ export default function Hero() {
             className="absolute inset-y-0 left-0 z-10 pointer-events-none hidden md:block"
             style={{
               width: '25%',
-              background: 'linear-gradient(to right, #F9F7F2 0%, rgba(249,247,242,0.7) 35%, rgba(249,247,242,0.15) 70%, transparent 100%)',
+              background: 'linear-gradient(to right, #F1EDED 0%, rgba(249,247,242,0.7) 35%, rgba(249,247,242,0.15) 70%, transparent 100%)',
             }}
           />
 

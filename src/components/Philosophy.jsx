@@ -85,14 +85,14 @@ export default function Philosophy() {
     <section
       id="philosophy"
       ref={sectionRef}
-      className="relative w-full py-20 md:py-32 overflow-hidden bg-[#0D0D12] text-[#E8E4DD] scroll-mt-32"
+      className="relative w-full py-20 md:py-32 overflow-hidden bg-[#0A0A0A] text-[#F1EDED] scroll-mt-32"
     >
       {/* The Breathing Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="breath-bg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_60%_50%,rgba(201,168,76,0.06)_0%,transparent_70%)] opacity-100" />
+        <div className="breath-bg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_60%_50%,rgba(10,10,10,0.06)_0%,transparent_70%)] opacity-100" />
 
         {/* Brand Monogram "PS" */}
-        <div className="bg-char absolute right-0 top-1/2 -translate-y-1/2 font-serif italic font-bold select-none pointer-events-none leading-none text-[#C9A84C]/[0.04]"
+        <div className="bg-char absolute right-0 top-1/2 -translate-y-1/2 font-serif italic font-bold select-none pointer-events-none leading-none text-[#F1EDED]/[0.04]"
           style={{ fontSize: 'clamp(12rem, 30vw, 28rem)', lineHeight: 1 }}>
           PS
         </div>
@@ -103,7 +103,7 @@ export default function Philosophy() {
         {particles.map((style, i) => (
           <div
             key={i}
-            className="gold-dust absolute rounded-full bg-[#C9A84C]/30 blur-[1px]"
+            className="gold-dust absolute rounded-full bg-[#F1EDED]/30 blur-[1px]"
             style={{ ...style, height: style.width }}
           />
         ))}
@@ -115,16 +115,16 @@ export default function Philosophy() {
         {/* ── LEFT COLUMN ─────────────────────────────── */}
         <div className="phi-header flex flex-col gap-8">
           {/* Eyebrow */}
-          <span className="text-overline text-[#C9A84C]/68">Filosofía de Trabajo</span>
+          <span className="text-overline text-[#F1EDED]/68">Filosofía de Trabajo</span>
 
           {/* Main title */}
-          <h2 className="font-serif italic text-5xl md:text-6xl xl:text-7xl text-[#FAF8F5] leading-[0.88] tracking-tight">
+          <h2 className="font-serif italic text-5xl md:text-6xl xl:text-7xl text-[#F1EDED] leading-[0.88] tracking-tight">
             La Belleza<br />
-            de la <span className="text-[#C9A84C]">Responsabilidad.</span>
+            de la <span className="text-[#F1EDED]">Responsabilidad.</span>
           </h2>
 
           {/* Divider */}
-          <div className="h-px w-16 bg-gradient-to-r from-[#C9A84C]/50 to-transparent" />
+          <div className="h-px w-16 bg-gradient-to-r from-[#0A0A0A]/50 to-transparent" />
 
           {/* Values list — fills space below title */}
           <ul className="flex flex-col gap-4">
@@ -134,8 +134,8 @@ export default function Philosophy() {
               'Técnica que sirve al arte, no al revés',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="mt-1.5 w-1 h-1 rounded-full bg-[#C9A84C]/70 flex-shrink-0" />
-                <span className="font-sans text-sm md:text-base text-[#E8E4DD]/72 leading-relaxed tracking-[-0.01em]">{item}</span>
+                <span className="mt-1.5 w-1 h-1 rounded-full bg-[#F1EDED]/70 flex-shrink-0" />
+                <span className="font-sans text-sm md:text-base text-[#F1EDED]/72 leading-relaxed tracking-[-0.01em]">{item}</span>
               </li>
             ))}
           </ul>
@@ -143,7 +143,7 @@ export default function Philosophy() {
 
         {/* ── RIGHT COLUMN ────────────────────────────── */}
         <div className="flex flex-col gap-8 md:gap-10">
-          <p ref={el => { textRefs.current[0] = el; }} className="font-serif italic text-2xl md:text-3xl text-[#E8E4DD]/92 leading-tight">
+          <p ref={el => { textRefs.current[0] = el; }} className="font-serif italic text-2xl md:text-3xl text-[#F1EDED]/92 leading-tight">
             La micropigmentación tiene el poder de transformar un rostro, pero el verdadero arte reside en la contención y el respeto.
           </p>
 
@@ -151,13 +151,13 @@ export default function Philosophy() {
             No se trata únicamente de aplicar pigmento; es un ejercicio de comprensión profunda de la biología cutánea y la armonía estética. Cada trazo es una promesa de equilibrio.
           </p>
 
-          <blockquote ref={el => { textRefs.current[2] = el; }} className="border-l border-[#C9A84C]/30 pl-5">
-            <p className="font-serif italic text-lg md:text-xl text-[#E8E4DD]/55 leading-snug">
+          <blockquote ref={el => { textRefs.current[2] = el; }} className="border-l border-[#0A0A0A]/30 pl-5">
+            <p className="font-serif italic text-lg md:text-xl text-[#F1EDED]/55 leading-snug">
               "Mi objetivo es crear resultados elegantes y naturales, asegurando que la técnica desaparezca para que solo brille la persona."
             </p>
           </blockquote>
 
-          <p ref={el => { textRefs.current[3] = el; }} className="text-overline-soft text-[#C9A84C]/40">
+          <p ref={el => { textRefs.current[3] = el; }} className="text-overline-soft text-[#F1EDED]/40">
             Elevando el estándar de la micropigmentación profesional.
           </p>
         </div>

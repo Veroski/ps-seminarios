@@ -66,7 +66,7 @@ export default function Navbar() {
       <nav
         ref={navRef}
         className="flex items-center justify-between px-5 md:px-6 py-3.5 rounded-[2rem] border border-transparent transition-all duration-300"
-        style={{ color: '#0D0D12' }}
+        style={{ color: '#0A0A0A' }}
       >
         <Link to="/" aria-label="Inicio" className="flex items-center gap-2.5 transition-transform duration-300 hover:-translate-y-0.5 shrink-0">
           <img src={favicon} alt="Patricia Songel" width="38" height="38" decoding="async" fetchPriority="high" className="h-9 w-9 md:h-10 md:w-10 object-contain" />
@@ -122,7 +122,7 @@ export default function Navbar() {
           <Link
             to="/pedir-cita"
             onClick={closeMenus}
-            className="magnetic-btn bg-accent text-primary px-4 md:px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold whitespace-nowrap"
+            className="magnetic-btn bg-primary text-surface px-4 md:px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold whitespace-nowrap"
           >
             <span className="magnetic-btn-content">Pedir cita</span>
           </Link>
@@ -155,7 +155,7 @@ export default function Navbar() {
           <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className="mt-3 text-center border border-primary/15 text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Iniciar sesión
           </Link>
-          <Link to="/pedir-cita" onClick={closeMenus} className="mt-3 text-center bg-accent text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
+          <Link to="/pedir-cita" onClick={closeMenus} className="mt-3 text-center bg-primary text-surface px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Pedir cita
           </Link>
         </div>

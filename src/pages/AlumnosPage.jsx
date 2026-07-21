@@ -61,7 +61,7 @@ export default function AlumnosPage() {
       <PageTopBar ctaLabel="Pedir acceso" ctaHref="/pedir-cita" />
 
       <section className="relative px-6 md:px-16 pt-36 md:pt-44 pb-16 md:pb-24 bg-surface">
-        <div className="absolute inset-x-0 top-0 h-72 bg-[linear-gradient(180deg,rgba(201,168,76,0.12),transparent)] pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-72 bg-[linear-gradient(180deg,rgba(10,10,10,0.12),transparent)] pointer-events-none" />
         <div className="relative max-w-6xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
           <div>
             <p className="text-overline text-accent mb-5">Área privada de alumnas</p>
@@ -78,7 +78,7 @@ export default function AlumnosPage() {
                 <a
                   href={studentAreaConfig.portalUrl}
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-3 bg-accent text-primary px-7 py-4 rounded-full font-sans text-sm font-semibold hover:scale-[1.02] transition-transform"
+                  className="inline-flex items-center justify-center gap-3 bg-primary text-surface px-7 py-4 rounded-full font-sans text-sm font-semibold hover:scale-[1.02] transition-transform"
                 >
                   Iniciar sesión
                   <ArrowRight size={16} />
@@ -143,7 +143,7 @@ export default function AlumnosPage() {
         </div>
       </section>
 
-      <section className="px-6 md:px-16 py-16 md:py-24 bg-[#ECEBE7]">
+      <section className="px-6 md:px-16 py-16 md:py-24 bg-[#F1EDED]">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-10">
             <div className="w-10 h-px bg-accent" />

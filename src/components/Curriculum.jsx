@@ -28,7 +28,7 @@ export default function Curriculum() {
   const syllabusShellStyle = {
     background: `
       radial-gradient(circle at 10% 18%, rgba(255,255,255,0.46) 0%, transparent 24%),
-      radial-gradient(circle at 82% 12%, rgba(201,168,76,0.14) 0%, transparent 26%),
+      radial-gradient(circle at 82% 12%, rgba(10,10,10,0.14) 0%, transparent 26%),
       linear-gradient(180deg, rgba(247,241,230,0.32) 0%, rgba(241,232,219,0.28) 52%, rgba(247,243,236,0.34) 100%)
     `,
   };
@@ -36,7 +36,7 @@ export default function Curriculum() {
   const cardSurfaceStyle = {
     background: `
       linear-gradient(135deg, rgba(255,252,246,0.88) 0%, rgba(241,233,220,0.78) 52%, rgba(255,250,241,0.86) 100%),
-      radial-gradient(circle at top right, rgba(201,168,76,0.16) 0%, transparent 34%)
+      radial-gradient(circle at top right, rgba(10,10,10,0.16) 0%, transparent 34%)
     `,
     backdropFilter: 'blur(30px)',
     WebkitBackdropFilter: 'blur(30px)',
@@ -135,41 +135,41 @@ export default function Curriculum() {
 
             // Set initial state
             gsap.set(strip, {
-              backgroundColor: '#F1EEE7',
+              backgroundColor: '#F1EDED',
               z: 0,
               scale: 1,
               boxShadow: '0 8px 24px rgba(24, 20, 12, 0.08)'
             });
-            gsap.set(tip, { backgroundColor: '#B8282E' });
-            gsap.set(title, { color: '#1A1A1A' });
+            gsap.set(tip, { backgroundColor: '#0A0A0A' });
+            gsap.set(title, { color: '#0A0A0A' });
             gsap.set(text, { color: 'rgba(26, 26, 26, 0.55)' });
 
             // Activate
             tl.to(strip, {
-              backgroundColor: '#FFFFFF',
+              backgroundColor: '#F7F4F4',
               z: 20,
               scale: 1.02,
               boxShadow: '0 18px 36px rgba(24, 20, 12, 0.14), inset 0 1px 0 rgba(255,255,255,0.95)',
               duration: 0.78,
               ease: 'sine.inOut'
             }, startPos)
-              .to(tip, { backgroundColor: '#C6A75C', duration: 0.78, ease: 'sine.inOut' }, startPos)
-              .to(title, { color: '#17120C', duration: 0.78, ease: 'sine.inOut' }, startPos)
+              .to(tip, { backgroundColor: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, startPos)
+              .to(title, { color: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, startPos)
               .to(text, { color: 'rgba(23, 18, 12, 0.72)', duration: 0.78, ease: 'sine.inOut' }, startPos);
 
             // Deactivate when next one starts (unless it's the last)
             if (i < strips.length - 1) {
               const deactivatePos = startPos + DEACTIVATE_OFFSET;
               tl.to(strip, {
-                backgroundColor: '#F1EEE7',
+                backgroundColor: '#F1EDED',
                 z: 0,
                 scale: 1,
                 boxShadow: '0 8px 24px rgba(24, 20, 12, 0.08)',
                 duration: 0.78,
                 ease: 'sine.inOut'
               }, deactivatePos)
-                .to(tip, { backgroundColor: '#B8282E', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
-                .to(title, { color: '#1A1A1A', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
+                .to(tip, { backgroundColor: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
+                .to(title, { color: '#0A0A0A', duration: 0.78, ease: 'sine.inOut' }, deactivatePos)
                 .to(text, { color: 'rgba(26, 26, 26, 0.55)', duration: 0.78, ease: 'sine.inOut' }, deactivatePos);
             }
           });
@@ -187,11 +187,11 @@ export default function Curriculum() {
     <section
       id="programa"
       ref={containerRef}
-      className="relative w-full overflow-hidden bg-[#F4EEE4] text-[#121212] scroll-mt-32"
+      className="relative w-full overflow-hidden bg-[#F1EDED] text-[#0A0A0A] scroll-mt-32"
       style={{
         backgroundImage: `
           radial-gradient(circle at top left, rgba(255,255,255,0.88) 0%, transparent 22%),
-          linear-gradient(180deg, #F7F1E6 0%, #F1E8DB 50%, #F7F3EC 100%)
+          linear-gradient(180deg, #F1EDED 0%, #F1EDED 50%, #F1EDED 100%)
         `,
       }}
     >
@@ -212,11 +212,11 @@ export default function Curriculum() {
       ═══════════════════════════════════════════════════════════ */}
       <div className="intro-section pt-20 pb-12 px-6 md:px-16 max-w-5xl mx-auto">
 
-        <h2 className="curr-header font-serif italic text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.05] text-[#17120C] mb-8 max-w-3xl">
+        <h2 className="curr-header font-serif italic text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.05] text-[#0A0A0A] mb-8 max-w-3xl">
           Lo que nadie te explica cuando empiezas en micropigmentación.
         </h2>
 
-        <div className="curr-header max-w-2xl space-y-4 font-sans text-[15px] leading-relaxed text-[#2E261A]/70 border-l border-[#C6A75C]/25 pl-6">
+        <div className="curr-header max-w-2xl space-y-4 font-sans text-[15px] leading-relaxed text-[#262222]/70 border-l border-[#0A0A0A]/25 pl-6">
           <p>
             Cuando muchas personas comienzan en este sector, suelen pensar que dominar una técnica
             es suficiente. La realidad es que es una disciplina mucho más compleja.
@@ -224,7 +224,7 @@ export default function Curriculum() {
           <p>
             Cada piel es diferente. Cada rostro necesita un análisis previo. Descubres que el
             trabajo{' '}
-            <strong className="text-[#17120C] font-medium">
+            <strong className="text-[#0A0A0A] font-medium">
               no consiste solo en pigmentar, sino en analizar, decidir y adaptarse.
             </strong>
           </p>
@@ -242,7 +242,7 @@ export default function Curriculum() {
               radial-gradient(circle at 20% 30%, rgba(255,255,255,0.88) 0%, transparent 18%),
               radial-gradient(circle at 78% 68%, rgba(198,167,92,0.16) 0%, transparent 22%),
               linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.7) 48%, transparent 54%),
-              linear-gradient(100deg, transparent 0%, rgba(201,168,76,0.08) 36%, transparent 41%)
+              linear-gradient(100deg, transparent 0%, rgba(10,10,10,0.08) 36%, transparent 41%)
             `,
           }}
         />
@@ -261,7 +261,7 @@ export default function Curriculum() {
         />
 
         {/* Section sub-header */}
-        <div className="sticky top-5 z-30 px-6 md:px-16 max-w-5xl mx-auto pt-16 md:pt-20 pb-14 border-t border-[#C6A75C]/15">
+        <div className="sticky top-5 z-30 px-6 md:px-16 max-w-5xl mx-auto pt-16 md:pt-20 pb-14 border-t border-[#0A0A0A]/15">
           <div
             className="absolute inset-x-0 inset-y-4 -z-10 rounded-[1.4rem] pointer-events-none"
             style={{
@@ -271,11 +271,11 @@ export default function Curriculum() {
             }}
           />
           <div className="flex flex-col gap-7 items-start">
-            <h2 className="font-serif italic font-bold text-3xl md:text-4xl text-[#17120C] leading-tight max-w-3xl">
+            <h2 className="font-serif italic font-bold text-3xl md:text-4xl text-[#0A0A0A] leading-tight max-w-3xl">
               Qué aprenderás.
             </h2>
-            <div className="max-w-2xl border-l border-[#C6A75C]/25 pl-6">
-              <p className="font-sans text-sm md:text-[15px] text-[#4B4030]/78 leading-[1.8] tracking-[-0.01em]">
+            <div className="max-w-2xl border-l border-[#0A0A0A]/25 pl-6">
+              <p className="font-sans text-sm md:text-[15px] text-[#262222]/78 leading-[1.8] tracking-[-0.01em]">
                 Ciencia dérmica, criterio clínico y una estética de lujo que no grita: se percibe.
               </p>
             </div>
@@ -316,7 +316,7 @@ export default function Curriculum() {
               <div
                 className="w-full lg:w-[200px] shrink-0 h-24 lg:h-full flex items-center
                   justify-center relative overflow-hidden border-b lg:border-b-0 lg:border-r
-                  border-[#A3844A]/20"
+                  border-[#625C5C]/20"
                 style={numberPanelStyle}
               >
                 {/* dot grid */}
@@ -329,11 +329,11 @@ export default function Curriculum() {
                 />
                 <div
                   className="absolute inset-x-4 top-4 bottom-4 rounded-[2rem] border border-white/30 opacity-70"
-                  style={{ boxShadow: 'inset 0 0 0 1px rgba(201,168,76,0.08)' }}
+                  style={{ boxShadow: 'inset 0 0 0 1px rgba(10,10,10,0.08)' }}
                 />
                 {/* watermark number */}
                 <span
-                  className="absolute font-serif italic font-bold leading-none text-[#8F6B28]/[0.18]
+                  className="absolute font-serif italic font-bold leading-none text-[#625C5C]/[0.18]
                     select-none tracking-tighter"
                   style={{
                     fontSize: 'clamp(6.5rem, 14vw, 11rem)',
@@ -354,11 +354,11 @@ export default function Curriculum() {
 
               {/* Right: content */}
               <div className="flex-1 flex flex-col justify-center px-8 py-8 lg:px-12 lg:py-10 relative">
-                <h3 className="font-serif italic font-bold text-[1.95rem] md:text-[2.35rem] text-[#17120C]
+                <h3 className="font-serif italic font-bold text-[1.95rem] md:text-[2.35rem] text-[#0A0A0A]
                   leading-tight mb-4">
                   {item.title}
                 </h3>
-                <p className="font-sans text-[14px] md:text-[15px] leading-relaxed text-[#352B1D]/72 max-w-lg">
+                <p className="font-sans text-[14px] md:text-[15px] leading-relaxed text-[#262222]/72 max-w-lg">
                   {item.desc}
                 </p>
               </div>
@@ -401,10 +401,10 @@ export default function Curriculum() {
           {/* ── Header ── */}
           <div className="mb-10 md:mb-14">
             <h2
-              className="cases-header font-serif italic font-bold text-4xl md:text-5xl lg:text-[3.1rem] leading-[1.05] text-[#1F1F1F] mb-6"
+              className="cases-header font-serif italic font-bold text-4xl md:text-5xl lg:text-[3.1rem] leading-[1.05] text-[#0A0A0A] mb-6"
             >
               Trabajo sobre{' '}
-              <span style={{ color: '#C6A75C' }}>casos complicados</span>.
+              <span style={{ color: '#0A0A0A' }}>casos complicados</span>.
             </h2>
             <p
               className="cases-header font-sans text-sm md:text-[15px] leading-[1.85] tracking-[-0.01em] max-w-2xl"

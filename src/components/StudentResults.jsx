@@ -133,21 +133,21 @@ export default function StudentResults() {
   }, []);
 
   return (
-    <section id="resultados" ref={sectionRef} className="py-24 md:py-40 bg-[#0A0A0C] relative overflow-hidden flex flex-col justify-center items-center rounded-[3rem] border border-white/5 mx-2 md:mx-6 my-12 scroll-mt-32" style={{ clipPath: 'inset(0 round 3rem)' }}>
+    <section id="resultados" ref={sectionRef} className="py-24 md:py-40 bg-[#0A0A0A] relative overflow-hidden flex flex-col justify-center items-center rounded-[3rem] border border-white/5 mx-2 md:mx-6 my-12 scroll-mt-32" style={{ clipPath: 'inset(0 round 3rem)' }}>
 
       {/* Background Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#C9A84C 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
-      <div className="absolute top-0 right-0 w-[80vw] md:w-[60vw] aspect-square bg-[radial-gradient(circle,rgba(201,168,76,0.05)_0%,transparent_60%)] rounded-full blur-[80px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#0A0A0A 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+      <div className="absolute top-0 right-0 w-[80vw] md:w-[60vw] aspect-square bg-[radial-gradient(circle,rgba(10,10,10,0.05)_0%,transparent_60%)] rounded-full blur-[80px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
 
       {/* Header */}
       <div className="w-full max-w-7xl mx-auto px-6 md:px-16 text-center relative z-20 mb-16 md:mb-24 pointer-events-none">
-        <h3 className="results-text text-overline text-[#C9A84C] mb-6 flex items-center justify-center gap-4">
-            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#C9A84C]/50"></span>
+        <h3 className="results-text text-overline text-[#F1EDED] mb-6 flex items-center justify-center gap-4">
+            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F1EDED]/50"></span>
             El Impacto Real
-            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#C9A84C]/50"></span>
+            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F1EDED]/50"></span>
         </h3>
         <h2 className="results-text font-serif italic text-4xl md:text-6xl lg:text-7xl text-white mb-8">
-            Casos de <span className="text-[#C9A84C]">Éxito</span>
+            Casos de <span className="text-[#F1EDED]">Éxito</span>
         </h2>
         <p className="results-text max-w-2xl mx-auto text-copy-light">
             Profesionales que han confiado en mis formaciones y hoy aplican estas técnicas excepcionales en su trabajo diario con absoluta precisión.
@@ -163,7 +163,7 @@ export default function StudentResults() {
            style={{ transformStyle: 'preserve-3d' }}
         >
            {/* Glow effect behind */}
-           <div className="absolute inset-y-0 w-[120%] bg-[radial-gradient(ellipse_at_center,rgba(201,168,76,0.1)_0%,transparent_70%)] blur-2xl pointer-events-none z-0"></div>
+           <div className="absolute inset-y-0 w-[120%] bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,0.1)_0%,transparent_70%)] blur-2xl pointer-events-none z-0"></div>
 
            <div
              ref={leftCardRef}
@@ -171,7 +171,7 @@ export default function StudentResults() {
              style={{ transformStyle: 'preserve-3d' }}
            >
               {/* Inner depth layer */}
-              <div className="absolute inset-4 rounded-[2rem] border border-[#C9A84C]/20 pointer-events-none" style={{ transform: 'translateZ(-30px)' }}></div>
+              <div className="absolute inset-4 rounded-[2rem] border border-[#0A0A0A]/20 pointer-events-none" style={{ transform: 'translateZ(-30px)' }}></div>
 
               <img
                 src="/casos exito near.png"
@@ -185,10 +185,10 @@ export default function StudentResults() {
               />
 
               <div
-                className="badge-float-left absolute bottom-6 left-4 md:left-[-40px] z-30 bg-[#1A1A1A]/90 backdrop-blur-xl border border-white/10 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-none"
+                className="badge-float-left absolute bottom-6 left-4 md:left-[-40px] z-30 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-none"
                 style={{ transform: 'translateZ(80px)' }}
               >
-                  <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#F1EDED] animate-pulse"></div>
                   <div className="flex flex-col items-start gap-1">
                       <span className="text-overline-soft text-surface/[0.58] leading-none">Aplicación Diaria</span>
                       <span className="font-sans font-bold text-xs md:text-sm text-white leading-none tracking-wide">Precisión 100%</span>
@@ -225,13 +225,13 @@ export default function StudentResults() {
               />
 
               <div
-                className="badge-float-right absolute top-6 right-4 md:right-[-40px] z-30 bg-[#1A1A1A]/90 backdrop-blur-xl border border-[#C9A84C]/30 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(201,168,76,0.15)] pointer-events-none"
+                className="badge-float-right absolute top-6 right-4 md:right-[-40px] z-30 bg-[#0A0A0A]/90 backdrop-blur-xl border border-[#0A0A0A]/30 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(10,10,10,0.15)] pointer-events-none"
                 style={{ transform: 'translateZ(80px)' }}
               >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <div className="flex flex-col items-start gap-1">
                       <span className="text-overline-soft text-surface/[0.58] leading-none">Master Result</span>
-                      <span className="font-sans font-bold text-xs md:text-sm text-[#C9A84C] leading-none tracking-wide">Nivel Avanzado</span>
+                      <span className="font-sans font-bold text-xs md:text-sm text-[#F1EDED] leading-none tracking-wide">Nivel Avanzado</span>
                   </div>
               </div>
            </div>

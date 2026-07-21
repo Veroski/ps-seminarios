@@ -7,15 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        surface: '#FAF8F5',
-        primary: '#0D0D12',
-        accent: '#C9A84C',
-        dark: '#2A2A35',
+        surface: '#F1EDED',
+        primary: '#0A0A0A',
+        accent: '#0A0A0A',
+        dark: '#262222',
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'serif'],
-        mono: ['"IBM Plex Mono"', 'monospace'],
+        sans: ['"Montserrat"', 'sans-serif'],
+        serif: ['"Bodoni Moda"', 'serif'],
+        mono: ['"Montserrat"', 'sans-serif'],
       },
     },
   },

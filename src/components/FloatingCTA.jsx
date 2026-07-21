@@ -58,9 +58,9 @@ export default function FloatingCTA() {
                      font-sans text-[0.76rem] sm:text-[0.82rem] md:text-[0.85rem] font-semibold tracking-[0.03em] uppercase
                      cursor-pointer transition-all duration-500"
           style={{
-            background: 'linear-gradient(135deg, #C9A84C 0%, #D4B65E 50%, #C9A84C 100%)',
-            color: '#0D0D12',
-            boxShadow: '0 4px 24px rgba(201,168,76,0.25), 0 1px 3px rgba(0,0,0,0.3)',
+            background: 'linear-gradient(135deg, #0A0A0A 0%, #0A0A0A 50%, #0A0A0A 100%)',
+            color: '#0A0A0A',
+            boxShadow: '0 4px 24px rgba(10,10,10,0.25), 0 1px 3px rgba(0,0,0,0.3)',
           }}
         >
           <span

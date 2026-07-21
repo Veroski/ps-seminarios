@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div
       className="min-h-[100svh] flex flex-col items-center justify-center px-6 text-center"
-      style={{ background: '#F5F0E8', color: '#1C0F06' }}
+      style={{ background: '#F1EDED', color: '#0A0A0A' }}
     >
       <Seo
         title="Página no encontrada | Patricia Songel"
@@ -16,23 +16,23 @@ export default function NotFound() {
       />
       <p
         className="font-mono text-[9px] tracking-[0.3em] uppercase mb-4"
-        style={{ color: '#C9A84C' }}
+        style={{ color: '#0A0A0A' }}
       >
         Error 404
       </p>
       <h1
         className="font-serif italic font-bold mb-4 leading-tight"
-        style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', color: '#1C0F06' }}
+        style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', color: '#0A0A0A' }}
       >
         Página no encontrada.
       </h1>
-      <p className="font-sans text-sm mb-10 max-w-xs leading-relaxed" style={{ color: '#7A5C3A' }}>
+      <p className="font-sans text-sm mb-10 max-w-xs leading-relaxed" style={{ color: '#625C5C' }}>
         El enlace que has seguido no existe o ha cambiado de dirección.
       </p>
       <Link
         to="/"
         className="font-sans font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300"
-        style={{ background: '#2C1A0E', color: '#F5F0E8' }}
+        style={{ background: '#0A0A0A', color: '#F1EDED' }}
       >
         ← Volver al inicio
       </Link>

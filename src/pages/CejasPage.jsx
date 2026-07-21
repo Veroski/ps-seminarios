@@ -11,17 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const C = {
-  bgLight:   '#F5F0E8',
-  bgWarm:    '#E8D5B8',
-  bgDark:    '#2C1A0E',
-  bgMid:     '#6B3D1E',
-  text:      '#1C0F06',
-  textLight: '#F5F0E8',
-  muted:     '#7A5C3A',
-  mutedLight:'rgba(245,240,232,0.62)',
-  gold:      '#C9A84C',
-  accent:    '#7C3D11',
-  white:     '#FFFFFF',
+  bgLight:   '#F7F4F4',
+  bgWarm:    '#E4DDDD',
+  bgDark:    '#0A0A0A',
+  bgMid:     '#262222',
+  text:      '#0A0A0A',
+  textLight: '#F1EDED',
+  muted:     '#625C5C',
+  mutedLight:'rgba(241,237,237,0.72)',
+  gold:      '#F1EDED',
+  accent:    '#0A0A0A',
+  white:     '#F1EDED',
 };
 
 const SEO_TITLE = 'Hairstrokes Masterclass — Cejas pelo a pelo | Patricia Songel Valencia';
@@ -139,7 +139,7 @@ function PageNav() {
       if (past) {
         nav.style.background = 'rgba(44,26,14,0.9)';
         nav.style.backdropFilter = 'blur(18px)';
-        nav.style.borderColor = 'rgba(201,168,76,0.2)';
+        nav.style.borderColor = 'rgba(10,10,10,0.2)';
       } else {
         nav.style.background = 'transparent';
         nav.style.backdropFilter = '';
@@ -169,7 +169,7 @@ function PageNav() {
         <a
           href="#formulario"
           className="font-sans font-semibold text-xs tracking-wide px-5 py-2.5 rounded-full transition-all duration-300"
-          style={{ background: C.gold, color: '#1C0F06' }}
+          style={{ background: C.gold, color: '#0A0A0A' }}
         >
           Reservar plaza
         </a>
@@ -197,7 +197,7 @@ function StickyMobileCTA() {
         <a
           href="#formulario"
           className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-3.5 rounded-full"
-          style={{ background: C.gold, color: '#1C0F06' }}
+          style={{ background: C.gold, color: '#0A0A0A' }}
         >
           Reservar plaza →
         </a>
@@ -328,7 +328,7 @@ export default function CejasPage() {
         />
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 70% 30%, rgba(201,168,76,0.07) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(ellipse at 70% 30%, rgba(10,10,10,0.07) 0%, transparent 60%)' }}
         />
         <div
           className="absolute top-32 right-[12%] w-px h-52 hidden lg:block pointer-events-none"
@@ -368,7 +368,7 @@ export default function CejasPage() {
             <a
               href="#formulario"
               className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300"
-              style={{ background: C.gold, color: '#1C0F06' }}
+              style={{ background: C.gold, color: '#0A0A0A' }}
             >
               Reservar plaza →
             </a>
@@ -381,7 +381,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ INTRO ═════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: C.bgLight }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: C.bgLight }}>
         <div
           className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none"
           style={{
@@ -438,7 +438,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ A QUIÉN VA DIRIGIDA ═══════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: C.bgWarm }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: C.bgWarm }}>
         <div
           className="rvn absolute -right-8 top-1/2 -translate-y-1/2 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
           style={{ fontSize: '16vw', color: `${C.accent}09`, lineHeight: 1, letterSpacing: '-0.04em' }}
@@ -509,7 +509,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ QUÉ APRENDERÁS ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: C.bgMid }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: C.bgMid }}>
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.05]"
           style={{
@@ -588,7 +588,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 1 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-36" style={{ background: C.bgLight }}>
+      <section className="relative overflow-hidden py-10 md:py-20" style={{ background: C.bgLight }}>
         <div
           className="rvn absolute top-8 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.045]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: C.accent, lineHeight: 0.85 }}
@@ -634,7 +634,7 @@ export default function CejasPage() {
 
       {/* ══ PROGRAMA DÍA 2 ════════════════════════════════════ */}
       <section
-        className="relative overflow-hidden py-12 md:py-36 border-t"
+        className="relative overflow-hidden py-10 md:py-20 border-t"
         style={{ background: C.bgDark, borderColor: `${C.gold}18` }}
       >
         <div
@@ -665,7 +665,7 @@ export default function CejasPage() {
                 className="flex items-start gap-3 px-6 py-4 rounded-2xl"
                 style={{
                   background: 'rgba(245,240,232,0.06)',
-                  border: `1px solid rgba(201,168,76,0.14)`,
+                  border: `1px solid rgba(10,10,10,0.14)`,
                 }}
               >
                 <span
@@ -689,7 +689,7 @@ export default function CejasPage() {
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
       <section
         id="formulario"
-        className="relative overflow-hidden py-14 md:py-40"
+        className="relative overflow-hidden py-12 md:py-24"
         style={{ background: C.bgLight }}
       >
         <div
@@ -799,13 +799,13 @@ export default function CejasPage() {
 
       {/* ══ CTA FINAL ═════════════════════════════════════════ */}
       <section
-        className="relative overflow-hidden py-14 md:py-40"
+        className="relative overflow-hidden py-12 md:py-24"
         style={{ background: C.bgDark }}
       >
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.06]"
           style={{
-            backgroundImage: 'radial-gradient(circle, rgba(201,168,76,0.7) 1px, transparent 1px)',
+            backgroundImage: 'radial-gradient(circle, rgba(10,10,10,0.7) 1px, transparent 1px)',
             backgroundSize: '28px 28px',
           }}
         />
@@ -825,7 +825,7 @@ export default function CejasPage() {
           <div className="rv mb-10 max-w-sm mx-auto">
             <div
               className="p-8 rounded-2xl text-left"
-              style={{ background: 'rgba(245,240,232,0.06)', border: `1px solid rgba(201,168,76,0.18)` }}
+              style={{ background: 'rgba(245,240,232,0.06)', border: `1px solid rgba(10,10,10,0.18)` }}
             >
               <p className="font-sans font-semibold text-xs mb-1" style={{ color: C.mutedLight }}>
                 Reserva previa
@@ -841,7 +841,7 @@ export default function CejasPage() {
           <a
             href="#formulario"
             className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full w-full max-w-sm"
-            style={{ background: C.gold, color: '#1C0F06' }}
+            style={{ background: C.gold, color: '#0A0A0A' }}
           >
             <span>Solicitar información</span>
             <span className="font-mono text-xs opacity-60">→</span>

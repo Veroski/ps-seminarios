@@ -14,16 +14,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const G = {
-  bgLight:   '#F3F1EE',
-  bgNude:    '#E2B8A8',
-  bgRed:     '#B33A4A',
-  bgWine:    '#8F2D3A',
-  text:      '#1A0D10',
-  textLight: '#F3F1EE',
-  muted:     '#7C5C52',
-  mutedLight:'rgba(243,241,238,0.62)',
-  gold:      '#D7B56A',
-  white:     '#FFFFFF',
+  bgLight:   '#F7F4F4',
+  bgNude:    '#E4DDDD',
+  bgRed:     '#262222',
+  bgWine:    '#0A0A0A',
+  text:      '#0A0A0A',
+  textLight: '#F1EDED',
+  muted:     '#625C5C',
+  mutedLight:'rgba(241,237,237,0.72)',
+  gold:      '#F1EDED',
+  white:     '#F1EDED',
 };
 
 const CHECKOUT_URL = studentAreaConfig.checkout.glowlips || null;
@@ -112,7 +112,7 @@ function PageNav() {
         </Link>
         <a href="#formulario"
           className="font-sans font-semibold text-xs tracking-wide px-5 py-2.5 rounded-full transition-all duration-300"
-          style={{ background: G.gold, color: '#1A0D10' }}>
+          style={{ background: G.gold, color: '#0A0A0A' }}>
           Reservar plaza
         </a>
       </nav>
@@ -137,7 +137,7 @@ function StickyMobileCTA() {
         <a
           href="#formulario"
           className="flex items-center justify-center gap-2 w-full font-sans font-semibold text-sm py-3.5 rounded-full"
-          style={{ background: G.gold, color: '#1A0D10' }}
+          style={{ background: G.gold, color: '#0A0A0A' }}
         >
           Reservar plaza →
         </a>
@@ -307,7 +307,7 @@ export default function GlowlipsPage() {
             </p>
             <a href="#formulario"
               className="inline-flex items-center gap-2 font-sans font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300"
-              style={{ background: G.gold, color: '#1A0D10' }}>
+              style={{ background: G.gold, color: '#0A0A0A' }}>
               Reservar plaza →
             </a>
           </div>
@@ -319,7 +319,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ INTRO ═════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgLight }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgLight }}>
         <div className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${G.bgNude}60 0%, transparent 70%)`, transform: 'translate(-30%, -30%)' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -357,7 +357,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ A QUIÉN VA DIRIGIDA ═══════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgNude }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgNude }}>
         <div className="rvn absolute -right-8 top-1/2 -translate-y-1/2 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
           style={{ fontSize: '16vw', color: `${G.bgWine}09`, lineHeight: 1, letterSpacing: '-0.04em' }}>
           lips
@@ -406,7 +406,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ QUÉ APRENDERÁS ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgRed }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgRed }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(243,241,238,0.7) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -454,7 +454,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 1 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-36" style={{ background: G.bgLight }}>
+      <section className="relative overflow-hidden py-10 md:py-20" style={{ background: G.bgLight }}>
         <div className="rvn absolute top-8 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.045]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: G.bgRed, lineHeight: 0.85 }}>
           D1
@@ -485,7 +485,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 2 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-36 border-t" style={{ background: G.bgWine, borderColor: 'rgba(215,181,106,0.12)' }}>
+      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: G.bgWine, borderColor: 'rgba(215,181,106,0.12)' }}>
         <div className="rvn absolute bottom-8 right-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.05]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: G.gold, lineHeight: 0.85 }}>
           D2
@@ -514,7 +514,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
-      <section id="formulario" className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgLight }}>
+      <section id="formulario" className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgLight }}>
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${G.bgNude}50 0%, transparent 70%)`, transform: 'translate(30%, -30%)' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-2xl mx-auto">
@@ -610,7 +610,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ RESERVA ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: G.bgWine }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgWine }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.06]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(215,181,106,0.7) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"
@@ -639,7 +639,7 @@ export default function GlowlipsPage() {
               <a
                 href={CHECKOUT_URL}
                 className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
-                style={{ background: G.gold, color: '#1A0D10' }}
+                style={{ background: G.gold, color: '#0A0A0A' }}
               >
                 <span>Pagar reserva con tarjeta</span>
                 <span className="font-mono text-xs opacity-60">→</span>

@@ -26,12 +26,12 @@ export default function PageTopBar({
         nav.style.background = 'rgba(250,248,245,0.72)';
         nav.style.backdropFilter = 'blur(18px)';
         nav.style.borderColor = 'rgba(13,13,18,0.08)';
-        nav.style.color = '#0D0D12';
+        nav.style.color = '#0A0A0A';
       } else {
         nav.style.background = 'transparent';
         nav.style.backdropFilter = 'none';
         nav.style.borderColor = 'transparent';
-        nav.style.color = '#0D0D12';
+        nav.style.color = '#0A0A0A';
       }
     };
     onScroll();
@@ -47,7 +47,7 @@ export default function PageTopBar({
       <nav
         ref={navRef}
         className="flex items-center justify-between px-5 md:px-6 py-3.5 rounded-[2rem] border border-transparent transition-all duration-300"
-        style={{ color: '#0D0D12' }}
+        style={{ color: '#0A0A0A' }}
       >
         <Link
           to="/"
@@ -68,7 +68,7 @@ export default function PageTopBar({
 
         <Cta
           {...ctaProps}
-          className="magnetic-btn bg-accent text-primary px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold"
+          className="magnetic-btn bg-primary text-surface px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold"
         >
           <span className="magnetic-btn-content">{ctaLabel}</span>
         </Cta>

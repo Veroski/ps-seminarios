@@ -16,14 +16,14 @@ const CHECKOUT_URL = studentAreaConfig.checkout.micropigmentacion || null;
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const P = {
-  bgSoft:  '#F0E8E1',
-  bgMain:  '#E5D8CF',
-  bgWarm:  '#D7B9A7',
-  bgDark:  '#1A1A1A',
-  text:    '#1F1F1F',
-  muted:   '#6E6E6E',
-  accent:  '#C6474B',
-  white:   '#FFFFFF',
+  bgSoft:  '#F7F4F4',
+  bgMain:  '#F1EDED',
+  bgWarm:  '#E4DDDD',
+  bgDark:  '#0A0A0A',
+  text:    '#0A0A0A',
+  muted:   '#625C5C',
+  accent:  '#0A0A0A',
+  white:   '#F1EDED',
 };
 
 /* ─── DATA ─────────────────────────────────────────────────── */
@@ -314,7 +314,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ BIENVENIDA ════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: P.bgSoft }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: P.bgSoft }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(31,31,31,0.5) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="rvn absolute top-1/2 -translate-y-1/2 right-0 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
@@ -344,7 +344,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ PARTE 1 — ONLINE ══════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-36 border-t" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="rvn absolute -top-4 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.055]"
           style={{ fontSize: 'clamp(8rem, 22vw, 18rem)', color: P.accent, lineHeight: 0.85 }}>
           12H
@@ -391,7 +391,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ TEMARIO ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: P.bgDark }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: P.bgDark }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -419,7 +419,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ PARTE 2 — PRESENCIAL ══════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: P.bgWarm }}>
+      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: P.bgWarm }}>
         <div className="rvn absolute -top-6 right-4 font-serif italic font-bold pointer-events-none select-none opacity-[0.06]"
           style={{ fontSize: 'clamp(6rem, 18vw, 14rem)', color: P.accent, lineHeight: 0.85 }}>
           4D
@@ -464,7 +464,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ SEGUIMIENTO ═══════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-36 border-t" style={{ background: P.bgSoft, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: P.bgSoft, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
           <div className="rv flex items-center gap-3 mb-10">
             <div className="w-8 h-px" style={{ background: P.accent }} />
@@ -491,7 +491,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ QUÉ INCLUYE ═══════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-36 border-t" style={{ background: P.white, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: P.white, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
           <div className="rv flex items-center gap-3 mb-10">
             <div className="w-8 h-px" style={{ background: P.accent }} />
@@ -533,7 +533,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
-      <section id="formulario" className="relative overflow-hidden py-14 md:py-40 border-t" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section id="formulario" className="relative overflow-hidden py-12 md:py-24 border-t" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.035]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(31,31,31,0.5) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-2xl mx-auto">
@@ -625,53 +625,6 @@ export default function MicropigmentacionPage() {
             )}
           </div>
 
-        </div>
-      </section>
-
-      {/* ══ RESERVA ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-14 md:py-40" style={{ background: P.accent }}>
-        <div className="absolute inset-0 pointer-events-none opacity-[0.08]"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-        <div className="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%)', transform: 'translate(30%, -30%)' }} />
-        <div className="relative z-10 px-6 md:px-16 max-w-3xl mx-auto text-center">
-          <p className="rv text-overline mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>Reserva tu plaza</p>
-          <h2 className="rv font-serif italic font-bold mb-12 leading-tight"
-            style={{ fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', color: P.white }}>
-            Confirma tu plaza.
-          </h2>
-
-          <div className="rv mb-12 max-w-sm mx-auto">
-            <div className="p-8 rounded-2xl text-left" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)' }}>
-              <p className="font-sans font-semibold text-xs mb-1" style={{ color: 'rgba(255,255,255,0.5)' }}>Reserva previa</p>
-              <p className="font-serif italic font-bold text-4xl mb-2" style={{ color: P.white }}>250 €</p>
-              <p className="font-sans text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                El resto se abona el día de la formación.<br />Formación exenta de IVA.
-              </p>
-            </div>
-          </div>
-
-          <p className="rv font-sans text-sm mb-6" style={{ color: 'rgba(255,255,255,0.55)' }}>La Eliana, Valencia</p>
-
-          {CHECKOUT_URL ? (
-            <>
-              <a
-                href={CHECKOUT_URL}
-                className="rv inline-flex items-center justify-center gap-3 font-sans font-semibold text-sm px-10 py-4 rounded-full transition-all duration-300 w-full max-w-sm"
-                style={{ background: P.white, color: P.accent }}
-              >
-                <span>Pagar reserva con tarjeta</span>
-                <span className="font-mono text-xs opacity-60">→</span>
-              </a>
-              <p className="rv mt-4 font-sans text-[10px] tracking-wide" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                Pago seguro gestionado por la plataforma de checkout
-              </p>
-            </>
-          ) : (
-            <p className="rv font-sans text-sm" style={{ color: 'rgba(255,255,255,0.45)' }}>
-              Próximamente — reserva por teléfono
-            </p>
-          )}
         </div>
       </section>
 

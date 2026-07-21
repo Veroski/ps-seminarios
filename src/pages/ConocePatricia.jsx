@@ -125,27 +125,27 @@ export default function ConocePatricia() {
       <section className="relative overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24 px-6 md:px-16">
         {/* Ambient gold glow + marble veins */}
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 20% 15%, rgba(201,168,76,0.10) 0%, transparent 45%), radial-gradient(ellipse at 85% 60%, rgba(201,168,76,0.08) 0%, transparent 45%)' }} />
+          style={{ background: 'radial-gradient(ellipse at 20% 15%, rgba(10,10,10,0.10) 0%, transparent 45%), radial-gradient(ellipse at 85% 60%, rgba(10,10,10,0.08) 0%, transparent 45%)' }} />
         <div className="relative z-10 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="chero">
-            <p className="font-mono text-[0.62rem] tracking-[0.32em] uppercase mb-6" style={{ color: '#8E6A26' }}>
+            <p className="font-mono text-[0.62rem] tracking-[0.32em] uppercase mb-6" style={{ color: '#625C5C' }}>
               Conoce a Patricia Songel
             </p>
             <h1 className="mb-6">
               <span className="block font-sans font-semibold text-[1.5rem] sm:text-[1.9rem] md:text-[2.2rem] leading-[1.12] tracking-[-0.02em] text-primary">
                 Especialista en micropigmentación
               </span>
-              <span className="block font-serif italic text-[2.6rem] sm:text-[3.4rem] md:text-[4.2rem] leading-[1] tracking-[-0.03em] mt-1" style={{ color: '#C9A84C' }}>
+              <span className="block font-serif italic text-[2.6rem] sm:text-[3.4rem] md:text-[4.2rem] leading-[1] tracking-[-0.03em] mt-1" style={{ color: '#0A0A0A' }}>
                 y diseño facial en Valencia
               </span>
             </h1>
-            <p className="font-sans text-[0.95rem] md:text-base leading-[1.9] max-w-md mb-9" style={{ color: '#5B4A36' }}>
+            <p className="font-sans text-[0.95rem] md:text-base leading-[1.9] max-w-md mb-9" style={{ color: '#625C5C' }}>
               Realzo la belleza natural de cada rostro con técnica, sensibilidad estética y una atención
               totalmente personalizada. Resultados naturales, seguros y duraderos.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link to="/pedir-cita"
-                className="magnetic-btn bg-accent text-primary px-8 py-4 rounded-full font-sans text-sm font-semibold inline-flex items-center gap-2">
+                className="magnetic-btn bg-primary text-surface px-8 py-4 rounded-full font-sans text-sm font-semibold inline-flex items-center gap-2">
                 <span className="magnetic-btn-content flex items-center gap-2">Pide tu consulta gratuita <ArrowRight size={16} /></span>
               </Link>
               <a href="#historia" className="font-sans text-sm font-medium tracking-wide text-primary/60 hover:text-accent transition-colors">
@@ -201,7 +201,7 @@ export default function ConocePatricia() {
             <h2 className="rv font-serif italic font-bold text-4xl md:text-5xl leading-[1.1] mb-8">
               Una búsqueda constante de la perfección.
             </h2>
-            <div className="rv font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F3ECE1]/74">
+            <div className="rv font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F1EDED]/74">
               <p>
                 Desde que descubrí mi pasión por el embellecimiento facial, he dedicado más de
                 <strong className="text-surface font-semibold"> 20 años</strong> a perfeccionar técnicas que realzan
@@ -255,7 +255,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ MÉTODO ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-[#F0EBE0] border-y border-primary/10">
+      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-[#F1EDED] border-y border-primary/10">
         <div className="max-w-6xl mx-auto">
           <div className="rv flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-accent" />
@@ -310,7 +310,7 @@ export default function ConocePatricia() {
             <h2 className="font-serif italic font-bold text-4xl md:text-5xl leading-[1.1] mb-6">
               Belleza que te acompaña cada día.
             </h2>
-            <p className="font-sans text-[15px] md:text-base leading-[1.9] text-[#F3ECE1]/72 max-w-md">
+            <p className="font-sans text-[15px] md:text-base leading-[1.9] text-[#F1EDED]/72 max-w-md">
               La micropigmentación bien hecha no cambia quién eres: te devuelve tiempo, seguridad y una
               versión descansada de ti misma desde que abres los ojos.
             </p>

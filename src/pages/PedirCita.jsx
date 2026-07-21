@@ -165,26 +165,26 @@ export default function PedirCita() {
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative overflow-hidden pt-32 pb-14 md:pt-44 md:pb-20 px-6 md:px-16">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at 25% 20%, rgba(201,168,76,0.10) 0%, transparent 45%), radial-gradient(ellipse at 80% 70%, rgba(201,168,76,0.07) 0%, transparent 45%)' }} />
+          style={{ background: 'radial-gradient(ellipse at 25% 20%, rgba(10,10,10,0.10) 0%, transparent 45%), radial-gradient(ellipse at 80% 70%, rgba(10,10,10,0.07) 0%, transparent 45%)' }} />
         <div className="relative z-10 max-w-3xl mx-auto text-center chero">
-          <p className="font-mono text-[0.62rem] tracking-[0.32em] uppercase mb-6" style={{ color: '#8E6A26' }}>
+          <p className="font-mono text-[0.62rem] tracking-[0.32em] uppercase mb-6" style={{ color: '#625C5C' }}>
             Pide cita o consúltanos
           </p>
           <h1 className="mb-6">
             <span className="block font-sans font-semibold text-[1.5rem] sm:text-[1.9rem] md:text-[2.1rem] leading-[1.12] tracking-[-0.02em] text-primary">
               Reserva tu tratamiento
             </span>
-            <span className="block font-serif italic text-[2.6rem] sm:text-[3.4rem] md:text-[4.2rem] leading-[1] tracking-[-0.03em] mt-1" style={{ color: '#C9A84C' }}>
+            <span className="block font-serif italic text-[2.6rem] sm:text-[3.4rem] md:text-[4.2rem] leading-[1] tracking-[-0.03em] mt-1" style={{ color: '#0A0A0A' }}>
               de micropigmentación
             </span>
           </h1>
-          <p className="font-sans text-[0.95rem] md:text-base leading-[1.9] max-w-xl mx-auto mb-9" style={{ color: '#5B4A36' }}>
+          <p className="font-sans text-[0.95rem] md:text-base leading-[1.9] max-w-xl mx-auto mb-9" style={{ color: '#625C5C' }}>
             Elige el día y la hora que mejor te vengan y te llamaremos para confirmar la disponibilidad.
             Tu primera consulta es <strong className="text-primary font-semibold">gratuita y sin compromiso</strong>.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a href={CLINIC.whatsapp} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-sans text-sm font-semibold px-7 py-4 rounded-full bg-accent text-primary hover:scale-[1.03] transition-transform duration-500">
+              className="inline-flex items-center gap-2 font-sans text-sm font-semibold px-7 py-4 rounded-full bg-primary text-surface hover:scale-[1.03] transition-transform duration-500">
               <MessageCircle size={16} /> WhatsApp directo
             </a>
             <a href="#formulario"
@@ -265,7 +265,7 @@ export default function PedirCita() {
                 </div>
 
                 <label className="flex items-start gap-2.5 text-[0.78rem] text-primary/55 leading-relaxed">
-                  <input type="checkbox" required className="mt-0.5 accent-[#C9A84C]" />
+                  <input type="checkbox" required className="mt-0.5 accent-[#0A0A0A]" />
                   <span>Acepto la <Link to="/privacidad" className="text-accent hover:underline underline-offset-2">Política de Privacidad</Link> y el tratamiento de mis datos para gestionar mi cita.</span>
                 </label>
 
@@ -277,7 +277,7 @@ export default function PedirCita() {
                 )}
 
                 <button type="submit" disabled={status === 'loading'}
-                  className="w-full font-sans font-semibold text-sm py-4 rounded-full mt-1 bg-accent text-primary flex items-center justify-center gap-2 hover:scale-[1.01] transition-transform duration-300"
+                  className="w-full font-sans font-semibold text-sm py-4 rounded-full mt-1 bg-primary text-surface flex items-center justify-center gap-2 hover:scale-[1.01] transition-transform duration-300"
                   style={{ opacity: status === 'loading' ? 0.7 : 1 }}>
                   {status === 'loading' ? (<><Loader2 className="w-4 h-4 animate-spin" />Enviando…</>) : 'Solicitar cita — sin compromiso'}
                 </button>
@@ -316,6 +316,21 @@ export default function PedirCita() {
               />
             </div>
 
+            <figure className="rounded-2xl overflow-hidden border border-primary/10 bg-white/40">
+              <img
+                src="/centro-patricia-songel.webp"
+                alt="Fachada del centro de Patricia Songel en Calle Molino 7, La Eliana"
+                width="1200"
+                height="1801"
+                loading="lazy"
+                decoding="async"
+                className="w-full aspect-[4/5] object-cover object-[center_30%]"
+              />
+              <figcaption className="px-5 py-3 font-sans text-xs tracking-wide text-primary/65">
+                Patricia Songel, Calle Molino 7, La Eliana
+              </figcaption>
+            </figure>
+
             <div className="rounded-2xl border border-primary/10 p-6 bg-white/40">
               <p className="text-overline text-accent mb-4">El centro</p>
               <ul className="flex flex-col gap-4 text-sm">
@@ -350,17 +365,17 @@ export default function PedirCita() {
       <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-primary text-surface">
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="rv flex items-center justify-center gap-1 mb-5">
-            {[...Array(5)].map((_, i) => <Star key={i} size={18} className="text-accent fill-accent" />)}
+            {[...Array(5)].map((_, i) => <Star key={i} size={18} className="text-surface fill-surface" />)}
           </div>
           <h2 className="rv font-serif italic font-bold text-3xl md:text-5xl leading-[1.1] mb-6">
             Más de 100 opiniones positivas en Google.
           </h2>
-          <p className="rv font-sans text-base leading-relaxed text-[#F3ECE1]/72 max-w-xl mx-auto mb-9">
+          <p className="rv font-sans text-base leading-relaxed text-[#F1EDED]/72 max-w-xl mx-auto mb-9">
             La confianza de cada clienta es mi mayor recompensa. Detrás de cada reseña hay un rostro que salió
             del centro sintiéndose más seguro y radiante.
           </p>
           <a href={CLINIC.maps} target="_blank" rel="noopener noreferrer"
-            className="rv inline-flex items-center gap-2 font-sans text-sm font-semibold px-8 py-4 rounded-full bg-accent text-primary hover:scale-[1.03] transition-transform duration-500">
+            className="rv inline-flex items-center gap-2 font-sans text-sm font-semibold px-8 py-4 rounded-full bg-surface text-primary hover:scale-[1.03] transition-transform duration-500">
             Leer las reseñas en Google <ArrowRight size={15} />
           </a>
         </div>
@@ -395,7 +410,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ POR QUÉ ELEGIRNOS ═════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-[#F0EBE0] border-y border-primary/10">
+      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-[#F1EDED] border-y border-primary/10">
         <div className="max-w-5xl mx-auto">
           <h2 className="rv font-serif italic font-bold text-3xl md:text-4xl leading-tight mb-12 text-center text-primary">
             Una experiencia diseñada para ti.
