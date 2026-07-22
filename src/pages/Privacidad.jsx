@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
 
 const SITE = 'https://www.patriciasongel.es';
@@ -30,16 +30,7 @@ export default function Privacidad() {
         canonical={`${SITE}/privacidad`}
         robots="noindex, follow"
       />
-      {/* Top bar */}
-      <div className="border-b border-[#0A0A0A]/8 bg-[#F1EDED]/90 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5 text-[#0A0A0A]/50 hover:text-[#0A0A0A] transition-colors duration-300 group">
-            <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform duration-300" />
-            <span className="font-sans text-xs tracking-widest uppercase font-medium" style={{ letterSpacing: '0.18em' }}>Volver</span>
-          </Link>
-          <span className="font-mono text-xs text-[#0A0A0A]/30" style={{ letterSpacing: '0.06em' }}>SEMINARIOS / PRIVACIDAD</span>
-        </div>
-      </div>
+      <Navbar />
 
       <div className="max-w-4xl mx-auto px-6 md:px-12 py-24">
         {/* Header */}

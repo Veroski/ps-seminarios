@@ -16,7 +16,7 @@ const FORMACIONES = [
 export default function Navbar() {
   const navRef = useRef(null);
   const rafRef = useRef(0);
-  const scrolledRef = useRef(false);
+  const scrolledRef = useRef(null);
   const [formOpen, setFormOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -28,15 +28,15 @@ export default function Navbar() {
       if (scrolled === scrolledRef.current) return;
       scrolledRef.current = scrolled;
       if (scrolled) {
-        nav.style.background = 'rgba(250,248,245,0.82)';
+        nav.style.background = 'rgba(241,237,237,0.94)';
         nav.style.backdropFilter = 'blur(20px)';
         nav.style.borderColor = 'rgba(13,13,18,0.08)';
         nav.style.boxShadow = '0 8px 30px rgba(24,20,12,0.06)';
       } else {
-        nav.style.background = 'rgba(250,248,245,0.30)';
-        nav.style.backdropFilter = 'blur(10px)';
-        nav.style.borderColor = 'transparent';
-        nav.style.boxShadow = 'none';
+        nav.style.background = 'rgba(241,237,237,0.78)';
+        nav.style.backdropFilter = 'blur(16px)';
+        nav.style.borderColor = 'rgba(10,10,10,0.08)';
+        nav.style.boxShadow = '0 6px 22px rgba(10,10,10,0.05)';
       }
     };
     const onScroll = () => {
@@ -61,10 +61,10 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-[100] w-[92%] md:w-[90%] max-w-5xl">
+    <div className="fixed top-4 left-4 z-[100] w-[calc(100%-2rem)] md:left-10 md:top-6 md:w-[min(88%,64rem)]">
       <nav
         ref={navRef}
-        className="flex items-center justify-between px-5 md:px-6 py-3.5 rounded-[2rem] border border-transparent transition-all duration-300"
+        className="flex items-center justify-between px-5 md:px-6 py-2.5 md:py-3 rounded-[2rem] border transition-all duration-300"
         style={{ color: '#0A0A0A' }}
       >
         <Link to="/" aria-label="Inicio" className="flex items-center gap-2.5 transition-transform duration-300 hover:-translate-y-0.5 shrink-0">
@@ -108,7 +108,7 @@ export default function Navbar() {
           </div>
 
           <Link to="/conoce-a-patricia" onClick={closeMenus} className={linkCls}>Conoce a Patricia</Link>
-          <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className={linkCls}>Alumnos</Link>
+          <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className={linkCls}>Alumnas</Link>
         </div>
 
         <div className="flex items-center gap-2">
@@ -151,7 +151,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">
-            Área de alumnos
+            Área de alumnas
           </Link>
           <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className="mt-3 text-center border border-primary/15 text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Iniciar sesión

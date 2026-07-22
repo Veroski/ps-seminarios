@@ -4,6 +4,7 @@ import { Loader2, AlertCircle } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import Seo, { SITE } from '../components/Seo';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -306,7 +307,7 @@ export default function CejasPage() {
         imageAlt="Hairstrokes Masterclass — cejas pelo a pelo con Patricia Songel en La Eliana, Valencia"
         jsonLd={JSON_LD}
       />
-      <PageNav />
+      <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section

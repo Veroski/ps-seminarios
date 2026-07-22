@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 import Seo, { SITE } from '../components/Seo';
 
 export default function NotFound() {
@@ -8,6 +9,7 @@ export default function NotFound() {
       className="min-h-[100svh] flex flex-col items-center justify-center px-6 text-center"
       style={{ background: '#F1EDED', color: '#0A0A0A' }}
     >
+      <Navbar />
       <Seo
         title="Página no encontrada | Patricia Songel"
         description="La página que buscas no existe. Vuelve al inicio de Patricia Songel — micropigmentación y formación en Valencia."

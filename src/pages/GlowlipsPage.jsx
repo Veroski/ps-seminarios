@@ -4,6 +4,7 @@ import { Loader2, AlertCircle } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
 import { studentAreaConfig } from '../config/studentArea';
 
@@ -273,7 +274,7 @@ export default function GlowlipsPage() {
         imageAlt="Glowlips Masterclass — curso de micropigmentación de labios con Patricia Songel"
         jsonLd={jsonLdGlowlips}
       />
-      <PageNav />
+      <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative flex flex-col justify-end overflow-hidden" style={{ height: '100svh', background: G.bgWine }}>

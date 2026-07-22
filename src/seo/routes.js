@@ -31,8 +31,8 @@ export const routes = [
   },
   {
     path: '/alumnos',
-    title: 'Área de alumnos | Login formaciones Patricia Songel',
-    description: 'Inicia sesión en el área de alumnos de Patricia Songel. Acceso a cursos, comunidad y materiales mediante GoHighLevel Client Portal y GoKollab.',
+    title: 'Área de alumnas | Patricia Songel',
+    description: 'Próximamente: área privada para las alumnas de las formaciones de Patricia Songel.',
     image: img('/patricia-portrait.webp'),
     robots: 'index, follow',
   },

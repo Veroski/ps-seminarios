@@ -143,14 +143,14 @@ export default function StudentResults() {
       <div className="w-full max-w-7xl mx-auto px-6 md:px-16 text-center relative z-20 mb-16 md:mb-24 pointer-events-none">
         <h3 className="results-text text-overline text-[#F1EDED] mb-6 flex items-center justify-center gap-4">
             <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F1EDED]/50"></span>
-            El Impacto Real
+            Testimonios de alumnas
             <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F1EDED]/50"></span>
         </h3>
         <h2 className="results-text font-serif italic text-4xl md:text-6xl lg:text-7xl text-white mb-8">
-            Casos de <span className="text-[#F1EDED]">Éxito</span>
+            Historias de <span className="text-[#F1EDED]">éxito</span>
         </h2>
         <p className="results-text max-w-2xl mx-auto text-copy-light">
-            Profesionales que han confiado en mis formaciones y hoy aplican estas técnicas excepcionales en su trabajo diario con absoluta precisión.
+            Resultados de alumnas que han confiado en las formaciones de Patricia Songel.
         </p>
       </div>
 

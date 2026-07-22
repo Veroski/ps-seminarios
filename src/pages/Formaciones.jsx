@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import Courses from '../components/Courses';
 import Curriculum from '../components/Curriculum';
 import TargetAudience from '../components/TargetAudience';
-import StudentResults from '../components/StudentResults';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 
@@ -31,7 +30,6 @@ export default function Formaciones() {
       <Courses />
       <Curriculum />
       <TargetAudience />
-      <StudentResults />
       <Footer />
     </main>
   );
