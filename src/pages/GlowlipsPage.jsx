@@ -14,16 +14,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const G = {
-  bgLight:   '#F7F4F4',
-  bgNude:    '#E4DDDD',
+  bgLight:   '#F9F4E9',
+  bgNude:    '#E9DEC9',
   bgRed:     '#262222',
   bgWine:    '#0A0A0A',
   text:      '#0A0A0A',
-  textLight: '#F1EDED',
+  textLight: '#F3EDE2',
   muted:     '#625C5C',
-  mutedLight:'rgba(241,237,237,0.72)',
-  gold:      '#F1EDED',
-  white:     '#F1EDED',
+  mutedLight:'rgba(243,237,226,0.72)',
+  gold:      '#F3EDE2',
+  white:     '#F3EDE2',
 };
 
 const CHECKOUT_URL = studentAreaConfig.checkout.glowlips || null;

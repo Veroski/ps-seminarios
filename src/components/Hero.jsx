@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100svh] overflow-hidden bg-[#F1EDED]"
+      className="relative min-h-[100svh] overflow-hidden bg-[#F3EDE2]"
       aria-label="Patricia Songel"
     >
       <img

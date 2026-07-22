@@ -100,11 +100,11 @@ export default function Curriculum() {
     <section
       id="programa"
       ref={containerRef}
-      className="relative w-full overflow-hidden bg-[#F1EDED] text-[#0A0A0A] scroll-mt-32"
+      className="relative w-full overflow-hidden bg-[#F3EDE2] text-[#0A0A0A] scroll-mt-32"
       style={{
         backgroundImage: `
           radial-gradient(circle at top left, rgba(255,255,255,0.88) 0%, transparent 22%),
-          linear-gradient(180deg, #F1EDED 0%, #F1EDED 50%, #F1EDED 100%)
+          linear-gradient(180deg, #F3EDE2 0%, #F3EDE2 50%, #F3EDE2 100%)
         `,
       }}
     >

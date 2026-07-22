@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <div
       className="min-h-[100svh] flex flex-col items-center justify-center px-6 text-center"
-      style={{ background: '#F1EDED', color: '#0A0A0A' }}
+      style={{ background: '#F3EDE2', color: '#0A0A0A' }}
     >
       <Navbar />
       <Seo
@@ -34,7 +34,7 @@ export default function NotFound() {
       <Link
         to="/"
         className="font-sans font-semibold text-sm px-8 py-4 rounded-full transition-all duration-300"
-        style={{ background: '#0A0A0A', color: '#F1EDED' }}
+        style={{ background: '#0A0A0A', color: '#F3EDE2' }}
       >
         ← Volver al inicio
       </Link>

@@ -23,7 +23,7 @@ export default function Terminos() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-[100svh] bg-[#F1EDED]">
+    <div className="min-h-[100svh] bg-[#F3EDE2]">
       <Seo
         title="Términos y Condiciones | Patricia Songel"
         description="Términos y condiciones de uso del sitio web y de las formaciones de Patricia Songel — micropigmentación en La Eliana, Valencia."
@@ -106,7 +106,7 @@ export default function Terminos() {
       </div>
 
       {/* Footer strip */}
-      <div className="border-t border-[#0A0A0A]/8 bg-[#F1EDED]">
+      <div className="border-t border-[#0A0A0A]/8 bg-[#F3EDE2]">
         <div className="max-w-4xl mx-auto px-6 md:px-12 py-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <span className="font-sans text-xs text-[#0A0A0A]/30" style={{ letterSpacing: '-0.01em' }}>© {new Date().getFullYear()} Patricia Songel</span>
           <div className="flex gap-6 font-sans text-xs text-[#0A0A0A]/40" style={{ letterSpacing: '-0.01em' }}>

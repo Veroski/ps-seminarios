@@ -201,7 +201,7 @@ export default function ConocePatricia() {
             <h2 className="rv font-serif italic font-bold text-4xl md:text-5xl leading-[1.1] mb-8">
               Una búsqueda constante de la perfección.
             </h2>
-            <div className="rv font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F1EDED]/74">
+            <div className="rv font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F3EDE2]/74">
               <p>
                 Desde que descubrí mi pasión por el embellecimiento facial, he dedicado más de
                 <strong className="text-surface font-semibold"> 20 años</strong> a perfeccionar técnicas que realzan
@@ -255,7 +255,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ MÉTODO ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-[#F1EDED] border-y border-primary/10">
+      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-[#F3EDE2] border-y border-primary/10">
         <div className="max-w-6xl mx-auto">
           <div className="rv flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-accent" />
@@ -310,7 +310,7 @@ export default function ConocePatricia() {
             <h2 className="font-serif italic font-bold text-4xl md:text-5xl leading-[1.1] mb-6">
               Belleza que te acompaña cada día.
             </h2>
-            <p className="font-sans text-[15px] md:text-base leading-[1.9] text-[#F1EDED]/72 max-w-md">
+            <p className="font-sans text-[15px] md:text-base leading-[1.9] text-[#F3EDE2]/72 max-w-md">
               La micropigmentación bien hecha no cambia quién eres: te devuelve tiempo, seguridad y una
               versión descansada de ti misma desde que abres los ojos.
             </p>

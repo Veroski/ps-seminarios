@@ -86,13 +86,13 @@ export default function Biography() {
               href="https://instagram.com/patriciasongel_micro"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-surface hover:text-[#E4DDDD] transition-colors"
+              className="text-surface hover:text-[#E9DEC9] transition-colors"
             >
               Patricia Songel
             </a>
           </h3>
           
-          <div className="bio-text-part font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F1EDED]/74">
+          <div className="bio-text-part font-sans flex flex-col gap-6 text-[15px] md:text-[16px] leading-[1.9] tracking-[-0.015em] text-[#F3EDE2]/74">
             <p>
               Con más de <strong className="text-surface font-semibold">20 años de dedicación absoluta</strong> al mundo de la belleza, mi carrera ha sido una búsqueda constante de la perfección técnica. 
             </p>

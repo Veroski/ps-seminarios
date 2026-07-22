@@ -370,7 +370,7 @@ export default function PedirCita() {
           <h2 className="rv font-serif italic font-bold text-3xl md:text-5xl leading-[1.1] mb-6">
             Más de 100 opiniones positivas en Google.
           </h2>
-          <p className="rv font-sans text-base leading-relaxed text-[#F1EDED]/72 max-w-xl mx-auto mb-9">
+          <p className="rv font-sans text-base leading-relaxed text-[#F3EDE2]/72 max-w-xl mx-auto mb-9">
             La confianza de cada clienta es mi mayor recompensa. Detrás de cada reseña hay un rostro que salió
             del centro sintiéndose más seguro y radiante.
           </p>
@@ -410,7 +410,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ POR QUÉ ELEGIRNOS ═════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-[#F1EDED] border-y border-primary/10">
+      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-[#F3EDE2] border-y border-primary/10">
         <div className="max-w-5xl mx-auto">
           <h2 className="rv font-serif italic font-bold text-3xl md:text-4xl leading-tight mb-12 text-center text-primary">
             Una experiencia diseñada para ti.

@@ -11,17 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const C = {
-  bgLight:   '#F7F4F4',
-  bgWarm:    '#E4DDDD',
+  bgLight:   '#F9F4E9',
+  bgWarm:    '#E9DEC9',
   bgDark:    '#0A0A0A',
   bgMid:     '#262222',
   text:      '#0A0A0A',
-  textLight: '#F1EDED',
+  textLight: '#F3EDE2',
   muted:     '#625C5C',
-  mutedLight:'rgba(241,237,237,0.72)',
-  gold:      '#F1EDED',
+  mutedLight:'rgba(243,237,226,0.72)',
+  gold:      '#F3EDE2',
   accent:    '#0A0A0A',
-  white:     '#F1EDED',
+  white:     '#F3EDE2',
 };
 
 const SEO_TITLE = 'Hairstrokes Masterclass — Cejas pelo a pelo | Patricia Songel Valencia';

@@ -31,7 +31,7 @@ export default function AlumnosPage() {
       <Navbar />
 
       <section className="relative flex min-h-[70svh] items-center justify-center overflow-hidden px-6 pb-16 pt-32 text-center md:px-16 md:pt-40">
-        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.9),transparent_42%),linear-gradient(135deg,rgba(241,237,237,0.2),rgba(10,10,10,0.06))]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.9),transparent_42%),linear-gradient(135deg,rgba(243,237,226,0.2),rgba(10,10,10,0.06))]" />
         <div className="relative max-w-2xl">
           <p className="text-overline mb-6 text-primary/55">Área de alumnas</p>
           <h1 className="font-serif text-5xl italic leading-[0.98] tracking-tight md:text-7xl">

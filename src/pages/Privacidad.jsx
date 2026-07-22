@@ -23,7 +23,7 @@ export default function Privacidad() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
-    <div className="min-h-[100svh] bg-[#F1EDED]">
+    <div className="min-h-[100svh] bg-[#F3EDE2]">
       <Seo
         title="Política de Privacidad | Patricia Songel"
         description="Política de privacidad y tratamiento de datos personales del sitio web de Patricia Songel — micropigmentación y formación en Valencia."
@@ -98,7 +98,7 @@ export default function Privacidad() {
       </div>
 
       {/* Footer strip */}
-      <div className="border-t border-[#0A0A0A]/8 bg-[#F1EDED]">
+      <div className="border-t border-[#0A0A0A]/8 bg-[#F3EDE2]">
         <div className="max-w-4xl mx-auto px-6 md:px-12 py-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <span className="font-sans text-xs text-[#0A0A0A]/30" style={{ letterSpacing: '-0.01em' }}>© {new Date().getFullYear()} Patricia Songel</span>
           <div className="flex gap-6 font-sans text-xs text-[#0A0A0A]/40" style={{ letterSpacing: '-0.01em' }}>

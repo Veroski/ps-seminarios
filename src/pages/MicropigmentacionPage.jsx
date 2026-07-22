@@ -16,14 +16,14 @@ const CHECKOUT_URL = studentAreaConfig.checkout.micropigmentacion || null;
 
 /* ─── PALETTE ──────────────────────────────────────────────── */
 const P = {
-  bgSoft:  '#F7F4F4',
-  bgMain:  '#F1EDED',
-  bgWarm:  '#E4DDDD',
+  bgSoft:  '#F9F4E9',
+  bgMain:  '#F3EDE2',
+  bgWarm:  '#E9DEC9',
   bgDark:  '#0A0A0A',
   text:    '#0A0A0A',
   muted:   '#625C5C',
   accent:  '#0A0A0A',
-  white:   '#F1EDED',
+  white:   '#F3EDE2',
 };
 
 /* ─── DATA ─────────────────────────────────────────────────── */

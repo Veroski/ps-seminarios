@@ -114,7 +114,7 @@ export default function Courses() {
           radial-gradient(circle at 10% 20%, rgba(255,255,255,0.92) 0%, transparent 20%),
           radial-gradient(circle at 90% 14%, rgba(198,167,92,0.12) 0%, transparent 18%),
           radial-gradient(circle at 82% 72%, rgba(185,28,28,0.05) 0%, transparent 14%),
-          linear-gradient(180deg, #F1EDED 0%, #F1EDED 42%, #F1EDED 100%)
+          linear-gradient(180deg, #F3EDE2 0%, #F3EDE2 42%, #F3EDE2 100%)
         `,
       }}
     >
@@ -177,13 +177,13 @@ export default function Courses() {
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/32 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute inset-0 border-[1px] border-[#0A0A0A]/10 rounded-[3rem] pointer-events-none transition-colors duration-700 group-hover:border-[#0A0A0A]/42" />
-                  <div className="absolute inset-[12px] rounded-[2.45rem] border border-[#E4DDDD]/28 pointer-events-none transition-colors duration-700 group-hover:border-[#E4DDDD]/52" />
+                  <div className="absolute inset-[12px] rounded-[2.45rem] border border-[#E9DEC9]/28 pointer-events-none transition-colors duration-700 group-hover:border-[#E9DEC9]/52" />
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/85 to-transparent pointer-events-none" />
                   <div className="absolute inset-y-10 right-0 w-px bg-gradient-to-b from-transparent via-[#0A0A0A]/68 to-transparent pointer-events-none" />
 
                   {/* Hover hint */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="flex items-center gap-2.5 bg-[#F1EDED]/88 backdrop-blur-md px-5 py-2.5 rounded-full border border-[#0A0A0A]/10 shadow-[0_10px_26px_rgba(17,17,19,0.1)]">
+                    <div className="flex items-center gap-2.5 bg-[#F3EDE2]/88 backdrop-blur-md px-5 py-2.5 rounded-full border border-[#0A0A0A]/10 shadow-[0_10px_26px_rgba(17,17,19,0.1)]">
                       <span className="text-overline-soft text-[#0A0A0A]">Ver detalles</span>
                       <ArrowRight size={11} className="text-[#B91C1C]" />
                     </div>
@@ -215,10 +215,10 @@ export default function Courses() {
                   {/* CTA */}
                   <button
                     onClick={() => navigate(course.path)}
-                    className="group relative inline-flex items-center justify-center bg-[#0A0A0A] border border-[#0A0A0A]/10 text-[#F1EDED] font-sans font-bold text-sm px-8 md:px-10 py-4 md:py-5 rounded-full overflow-hidden transition-all duration-500 hover:border-[#0A0A0A]/40 hover:shadow-[0_14px_34px_rgba(17,17,19,0.14)] cursor-pointer"
+                    className="group relative inline-flex items-center justify-center bg-[#0A0A0A] border border-[#0A0A0A]/10 text-[#F3EDE2] font-sans font-bold text-sm px-8 md:px-10 py-4 md:py-5 rounded-full overflow-hidden transition-all duration-500 hover:border-[#0A0A0A]/40 hover:shadow-[0_14px_34px_rgba(17,17,19,0.14)] cursor-pointer"
                   >
                     <span className="absolute inset-0 w-0 bg-[#0A0A0A] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-full" />
-                    <span className="relative z-10 flex items-center gap-3 group-hover:text-[#F1EDED] transition-colors duration-300">
+                    <span className="relative z-10 flex items-center gap-3 group-hover:text-[#F3EDE2] transition-colors duration-300">
                       Ver Detalles
                       <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform duration-300" />
                     </span>

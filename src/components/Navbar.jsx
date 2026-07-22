@@ -28,12 +28,12 @@ export default function Navbar() {
       if (scrolled === scrolledRef.current) return;
       scrolledRef.current = scrolled;
       if (scrolled) {
-        nav.style.background = 'rgba(241,237,237,0.94)';
+        nav.style.background = 'rgba(243,237,226,0.94)';
         nav.style.backdropFilter = 'blur(20px)';
         nav.style.borderColor = 'rgba(13,13,18,0.08)';
         nav.style.boxShadow = '0 8px 30px rgba(24,20,12,0.06)';
       } else {
-        nav.style.background = 'rgba(241,237,237,0.78)';
+        nav.style.background = 'rgba(243,237,226,0.78)';
         nav.style.backdropFilter = 'blur(16px)';
         nav.style.borderColor = 'rgba(10,10,10,0.08)';
         nav.style.boxShadow = '0 6px 22px rgba(10,10,10,0.05)';

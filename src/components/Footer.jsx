@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center mb-20">
         <Link
           to="/formaciones"
-          className="group relative inline-flex w-full sm:w-auto items-center justify-center bg-[#F1EDED] text-[#0A0A0A] font-sans font-bold text-sm px-8 sm:px-10 py-5 rounded-full overflow-hidden hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] shadow-[0_0_30px_rgba(250,248,245,0.1)]"
+          className="group relative inline-flex w-full sm:w-auto items-center justify-center bg-[#F3EDE2] text-[#0A0A0A] font-sans font-bold text-sm px-8 sm:px-10 py-5 rounded-full overflow-hidden hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] shadow-[0_0_30px_rgba(250,248,245,0.1)]"
         >
           <span className="absolute inset-0 w-full h-full bg-[#0A0A0A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"></span>
           <span className="relative z-10 flex items-center gap-3 group-hover:text-surface transition-colors duration-300">

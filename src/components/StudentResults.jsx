@@ -141,13 +141,13 @@ export default function StudentResults() {
 
       {/* Header */}
       <div className="w-full max-w-7xl mx-auto px-6 md:px-16 text-center relative z-20 mb-16 md:mb-24 pointer-events-none">
-        <h3 className="results-text text-overline text-[#F1EDED] mb-6 flex items-center justify-center gap-4">
-            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F1EDED]/50"></span>
+        <h3 className="results-text text-overline text-[#F3EDE2] mb-6 flex items-center justify-center gap-4">
+            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F3EDE2]/50"></span>
             Testimonios de alumnas
-            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F1EDED]/50"></span>
+            <span className="inline-block w-6 md:w-12 h-[1px] bg-[#F3EDE2]/50"></span>
         </h3>
         <h2 className="results-text font-serif italic text-4xl md:text-6xl lg:text-7xl text-white mb-8">
-            Historias de <span className="text-[#F1EDED]">éxito</span>
+            Historias de <span className="text-[#F3EDE2]">éxito</span>
         </h2>
         <p className="results-text max-w-2xl mx-auto text-copy-light">
             Resultados de alumnas que han confiado en las formaciones de Patricia Songel.
@@ -188,7 +188,7 @@ export default function StudentResults() {
                 className="badge-float-left absolute bottom-6 left-4 md:left-[-40px] z-30 bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10 px-4 py-3 md:px-6 md:py-4 rounded-full flex items-center gap-2.5 md:gap-3 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] pointer-events-none"
                 style={{ transform: 'translateZ(80px)' }}
               >
-                  <div className="w-2 h-2 rounded-full bg-[#F1EDED] animate-pulse"></div>
+                  <div className="w-2 h-2 rounded-full bg-[#F3EDE2] animate-pulse"></div>
                   <div className="flex flex-col items-start gap-1">
                       <span className="text-overline-soft text-surface/[0.58] leading-none">Aplicación Diaria</span>
                       <span className="font-sans font-bold text-xs md:text-sm text-white leading-none tracking-wide">Precisión 100%</span>
@@ -231,7 +231,7 @@ export default function StudentResults() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                   <div className="flex flex-col items-start gap-1">
                       <span className="text-overline-soft text-surface/[0.58] leading-none">Master Result</span>
-                      <span className="font-sans font-bold text-xs md:text-sm text-[#F1EDED] leading-none tracking-wide">Nivel Avanzado</span>
+                      <span className="font-sans font-bold text-xs md:text-sm text-[#F3EDE2] leading-none tracking-wide">Nivel Avanzado</span>
                   </div>
               </div>
            </div>
