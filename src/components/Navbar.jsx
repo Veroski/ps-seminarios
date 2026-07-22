@@ -68,7 +68,7 @@ export default function Navbar() {
         style={{ color: '#0A0A0A' }}
       >
         <Link to="/" aria-label="Inicio" className="flex shrink-0 items-center gap-2.5 transition-opacity duration-300 hover:opacity-65">
-          <img src="/ps-monogram.webp" alt="" width="32" height="32" decoding="async" fetchPriority="high" className="h-8 w-8 object-contain" />
+          <span aria-hidden="true" className="font-brand text-[2rem] leading-none tracking-[-0.12em] text-primary">PS</span>
           <span className="hidden font-sans text-[0.62rem] font-medium uppercase tracking-[0.28em] text-primary/85 sm:inline">Patricia Songel</span>
         </Link>
 
