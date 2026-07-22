@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import favicon from '../favicon.ico';
 import { studentAreaConfig } from '../config/studentArea';
 
 /* Unified site navbar — identical on every page. A "Formación"
@@ -69,7 +68,7 @@ export default function Navbar() {
         style={{ color: '#0A0A0A' }}
       >
         <Link to="/" aria-label="Inicio" className="flex items-center gap-2.5 transition-transform duration-300 hover:-translate-y-0.5 shrink-0">
-          <img src={favicon} alt="Patricia Songel" width="38" height="38" decoding="async" fetchPriority="high" className="h-9 w-9 md:h-10 md:w-10 object-contain" />
+          <img src="/ps-monogram.webp" alt="Patricia Songel" width="38" height="38" decoding="async" fetchPriority="high" className="h-9 w-9 md:h-10 md:w-10 object-contain" />
         </Link>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-7">

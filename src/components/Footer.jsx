@@ -29,6 +29,7 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16 mb-24 relative z-10">
         <div className="flex flex-col max-w-sm">
+          <img src="/ps-monogram.webp" alt="Patricia Songel" width="64" height="64" className="h-16 w-16 object-contain mb-6" />
           <p className="max-w-sm text-copy-light leading-relaxed opacity-70">
             Si quieres aprender micropigmentación con una base técnica sólida, comprender realmente cómo funciona la piel y desarrollar criterio profesional en tu trabajo, <span className="text-surface">estaré encantada de acompañarte en ese proceso.</span>
           </p>

@@ -1,85 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-
-const FRAME_COUNT = 97;
-const frameSource = (frame) => `/hero-ps/frame_${String(frame).padStart(6, '0')}.webp`;
+import React from 'react';
 
 export default function Hero() {
-  const sectionRef = useRef(null);
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
-    const frames = Array.from({ length: FRAME_COUNT }, () => new Image());
-    let targetFrame = 0;
-    let renderedFrame = 0;
-    let animationFrame = 0;
-
-    const drawFrame = (frameIndex) => {
-      const frame = frames[frameIndex];
-      if (!frame.complete || !frame.naturalWidth) return;
-
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      const imageRatio = frame.naturalWidth / frame.naturalHeight;
-      const canvasRatio = width / height;
-      const sourceWidth = imageRatio > canvasRatio ? frame.naturalHeight * canvasRatio : frame.naturalWidth;
-      const sourceHeight = imageRatio > canvasRatio ? frame.naturalHeight : frame.naturalWidth / canvasRatio;
-      const sourceX = (frame.naturalWidth - sourceWidth) / 2;
-      const sourceY = (frame.naturalHeight - sourceHeight) / 2;
-
-      context.clearRect(0, 0, width, height);
-      context.drawImage(frame, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, width, height);
-      renderedFrame = frameIndex;
-    };
-
-    const resizeCanvas = () => {
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      const width = canvas.clientWidth;
-      const height = canvas.clientHeight;
-      canvas.width = width * ratio;
-      canvas.height = height * ratio;
-      context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      drawFrame(renderedFrame);
-    };
-
-    frames.forEach((frame, index) => {
-      frame.onload = () => {
-        if (index === targetFrame) drawFrame(index);
-      };
-      frame.src = frameSource(index + 1);
-    });
-
-    const updateFrame = () => {
-      animationFrame = 0;
-      const progress = Math.min(1, Math.max(0, -section.getBoundingClientRect().top / section.offsetHeight));
-      const nextFrame = Math.round(progress * (FRAME_COUNT - 1));
-
-      if (nextFrame !== targetFrame) {
-        targetFrame = nextFrame;
-        drawFrame(nextFrame);
-      }
-    };
-
-    const onScroll = () => {
-      if (!animationFrame) animationFrame = requestAnimationFrame(updateFrame);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', resizeCanvas, { passive: true });
-    resizeCanvas();
-    updateFrame();
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', resizeCanvas);
-      if (animationFrame) cancelAnimationFrame(animationFrame);
-    };
-  }, []);
-
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-[100svh] md:h-screen" aria-label="Hero">
+    <section id="hero" className="relative min-h-[100svh] md:h-screen" aria-label="Hero">
       <div className="min-h-[100svh] md:h-screen w-full overflow-hidden flex flex-col md:flex-row">
         <div
           className="relative z-10 w-full md:w-[46%] min-h-[50svh] md:h-full flex flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 order-2 md:order-1"
@@ -126,15 +49,14 @@ export default function Hero() {
 
         <div className="relative w-full md:w-[54%] h-[55vh] md:h-full order-1 md:order-2 bg-[#F1EDED]">
           <img
-            src="/hero-ps/frame_000001.webp"
-            alt="Patricia Songel, especialista en micropigmentación"
-            width="1200"
-            height="1600"
+            src="/ps-hero.webp"
+            alt="Patricia Songel, micropigmentación y belleza"
+            width="2160"
+            height="2700"
             fetchPriority="high"
             decoding="async"
             className="w-full h-full object-cover"
           />
-          <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 w-full h-full" />
           <div
             aria-hidden="true"
             className="absolute inset-y-0 left-0 hidden md:block w-1/4 pointer-events-none"

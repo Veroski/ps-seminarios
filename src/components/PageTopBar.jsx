@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import favicon from '../favicon.ico';
 
 /* ═══════════════════════════════════════════════════════════
    PageTopBar — shared floating pill nav for interior pages.
@@ -63,7 +62,7 @@ export default function PageTopBar({
         </div>
 
         <Link to="/" aria-label="Ir al inicio" className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 pointer-events-none opacity-0">
-          <img src={favicon} alt="Patricia Songel" width="32" height="32" className="h-8 w-8 object-contain" />
+          <img src="/ps-monogram.webp" alt="Patricia Songel" width="32" height="32" className="h-8 w-8 object-contain" />
         </Link>
 
         <Cta

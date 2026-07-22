@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Loader2, AlertCircle } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import favicon from '../favicon.ico';
 import Footer from '../components/Footer';
 import Seo, { SITE } from '../components/Seo';
 
@@ -164,7 +163,7 @@ function PageNav() {
           ← Volver
         </Link>
         <Link to="/" className="flex items-center gap-2.5">
-          <img src={favicon} alt="Patricia Songel" width="34" height="34" className="h-[34px] w-[34px] object-contain" />
+          <img src="/ps-monogram.webp" alt="Patricia Songel" width="34" height="34" className="h-[34px] w-[34px] object-contain" />
         </Link>
         <a
           href="#formulario"
