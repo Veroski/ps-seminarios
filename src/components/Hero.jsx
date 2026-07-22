@@ -2,66 +2,48 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[100svh] md:h-screen" aria-label="Hero">
-      <div className="min-h-[100svh] md:h-screen w-full overflow-hidden flex flex-col md:flex-row">
-        <div
-          className="relative z-10 w-full md:w-[46%] min-h-[50svh] md:h-full flex flex-col justify-center px-6 sm:px-10 md:px-12 lg:px-16 xl:px-20 order-2 md:order-1"
-          style={{
-            background: 'linear-gradient(155deg, #F1EDED 0%, #F7F4F4 100%)',
-          }}
-        >
-          <div className="relative z-10 max-w-lg">
-            <p className="font-mono text-[0.58rem] md:text-[0.64rem] tracking-[0.35em] uppercase mb-5 md:mb-7 text-[#625C5C]">
-              Patricia Songel
-            </p>
+    <section
+      id="hero"
+      className="relative min-h-[100svh] overflow-hidden bg-[#F1EDED]"
+      aria-label="Patricia Songel"
+    >
+      <img
+        src="/ps-banner.webp"
+        alt=""
+        width="2560"
+        height="1440"
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(241,237,237,0.42),rgba(241,237,237,0.12),rgba(241,237,237,0.42))]"
+      />
 
-            <h1 className="mb-5 md:mb-7 font-serif italic leading-[1] tracking-[-0.03em] text-[#0A0A0A]">
-              <span className="block text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.8rem]">
-                Formación profesional
-              </span>
-              <span className="block text-[2.2rem] sm:text-[2.8rem] md:text-[3.2rem] lg:text-[3.8rem] mt-1">
-                en micropigmentación
-              </span>
-            </h1>
+      <div className="relative z-10 flex min-h-[100svh] items-center justify-center px-6 pb-12 pt-24 text-center sm:px-10">
+        <div className="max-w-5xl">
+          <h1 className="font-serif text-[clamp(2.25rem,7vw,6.2rem)] leading-[0.92] tracking-[0.1em] text-[#0A0A0A]">
+            PATRICIA SONGEL
+          </h1>
+          <p className="mt-5 font-sans text-[0.62rem] font-medium uppercase tracking-[0.32em] text-[#0A0A0A]/75 sm:text-xs md:mt-7 md:text-sm">
+            Micropigmentación y belleza
+          </p>
 
-            <p className="font-sans text-[0.82rem] md:text-[0.88rem] leading-[1.85] tracking-[-0.01em] max-w-sm mb-8 md:mb-12 text-[#625C5C]">
-              Aprende micropigmentación con Patricia Songel, campeona internacional,
-              ponente y juez en competiciones del sector.
-            </p>
-
+          <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center md:mt-12">
             <a
-              href="#formaciones"
-              className="inline-flex px-8 py-3.5 rounded-full bg-[#0A0A0A] text-[#F1EDED] font-sans text-[0.82rem] font-semibold tracking-[0.04em] uppercase hover:scale-[1.03] active:scale-[0.98] transition-transform duration-300"
+              href="/formaciones"
+              className="inline-flex min-w-52 items-center justify-center rounded-sm bg-[#0A0A0A] px-8 py-4 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#F1EDED] transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
             >
               Ver formaciones
             </a>
-
-            <div className="mt-10 md:mt-12 pt-3 border-t border-[#0A0A0A]/20">
-              <span className="block font-sans font-semibold text-[0.82rem] md:text-[0.9rem] tracking-[-0.01em] text-[#0A0A0A]">
-                Campeona de España
-              </span>
-              <span className="block font-serif italic text-[0.78rem] md:text-[0.84rem] mt-0.5 text-[#625C5C]">
-                2023 y 2025
-              </span>
-            </div>
+            <a
+              href="/pedir-cita"
+              className="inline-flex min-w-52 items-center justify-center rounded-sm border border-[#0A0A0A]/60 bg-[#F1EDED]/20 px-8 py-4 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#0A0A0A] transition-colors duration-300 hover:bg-[#F1EDED]/70"
+            >
+              Pedir cita
+            </a>
           </div>
-        </div>
-
-        <div className="relative w-full md:w-[54%] h-[55vh] md:h-full order-1 md:order-2 bg-[#F1EDED]">
-          <img
-            src="/ps-hero.webp"
-            alt="Patricia Songel, micropigmentación y belleza"
-            width="2160"
-            height="2700"
-            fetchPriority="high"
-            decoding="async"
-            className="w-full h-full object-cover"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-y-0 left-0 hidden md:block w-1/4 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #F1EDED 0%, transparent 100%)' }}
-          />
         </div>
       </div>
     </section>

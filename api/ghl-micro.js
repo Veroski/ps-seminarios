@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     name: data.nombre,
     email: data.email,
     phone: normalizePhone(data.telefono),
-    source: 'Landing Micropigmentacion 3.0',
+    source: 'Formación 3 técnicas',
     tags: ['lead-micropigmentacion'],
     customFields,
   };

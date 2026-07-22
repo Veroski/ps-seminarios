@@ -12,7 +12,7 @@ export const routes = [
     path: '/',
     title: 'Patricia Songel | Micropigmentación y formación en Valencia',
     description: 'Patricia Songel, campeona de España en micropigmentación 2023 y 2025. Especialista en cejas, labios y ojos en La Eliana, Valencia. Formaciones presenciales en toda España. Pide tu consulta gratuita.',
-    image: img('/patricia-portrait.webp'),
+    image: img('/ps-banner.webp'),
     robots: 'index, follow',
   },
   {
@@ -37,8 +37,15 @@ export const routes = [
     robots: 'index, follow',
   },
   {
+    path: '/formaciones',
+    title: 'Formaciones de micropigmentación | Patricia Songel',
+    description: 'Descubre las formaciones presenciales de Patricia Songel: Formación 3 técnicas, Glowlips y Hairstrokes. Formación técnica, práctica y acompañamiento profesional en La Eliana, Valencia.',
+    image: img('/micro20_pagina1.webp'),
+    robots: 'index, follow',
+  },
+  {
     path: '/formacion/micropigmentacion',
-    title: 'Curso de Micropigmentación 3.0 | Patricia Songel — Valencia',
+    title: 'Formación 3 técnicas | Patricia Songel — Valencia',
     description: 'Formación presencial completa en micropigmentación facial: cejas, labios y ojos. Impartida por Patricia Songel, campeona de España 2023 y 2025. Diploma acreditativo + 35 días de prácticas + seguimiento.',
     image: img('/micro20_pagina1.webp'),
     robots: 'index, follow',

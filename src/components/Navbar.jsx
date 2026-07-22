@@ -8,7 +8,7 @@ import { studentAreaConfig } from '../config/studentArea';
    stays legible on any background; full mobile menu included. */
 
 const FORMACIONES = [
-  { to: '/formacion/micropigmentacion', label: 'Micropigmentación' },
+  { to: '/formacion/micropigmentacion', label: 'Formación 3 técnicas' },
   { to: '/formacion/glowlips', label: 'Glow Lips' },
   { to: '/formacion/hairstrokes', label: 'Cejas · Hairstrokes' },
 ];
@@ -79,20 +79,21 @@ export default function Navbar() {
             onMouseEnter={() => setFormOpen(true)}
             onMouseLeave={() => setFormOpen(false)}
           >
-            <button
-              type="button"
-              onClick={() => setFormOpen((v) => !v)}
+            <Link
+              to="/formaciones"
+              onClick={closeMenus}
               className={`${linkCls} flex items-center gap-1`}
-              aria-expanded={formOpen}
-              aria-haspopup="true"
             >
-              Formación
+              Formaciones
               <ChevronDown size={14} className={`transition-transform duration-300 ${formOpen ? 'rotate-180' : ''}`} />
-            </button>
+            </Link>
             <div
               className={`absolute left-1/2 -translate-x-1/2 top-full pt-3 w-60 transition-all duration-200 ${formOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1 pointer-events-none'}`}
             >
               <div className="rounded-2xl bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-xl p-2">
+                <Link to="/formaciones" onClick={closeMenus} className="block px-4 py-2.5 rounded-xl font-sans text-[0.85rem] font-semibold text-primary hover:text-accent hover:bg-primary/[0.04] transition-colors">
+                  Todas las formaciones
+                </Link>
                 {FORMACIONES.map((f) => (
                   <Link
                     key={f.to}
@@ -142,7 +143,8 @@ export default function Navbar() {
         <div className="rounded-3xl bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-xl p-4 flex flex-col">
           <Link to="/" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>
           <Link to="/conoce-a-patricia" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Conoce a Patricia</Link>
-          <p className="px-3 pt-3 pb-1 text-overline-soft text-primary/40">Formación</p>
+          <Link to="/formaciones" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Formaciones</Link>
+          <p className="px-3 pt-3 pb-1 text-overline-soft text-primary/40">Especializaciones</p>
           {FORMACIONES.map((f) => (
             <Link key={f.to} to={f.to} onClick={closeMenus} className="px-3 py-2.5 rounded-xl font-sans text-[0.9rem] text-primary/75 hover:text-accent hover:bg-primary/[0.04] transition-colors">
               {f.label}

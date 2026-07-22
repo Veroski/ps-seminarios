@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 // ─── DATA ──────────────────────────────────────────────────────────────────────
 const courses = [
   {
-    title: "Curso Básico de Micropigmentación",
+    title: "Formación 3 técnicas",
     desc: "Los cimientos de la élite. Domina la técnica desde 0 con una base sólida teórica y práctica. Comprende el por qué de cada movimiento, cómo responde la piel y desarrolla un criterio profesional desde el primer día.",
     tag: "Fundamentos",
     img: "/micro20_pagina1.webp",
