@@ -28,15 +28,15 @@ export default function Navbar() {
       if (scrolled === scrolledRef.current) return;
       scrolledRef.current = scrolled;
       if (scrolled) {
-        nav.style.background = 'rgba(243,237,226,0.94)';
-        nav.style.backdropFilter = 'blur(20px)';
-        nav.style.borderColor = 'rgba(13,13,18,0.08)';
-        nav.style.boxShadow = '0 8px 30px rgba(24,20,12,0.06)';
+        nav.style.background = 'rgba(243,237,226,0.96)';
+        nav.style.backdropFilter = 'blur(18px)';
+        nav.style.borderColor = 'rgba(10,10,10,0.12)';
+        nav.style.boxShadow = '0 8px 20px rgba(10,10,10,0.05)';
       } else {
-        nav.style.background = 'rgba(243,237,226,0.78)';
-        nav.style.backdropFilter = 'blur(16px)';
-        nav.style.borderColor = 'rgba(10,10,10,0.08)';
-        nav.style.boxShadow = '0 6px 22px rgba(10,10,10,0.05)';
+        nav.style.background = 'rgba(243,237,226,0.82)';
+        nav.style.backdropFilter = 'blur(14px)';
+        nav.style.borderColor = 'rgba(10,10,10,0.09)';
+        nav.style.boxShadow = 'none';
       }
     };
     const onScroll = () => {
@@ -54,24 +54,25 @@ export default function Navbar() {
     };
   }, []);
 
-  const linkCls = 'font-sans text-[0.82rem] lg:text-sm font-medium tracking-wide text-primary/80 hover:text-accent transition-colors whitespace-nowrap';
+  const linkCls = 'relative font-sans text-[0.62rem] font-medium uppercase tracking-[0.2em] text-primary/75 transition-colors after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-[width] hover:text-primary hover:after:w-full whitespace-nowrap';
   const closeMenus = () => {
     setMobileOpen(false);
     setFormOpen(false);
   };
 
   return (
-    <div className="fixed top-4 left-4 z-[100] w-[calc(100%-2rem)] md:left-10 md:top-6 md:w-[min(88%,64rem)]">
+    <div className="fixed inset-x-0 top-0 z-[100] px-5 pt-4 md:px-8 md:pt-5 lg:px-10">
       <nav
         ref={navRef}
-        className="flex items-center justify-between px-5 md:px-6 py-2.5 md:py-3 rounded-[2rem] border transition-all duration-300"
+        className="flex min-h-14 items-center border-b px-1 py-2 transition-all duration-300 md:min-h-16"
         style={{ color: '#0A0A0A' }}
       >
-        <Link to="/" aria-label="Inicio" className="flex items-center gap-2.5 transition-transform duration-300 hover:-translate-y-0.5 shrink-0">
-          <img src="/ps-monogram.webp" alt="Patricia Songel" width="38" height="38" decoding="async" fetchPriority="high" className="h-9 w-9 md:h-10 md:w-10 object-contain" />
+        <Link to="/" aria-label="Inicio" className="flex shrink-0 items-center gap-2.5 transition-opacity duration-300 hover:opacity-65">
+          <img src="/ps-monogram.webp" alt="" width="32" height="32" decoding="async" fetchPriority="high" className="h-8 w-8 object-contain" />
+          <span className="hidden font-sans text-[0.62rem] font-medium uppercase tracking-[0.28em] text-primary/85 sm:inline">Patricia Songel</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6 lg:gap-7">
+        <div className="ml-auto hidden items-center gap-5 md:flex lg:gap-8">
           <Link to="/" onClick={closeMenus} className={linkCls}>Inicio</Link>
 
           <div
@@ -111,18 +112,18 @@ export default function Navbar() {
           <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className={linkCls}>Alumnas</Link>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="ml-5 flex items-center gap-2 md:ml-7">
           <Link
             to={studentAreaConfig.internalPath}
             onClick={closeMenus}
-            className="hidden sm:inline-flex items-center justify-center border border-primary/15 text-primary/80 px-4 md:px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold whitespace-nowrap hover:border-accent/50 hover:text-accent transition-colors"
+            className="hidden sm:inline-flex items-center justify-center border border-primary/20 px-4 py-2.5 font-sans text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-primary/80 transition-colors hover:border-primary hover:text-primary"
           >
             Iniciar sesión
           </Link>
           <Link
             to="/pedir-cita"
             onClick={closeMenus}
-            className="magnetic-btn bg-primary text-surface px-4 md:px-5 py-2.5 rounded-[2rem] font-sans text-xs md:text-sm font-semibold whitespace-nowrap"
+            className="magnetic-btn bg-primary px-4 py-2.5 font-sans text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-surface whitespace-nowrap md:px-5"
           >
             <span className="magnetic-btn-content">Pedir cita</span>
           </Link>
@@ -140,7 +141,7 @@ export default function Navbar() {
       <div
         className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
       >
-        <div className="rounded-3xl bg-surface/95 backdrop-blur-xl border border-primary/10 shadow-xl p-4 flex flex-col">
+        <div className="ml-auto flex w-[min(22rem,100%)] flex-col border border-primary/10 bg-surface/95 p-4 shadow-xl backdrop-blur-xl">
           <Link to="/" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>
           <Link to="/conoce-a-patricia" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Conoce a Patricia</Link>
           <Link to="/formaciones" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Formaciones</Link>
