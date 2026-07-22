@@ -256,3 +256,123 @@
   animation: cta-spin 3s linear infinite;
   filter: blur(8px);
 }
+
+@keyframes hero-drift {
+  0%, 100% { transform: scale(1.04) translate3d(-0.45%, -0.35%, 0); }
+  50% { transform: scale(1.07) translate3d(0.45%, 0.35%, 0); }
+}
+
+@keyframes hero-aura-drift {
+  0%, 100% { transform: translate3d(-3%, -2%, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate3d(3%, 2%, 0) scale(1.08); opacity: 1; }
+}
+
+.hero-banner {
+  animation: hero-drift 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-veil {
+  background:
+    linear-gradient(110deg, rgba(241, 237, 237, 0.62) 0%, rgba(241, 237, 237, 0.16) 49%, rgba(241, 237, 237, 0.56) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(241, 237, 237, 0.28));
+}
+
+.hero-aura {
+  filter: blur(55px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: hero-aura-drift 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.hero-aura-one {
+  top: 12%;
+  right: 10%;
+  width: min(32rem, 58vw);
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.hero-aura-two {
+  bottom: 4%;
+  left: 8%;
+  width: min(25rem, 50vw);
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.27);
+  animation-delay: -8s;
+}
+
+.hero-lockup {
+  animation: hero-lockup-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-lockup-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-action {
+  position: relative;
+  display: inline-flex;
+  min-width: 13rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid transparent;
+  padding: 1rem 2rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 300ms ease, box-shadow 300ms ease, background-color 300ms ease, border-color 300ms ease;
+}
+
+.hero-action:hover {
+  transform: translateY(-2px);
+}
+
+.hero-action:active {
+  transform: translateY(0);
+}
+
+.hero-action:focus-visible {
+  outline: 2px solid #0A0A0A;
+  outline-offset: 4px;
+}
+
+.hero-action-primary {
+  background: #0A0A0A;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 10px 24px rgba(10, 10, 10, 0.18);
+  color: #F1EDED;
+}
+
+.hero-action-primary:hover {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 16px 30px rgba(10, 10, 10, 0.24);
+}
+
+.hero-action-secondary {
+  border-color: rgba(10, 10, 10, 0.5);
+  background: rgba(241, 237, 237, 0.34);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 8px 20px rgba(10, 10, 10, 0.06);
+  color: #0A0A0A;
+}
+
+.hero-action-secondary:hover {
+  border-color: #0A0A0A;
+  background: rgba(241, 237, 237, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 14px 28px rgba(10, 10, 10, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner,
+  .hero-aura,
+  .hero-lockup {
+    animation: none;
+  }
+
+  .hero-action {
+    transition-duration: 0ms;
+  }
+}
