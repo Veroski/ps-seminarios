@@ -3,6 +3,10 @@
 @config "../tailwind.config.js";
 
 @layer base {
+  html, body, #root {
+    font-family: "Montserrat", sans-serif;
+  }
+
   html {
     scroll-behavior: smooth;
   }
