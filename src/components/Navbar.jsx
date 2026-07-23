@@ -8,7 +8,7 @@ import { studentAreaConfig } from '../config/studentArea';
    stays legible on any background; full mobile menu included. */
 
 const FORMACIONES = [
-  { to: '/formacion/micropigmentacion', label: 'Formación 3 técnicas' },
+  { to: '/formacion/micropigmentacion', label: 'Formación 4 técnicas' },
   { to: '/formacion/glowlips', label: 'Glow Lips' },
   { to: '/formacion/hairstrokes', label: 'Cejas · Hairstrokes' },
 ];

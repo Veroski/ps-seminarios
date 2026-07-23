@@ -22,15 +22,19 @@ export default function Hero() {
 
       <div className="relative z-10 flex min-h-[100svh] items-center justify-center px-6 pb-12 pt-24 text-center sm:px-10">
         <div className="hero-lockup max-w-6xl">
-          <h1 className="font-brand text-[clamp(2.5rem,8vw,8.25rem)] leading-[0.9] tracking-[0.055em] text-[#0A0A0A]">
+          <h1 className="font-brand text-[clamp(2.3rem,6.8vw,7rem)] font-normal leading-[0.9] tracking-[0.045em] text-[#0A0A0A]">
             PATRICIA SONGEL
           </h1>
           <div aria-hidden="true" className="mx-auto mt-6 h-px w-16 bg-[#0A0A0A]/45 md:mt-8 md:w-24" />
-          <p className="mt-5 font-sans text-[0.6rem] font-light uppercase tracking-[0.29em] text-[#0A0A0A]/80 sm:text-xs md:mt-6 md:text-sm md:tracking-[0.38em]">
+          <p className="mt-5 font-sans text-[0.72rem] font-light uppercase tracking-[0.25em] text-[#0A0A0A]/80 sm:text-sm md:mt-6 md:text-base md:tracking-[0.34em]">
             Micropigmentación y belleza
           </p>
 
-          <div className="mt-11 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center md:mt-14">
+          <p className="mt-7 font-sans text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#0A0A0A] sm:text-xs md:mt-8 md:text-sm">
+            Enhancing Natural Beauty
+          </p>
+
+          <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center md:mt-12">
             <a
               href="/formaciones"
               className="hero-action hero-action-primary"

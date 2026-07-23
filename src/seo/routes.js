@@ -39,13 +39,13 @@ export const routes = [
   {
     path: '/formaciones',
     title: 'Formaciones de micropigmentación | Patricia Songel',
-    description: 'Descubre las formaciones presenciales de Patricia Songel: Formación 3 técnicas, Glowlips y Hairstrokes. Formación técnica, práctica y acompañamiento profesional en La Eliana, Valencia.',
+    description: 'Descubre las formaciones presenciales de Patricia Songel: Formación 4 técnicas, Glowlips y Hairstrokes. Formación técnica, práctica y acompañamiento profesional en La Eliana, Valencia.',
     image: img('/micro20_pagina1.webp'),
     robots: 'index, follow',
   },
   {
     path: '/formacion/micropigmentacion',
-    title: 'Formación 3 técnicas | Patricia Songel — Valencia',
+    title: 'Formación 4 técnicas | Patricia Songel — Valencia',
     description: 'Formación presencial completa en micropigmentación facial: cejas, labios y ojos. Impartida por Patricia Songel, campeona de España 2023 y 2025. Diploma acreditativo + 35 días de prácticas + seguimiento.',
     image: img('/micro20_pagina1.webp'),
     robots: 'index, follow',

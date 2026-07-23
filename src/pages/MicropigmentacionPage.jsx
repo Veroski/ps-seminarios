@@ -213,7 +213,7 @@ export default function MicropigmentacionPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'Course',
-      name: 'Formación 3 técnicas — Patricia Songel',
+      name: 'Formación 4 técnicas — Patricia Songel',
       description: 'Formación presencial completa en micropigmentación facial: cejas, labios y ojos. Impartida por Patricia Songel, campeona de España 2023 y 2025.',
       provider: {
         '@type': 'Person',
@@ -249,7 +249,7 @@ export default function MicropigmentacionPage() {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
         { '@type': 'ListItem', position: 2, name: 'Formaciones', item: `${SITE}/formaciones` },
-        { '@type': 'ListItem', position: 3, name: 'Formación 3 técnicas', item: `${SITE}/formacion/micropigmentacion` },
+        { '@type': 'ListItem', position: 3, name: 'Formación 4 técnicas', item: `${SITE}/formacion/micropigmentacion` },
       ],
     },
   ];
@@ -257,18 +257,18 @@ export default function MicropigmentacionPage() {
   return (
     <div ref={pageRef} className="pb-24 lg:pb-0" style={{ background: P.bgMain, color: P.text, overflowX: 'hidden' }}>
       <Seo
-        title="Formación 3 técnicas | Patricia Songel — Valencia"
+        title="Formación 4 técnicas | Patricia Songel — Valencia"
         description="Formación presencial completa en micropigmentación facial: cejas, labios y ojos. Impartida por Patricia Songel, campeona de España 2023 y 2025. Diploma acreditativo + 35 días de prácticas + seguimiento."
         canonical={`${SITE}/formacion/micropigmentacion`}
         image={`${SITE}/micro20_pagina1.webp`}
-        imageAlt="Formación 3 técnicas con Patricia Songel en Valencia"
+        imageAlt="Formación 4 técnicas con Patricia Songel en Valencia"
         jsonLd={jsonLdMicro}
       />
       <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section className="relative flex flex-col justify-end overflow-hidden" style={{ height: '100svh', background: P.bgDark }}>
-        <img src="/micro20_pagina1.webp" alt="Formación 3 técnicas con Patricia Songel — formación presencial en Valencia"
+        <img src="/micro20_pagina1.webp" alt="Formación 4 técnicas con Patricia Songel — formación presencial en Valencia"
           className="absolute inset-0 w-full h-full object-cover object-top"
           style={{ opacity: 0.28 }} />
         <div className="absolute inset-0" style={{
@@ -286,7 +286,7 @@ export default function MicropigmentacionPage() {
             </span>
             <h1 className="font-serif italic font-bold leading-[0.92] mb-6"
               style={{ fontSize: 'clamp(3.8rem, 9.5vw, 7.5rem)', color: P.white }}>
-              Formación<br />3 técnicas
+              Formación<br />4 técnicas
             </h1>
             <p className="font-sans text-base md:text-lg max-w-lg mb-8 leading-relaxed"
               style={{ color: 'rgba(255,255,255,0.58)' }}>

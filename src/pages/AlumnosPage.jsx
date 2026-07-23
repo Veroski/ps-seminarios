@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Seo, { SITE } from '../components/Seo';
-import StudentResults from '../components/StudentResults';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -43,7 +42,6 @@ export default function AlumnosPage() {
         </div>
       </section>
 
-      <StudentResults />
       <Footer />
     </main>
   );

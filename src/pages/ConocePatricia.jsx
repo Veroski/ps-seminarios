@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 const METRICS = [
   { value: '+20', label: 'Años en el mundo de la belleza' },
   { value: '+8',  label: 'Años especializada en micropigmentación' },
-  { value: '+1000', label: 'Tratamientos realizados' },
+  { value: '+15000', label: 'Tratamientos realizados' },
   { value: '+100', label: 'Opiniones positivas en Google' },
 ];
 

@@ -15,7 +15,7 @@ export default {
       fontFamily: {
         sans: ['"Montserrat"', 'sans-serif'],
         serif: ['"Bodoni Moda"', 'serif'],
-        brand: ['"Italiana"', 'serif'],
+        brand: ['"Bodoni Moda"', 'serif'],
         mono: ['"Montserrat"', 'sans-serif'],
       },
     },
