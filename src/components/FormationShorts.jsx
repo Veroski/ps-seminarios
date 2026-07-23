@@ -3,13 +3,13 @@ import { ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
 
 const shorts = [
   {
-    name: 'Africa Martínez',
+    name: 'África Martínez',
     meta: 'Testimonio de alumna',
     src: '/videos/africa-testimonio.mp4',
     poster: '/videos/africa-testimonio.webp',
   },
   {
-    name: 'Natalia Beou',
+    name: 'Natalia Bou',
     meta: 'Testimonio de alumna',
     src: '/videos/natalia-testimonio.mp4',
     poster: '/videos/natalia-testimonio.webp',
