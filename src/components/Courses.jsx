@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
+import FormationVsl from './FormationVsl';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -129,14 +130,14 @@ export default function Courses() {
         }}
       />
       {/* Intro Header */}
-      <div className="courses-intro w-full px-6 md:px-16 py-32 md:py-48 max-w-5xl mx-auto text-center relative z-10">
+      <div className="courses-intro w-full max-w-6xl mx-auto px-6 pb-16 pt-32 text-center relative z-10 md:px-16 md:pb-20 md:pt-48">
         <h3 className="courses-header-anim text-overline text-[#625C5C] mb-6 flex items-center justify-center gap-4">
           <span className="inline-block w-8 h-[1px] bg-[#0A0A0A]/50" />
           El Catálogo
           <span className="inline-block w-8 h-[1px] bg-[#0A0A0A]/50" />
         </h3>
-        <h2 className="courses-header-anim font-serif italic text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight text-[#0A0A0A] mb-8">
-          Formaciones <span className="text-[#0A0A0A]">Exclusivas</span>.
+        <h2 className="courses-header-anim mb-8 whitespace-nowrap font-serif text-[clamp(2rem,7vw,6rem)] italic font-bold leading-none tracking-tight text-[#0A0A0A]">
+          Formaciones Exclusivas.
         </h2>
         <p className="courses-header-anim max-w-2xl mx-auto text-copy-dark">
           Especializaciones profundas para profesionales que buscan dominar cada técnica a la perfección.
@@ -144,6 +145,8 @@ export default function Courses() {
       </div>
 
       {/* Courses — Alternating Layout */}
+      <FormationVsl />
+
       <div className="w-full relative z-20 pb-32">
         {courses.map((course, idx) => {
           const isEven = idx % 2 === 0;
