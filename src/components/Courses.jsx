@@ -45,6 +45,11 @@ export default function Courses() {
     let ctx = gsap.context(() => {
       const courseNodes = courseRefs.current.filter(Boolean);
 
+      gsap.from('.courses-header-anim', {
+        y: 32, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out',
+        scrollTrigger: { trigger: '.courses-intro', start: 'top 85%' },
+      });
+
       // Course Scroll Effects
       courseNodes.forEach((courseEl) => {
         const mediaEl   = courseEl.querySelector('.course-media');
@@ -123,6 +128,15 @@ export default function Courses() {
           backgroundSize: '28px 28px',
         }}
       />
+      <header className="courses-intro relative z-10 mx-auto max-w-5xl px-6 py-10 text-center md:px-16 md:py-12">
+        <p className="courses-header-anim text-overline text-[#625C5C]">El Catálogo</p>
+        <h1 className="courses-header-anim mt-3 font-serif text-4xl italic font-bold leading-none tracking-tight md:text-5xl">
+          Formaciones Exclusivas.
+        </h1>
+        <p className="courses-header-anim mx-auto mt-4 max-w-2xl text-copy-dark">
+          Especializaciones profundas para profesionales que buscan dominar cada técnica a la perfección.
+        </p>
+      </header>
       <FormationVsl />
 
       <div className="w-full relative z-20 pb-32">
