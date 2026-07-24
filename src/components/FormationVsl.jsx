@@ -37,7 +37,7 @@ export default function FormationVsl() {
           <button
             type="button"
             onClick={() => setSoundOn((value) => !value)}
-            className="absolute bottom-6 right-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/30 bg-black/70 px-4 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur transition hover:border-white/60 hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:bottom-7 md:right-7"
+            className="absolute right-6 top-5 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/30 bg-black/70 px-4 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur transition hover:border-white/60 hover:bg-black/85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:right-7 md:top-6"
             aria-label={soundOn ? 'Silenciar vídeo' : 'Activar sonido'}
             aria-pressed={soundOn}
           >
