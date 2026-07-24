@@ -311,7 +311,8 @@ export default function CejasPage() {
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
       <section
-        className="relative flex flex-col justify-end overflow-hidden"
+        id="inicio"
+        className="relative flex flex-col justify-end overflow-hidden scroll-mt-32"
         style={{ height: '100svh', background: C.bgDark }}
       >
         <img
@@ -381,7 +382,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ INTRO ═════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: C.bgLight }}>
+      <section id="bienvenida" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: C.bgLight }}>
         <div
           className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none"
           style={{
@@ -438,7 +439,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ A QUIÉN VA DIRIGIDA ═══════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: C.bgWarm }}>
+      <section id="para-quien" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: C.bgWarm }}>
         <div
           className="rvn absolute -right-8 top-1/2 -translate-y-1/2 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
           style={{ fontSize: '16vw', color: `${C.accent}09`, lineHeight: 1, letterSpacing: '-0.04em' }}
@@ -509,7 +510,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ QUÉ APRENDERÁS ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: C.bgMid }}>
+      <section id="aprendizaje" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: C.bgMid }}>
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.05]"
           style={{
@@ -588,7 +589,7 @@ export default function CejasPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 1 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-10 md:py-20" style={{ background: C.bgLight }}>
+      <section id="programa-dia-1" className="relative overflow-hidden py-10 md:py-20 scroll-mt-32" style={{ background: C.bgLight }}>
         <div
           className="rvn absolute top-8 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.045]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: C.accent, lineHeight: 0.85 }}
@@ -634,7 +635,8 @@ export default function CejasPage() {
 
       {/* ══ PROGRAMA DÍA 2 ════════════════════════════════════ */}
       <section
-        className="relative overflow-hidden py-10 md:py-20 border-t"
+        id="programa-dia-2"
+        className="relative overflow-hidden py-10 md:py-20 border-t scroll-mt-32"
         style={{ background: C.bgDark, borderColor: `${C.gold}18` }}
       >
         <div
@@ -689,7 +691,7 @@ export default function CejasPage() {
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
       <section
         id="formulario"
-        className="relative overflow-hidden py-12 md:py-24"
+        className="relative overflow-hidden py-12 md:py-24 scroll-mt-32"
         style={{ background: C.bgLight }}
       >
         <div
@@ -799,7 +801,8 @@ export default function CejasPage() {
 
       {/* ══ CTA FINAL ═════════════════════════════════════════ */}
       <section
-        className="relative overflow-hidden py-12 md:py-24"
+        id="reserva"
+        className="relative overflow-hidden py-12 md:py-24 scroll-mt-32"
         style={{ background: C.bgDark }}
       >
         <div

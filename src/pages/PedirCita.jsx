@@ -163,7 +163,7 @@ export default function PedirCita() {
       <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden pt-32 pb-14 md:pt-44 md:pb-20 px-6 md:px-16">
+      <section id="cita" className="relative overflow-hidden pt-32 pb-14 md:pt-44 md:pb-20 px-6 md:px-16 scroll-mt-32">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at 25% 20%, rgba(10,10,10,0.10) 0%, transparent 45%), radial-gradient(ellipse at 80% 70%, rgba(10,10,10,0.07) 0%, transparent 45%)' }} />
         <div className="relative z-10 max-w-3xl mx-auto text-center chero">
@@ -196,7 +196,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ CONTACTO RÁPIDO ═══════════════════════════════════ */}
-      <section className="border-y border-primary/10 bg-surface">
+      <section id="contacto-rapido" className="border-y border-primary/10 bg-surface scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6 md:px-16 py-10 md:py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { Icon: Phone, label: 'Llámanos', value: CLINIC.phoneDisplay, href: `tel:${CLINIC.phoneTel}` },
@@ -362,7 +362,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ RESEÑAS / CONFIANZA ═══════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-primary text-surface">
+      <section id="resenas" className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-primary text-surface scroll-mt-32">
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="rv flex items-center justify-center gap-1 mb-5">
             {[...Array(5)].map((_, i) => <Star key={i} size={18} className="text-surface fill-surface" />)}
@@ -382,7 +382,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ TRATAMIENTOS ══════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-surface">
+      <section id="tratamientos" className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-surface scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <div className="rv flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-accent" />
@@ -410,7 +410,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ POR QUÉ ELEGIRNOS ═════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-[#F3EDE2] border-y border-primary/10">
+      <section id="por-que-elegirnos" className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-[#F3EDE2] border-y border-primary/10 scroll-mt-32">
         <div className="max-w-5xl mx-auto">
           <h2 className="rv font-serif italic font-bold text-3xl md:text-4xl leading-tight mb-12 text-center text-primary">
             Una experiencia diseñada para ti.
@@ -427,7 +427,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ FAQ ═══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-surface">
+      <section id="preguntas-frecuentes" className="relative overflow-hidden py-20 md:py-28 px-6 md:px-16 bg-surface scroll-mt-32">
         <div className="max-w-3xl mx-auto">
           <div className="rv flex items-center gap-3 mb-10 justify-center">
             <div className="w-8 h-px bg-accent" />
@@ -449,7 +449,7 @@ export default function PedirCita() {
       </section>
 
       {/* ══ CTA FINAL ═════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-24 md:py-32 px-6 md:px-16 bg-primary text-surface">
+      <section id="reserva" className="relative overflow-hidden py-24 md:py-32 px-6 md:px-16 bg-primary text-surface scroll-mt-32">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-[0.08]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 max-w-3xl mx-auto text-center">

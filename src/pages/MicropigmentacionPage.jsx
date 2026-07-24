@@ -267,7 +267,7 @@ export default function MicropigmentacionPage() {
       <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
-      <section className="relative flex flex-col justify-end overflow-hidden" style={{ height: '100svh', background: P.bgDark }}>
+      <section id="inicio" className="relative flex flex-col justify-end overflow-hidden scroll-mt-32" style={{ height: '100svh', background: P.bgDark }}>
         <img src="/micro20_pagina1.webp" alt="Formación 4 técnicas con Patricia Songel — formación presencial en Valencia"
           className="absolute inset-0 w-full h-full object-cover object-top"
           style={{ opacity: 0.28 }} />
@@ -314,7 +314,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ BIENVENIDA ════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: P.bgSoft }}>
+      <section id="bienvenida" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: P.bgSoft }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(31,31,31,0.5) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="rvn absolute top-1/2 -translate-y-1/2 right-0 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
@@ -344,7 +344,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ PARTE 1 — ONLINE ══════════════════════════════════ */}
-      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section id="parte-online" className="relative overflow-hidden py-10 md:py-20 border-t scroll-mt-32" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="rvn absolute -top-4 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.055]"
           style={{ fontSize: 'clamp(8rem, 22vw, 18rem)', color: P.accent, lineHeight: 0.85 }}>
           12H
@@ -391,7 +391,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ TEMARIO ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: P.bgDark }}>
+      <section id="temario" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: P.bgDark }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -419,7 +419,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ PARTE 2 — PRESENCIAL ══════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: P.bgWarm }}>
+      <section id="parte-presencial" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: P.bgWarm }}>
         <div className="rvn absolute -top-6 right-4 font-serif italic font-bold pointer-events-none select-none opacity-[0.06]"
           style={{ fontSize: 'clamp(6rem, 18vw, 14rem)', color: P.accent, lineHeight: 0.85 }}>
           4D
@@ -464,7 +464,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ SEGUIMIENTO ═══════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: P.bgSoft, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section id="seguimiento" className="relative overflow-hidden py-10 md:py-20 border-t scroll-mt-32" style={{ background: P.bgSoft, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
           <div className="rv flex items-center gap-3 mb-10">
             <div className="w-8 h-px" style={{ background: P.accent }} />
@@ -491,7 +491,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ QUÉ INCLUYE ═══════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: P.white, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section id="incluye" className="relative overflow-hidden py-10 md:py-20 border-t scroll-mt-32" style={{ background: P.white, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
           <div className="rv flex items-center gap-3 mb-10">
             <div className="w-8 h-px" style={{ background: P.accent }} />
@@ -533,7 +533,7 @@ export default function MicropigmentacionPage() {
       </section>
 
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
-      <section id="formulario" className="relative overflow-hidden py-12 md:py-24 border-t" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
+      <section id="formulario" className="relative overflow-hidden py-12 md:py-24 border-t scroll-mt-32" style={{ background: P.bgMain, borderColor: 'rgba(31,31,31,0.06)' }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.035]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(31,31,31,0.5) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-2xl mx-auto">

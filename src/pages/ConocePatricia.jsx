@@ -122,7 +122,7 @@ export default function ConocePatricia() {
       <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24 px-6 md:px-16">
+      <section id="presentacion" className="relative overflow-hidden pt-32 pb-16 md:pt-44 md:pb-24 px-6 md:px-16 scroll-mt-32">
         {/* Ambient gold glow + marble veins */}
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at 20% 15%, rgba(10,10,10,0.10) 0%, transparent 45%), radial-gradient(ellipse at 85% 60%, rgba(10,10,10,0.08) 0%, transparent 45%)' }} />
@@ -169,7 +169,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ MÉTRICAS ══════════════════════════════════════════ */}
-      <section className="border-y border-primary/10 bg-surface">
+      <section id="trayectoria" className="border-y border-primary/10 bg-surface scroll-mt-32">
         <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
           {METRICS.map((m) => (
             <div key={m.label} className="flex flex-col">
@@ -228,7 +228,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ LOGROS ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-surface">
+      <section id="logros" className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-surface scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <div className="rv flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-accent" />
@@ -255,7 +255,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ MÉTODO ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-[#F3EDE2] border-y border-primary/10">
+      <section id="metodo" className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-[#F3EDE2] border-y border-primary/10 scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <div className="rv flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-accent" />
@@ -277,7 +277,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ QUÉ LA DIFERENCIA ═════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-surface">
+      <section id="diferencia" className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-surface scroll-mt-32">
         <div className="max-w-6xl mx-auto">
           <div className="rv flex items-center gap-3 mb-6">
             <div className="w-10 h-px bg-accent" />
@@ -303,7 +303,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ BENEFICIOS PARA TI ════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-primary text-surface">
+      <section id="beneficios" className="relative overflow-hidden py-20 md:py-32 px-6 md:px-16 bg-primary text-surface scroll-mt-32">
         <div className="relative z-10 max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-24 items-center">
           <div className="rv">
             <p className="text-overline text-accent mb-6">Lo que ganas tú</p>
@@ -327,7 +327,7 @@ export default function ConocePatricia() {
       </section>
 
       {/* ══ CTA FINAL ═════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-24 md:py-36 px-6 md:px-16 bg-primary text-surface">
+      <section id="contacto" className="relative overflow-hidden py-24 md:py-36 px-6 md:px-16 bg-primary text-surface scroll-mt-32">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none opacity-[0.08]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 max-w-3xl mx-auto text-center">

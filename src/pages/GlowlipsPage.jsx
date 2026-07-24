@@ -277,7 +277,7 @@ export default function GlowlipsPage() {
       <Navbar />
 
       {/* ══ HERO ══════════════════════════════════════════════ */}
-      <section className="relative flex flex-col justify-end overflow-hidden" style={{ height: '100svh', background: G.bgWine }}>
+      <section id="inicio" className="relative flex flex-col justify-end overflow-hidden scroll-mt-32" style={{ height: '100svh', background: G.bgWine }}>
         <img src="/glowlips_pagina1.webp" alt="Glowlips Masterclass — micropigmentación de labios con Patricia Songel en Valencia"
           className="absolute inset-0 w-full h-full object-cover object-top"
           style={{ opacity: 0.3, mixBlendMode: 'luminosity' }} />
@@ -319,7 +319,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ INTRO ═════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgLight }}>
+      <section id="bienvenida" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: G.bgLight }}>
         <div className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${G.bgNude}60 0%, transparent 70%)`, transform: 'translate(-30%, -30%)' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -357,7 +357,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ A QUIÉN VA DIRIGIDA ═══════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgNude }}>
+      <section id="para-quien" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: G.bgNude }}>
         <div className="rvn absolute -right-8 top-1/2 -translate-y-1/2 font-serif italic font-bold pointer-events-none select-none hidden xl:block"
           style={{ fontSize: '16vw', color: `${G.bgWine}09`, lineHeight: 1, letterSpacing: '-0.04em' }}>
           lips
@@ -406,7 +406,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ QUÉ APRENDERÁS ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgRed }}>
+      <section id="aprendizaje" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: G.bgRed }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(243,241,238,0.7) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-5xl mx-auto">
@@ -454,7 +454,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 1 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-10 md:py-20" style={{ background: G.bgLight }}>
+      <section id="programa-dia-1" className="relative overflow-hidden py-10 md:py-20 scroll-mt-32" style={{ background: G.bgLight }}>
         <div className="rvn absolute top-8 left-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.045]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: G.bgRed, lineHeight: 0.85 }}>
           D1
@@ -485,7 +485,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ PROGRAMA DÍA 2 ════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-10 md:py-20 border-t" style={{ background: G.bgWine, borderColor: 'rgba(215,181,106,0.12)' }}>
+      <section id="programa-dia-2" className="relative overflow-hidden py-10 md:py-20 border-t scroll-mt-32" style={{ background: G.bgWine, borderColor: 'rgba(215,181,106,0.12)' }}>
         <div className="rvn absolute bottom-8 right-6 font-serif italic font-bold pointer-events-none select-none opacity-[0.05]"
           style={{ fontSize: 'clamp(7rem, 18vw, 13rem)', color: G.gold, lineHeight: 0.85 }}>
           D2
@@ -514,7 +514,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ FORMULARIO ════════════════════════════════════════ */}
-      <section id="formulario" className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgLight }}>
+      <section id="formulario" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: G.bgLight }}>
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none"
           style={{ background: `radial-gradient(circle, ${G.bgNude}50 0%, transparent 70%)`, transform: 'translate(30%, -30%)' }} />
         <div className="relative z-10 px-6 md:px-16 max-w-2xl mx-auto">
@@ -610,7 +610,7 @@ export default function GlowlipsPage() {
       </section>
 
       {/* ══ RESERVA ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-12 md:py-24" style={{ background: G.bgWine }}>
+      <section id="reserva" className="relative overflow-hidden py-12 md:py-24 scroll-mt-32" style={{ background: G.bgWine }}>
         <div className="absolute inset-0 pointer-events-none opacity-[0.06]"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(215,181,106,0.7) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full pointer-events-none"

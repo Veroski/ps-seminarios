@@ -14,6 +14,7 @@ const courses = [
     tag: "Fundamentos",
     img: "/micro20_pagina1.webp",
     path: "/formacion/micropigmentacion",
+    id: "formacion-4-tecnicas",
   },
   {
     title: "Glow Lips",
@@ -21,6 +22,7 @@ const courses = [
     tag: "Especialización",
     img: "/glowlips_pagina1.webp",
     path: "/formacion/glowlips",
+    id: "formacion-glowlips",
   },
   {
     title: "Hairstrokes Masterclass",
@@ -28,6 +30,7 @@ const courses = [
     tag: "Masterclass",
     img: "/cejas_pagina1.webp",
     path: "/formacion/hairstrokes",
+    id: "formacion-hairstrokes",
   },
 ];
 
@@ -55,11 +58,11 @@ export default function Courses() {
 
         // 3D Image Parallax on Scroll
         if (mediaEl) {
-          gsap.set(mediaEl, { y: -140, scale: 1.12, rotationX: 7, rotationZ: -0.8, force3D: true });
+          gsap.set(mediaEl, { y: -84, scale: 1.12, rotationX: 7, rotationZ: -0.8, force3D: true });
           gsap.fromTo(mediaEl,
-            { y: -140, scale: 1.12, rotationX: 7, rotationZ: -0.8, force3D: true },
+            { y: -84, scale: 1.12, rotationX: 7, rotationZ: -0.8, force3D: true },
             {
-              y: 140,
+              y: 84,
               scale: 1.02,
               rotationX: -7,
               rotationZ: 0.8,
@@ -78,7 +81,7 @@ export default function Courses() {
         if (imgEl) {
           gsap.set(imgEl, { scale: 1.04, force3D: true });
           gsap.to(imgEl, {
-            y: 70,
+            y: 42,
             ease: 'none',
             scrollTrigger: {
               trigger: courseEl,
@@ -151,14 +154,15 @@ export default function Courses() {
               ref={el => {
                 courseRefs.current[idx] = el;
               }}
-              className="w-full min-h-[90vh] md:min-h-[100svh] relative flex items-center py-20 md:py-0 border-t border-[#0A0A0A]/[0.08]"
+              id={course.id}
+              className="w-full min-h-[90vh] scroll-mt-32 relative flex items-center py-20 md:min-h-[100svh] md:py-0 border-t border-[#0A0A0A]/[0.08]"
               style={{ perspective: '1200px' }}
             >
               <div className={`w-full max-w-[100rem] mx-auto px-6 md:px-16 flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 xl:gap-24 relative z-10`}>
 
                 {/* Image Side — clickable */}
                 <div
-                  className="w-full lg:w-[48%] relative rounded-[3rem] overflow-hidden group shadow-[0_28px_70px_rgba(17,17,19,0.14)] transform-gpu cursor-pointer"
+                  className="w-full max-w-[26rem] lg:w-[29%] relative rounded-[3rem] overflow-hidden group shadow-[0_28px_70px_rgba(17,17,19,0.14)] transform-gpu cursor-pointer"
                   style={{ aspectRatio: '3/4' }}
                   onClick={() => navigate(course.path)}
                   role="button"

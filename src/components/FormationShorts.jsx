@@ -74,7 +74,7 @@ export default function FormationShorts() {
   );
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-[#0A0A0A] px-6 py-20 text-[#F3EDE2] md:px-16 md:py-28">
+    <section id="testimonios" ref={sectionRef} className="relative overflow-hidden bg-[#0A0A0A] px-6 py-20 text-[#F3EDE2] scroll-mt-32 md:px-16 md:py-28">
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-30"
