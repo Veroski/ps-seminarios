@@ -139,7 +139,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+        className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'visible opacity-100 scale-100' : 'invisible opacity-0 scale-95 pointer-events-none'}`}
       >
         <div className="ml-auto flex w-[min(22rem,100%)] flex-col border border-primary/10 bg-surface/95 p-4 shadow-xl backdrop-blur-xl">
           <Link to="/" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>

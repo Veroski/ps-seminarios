@@ -128,7 +128,7 @@ export default function Courses() {
           backgroundSize: '28px 28px',
         }}
       />
-      <header className="courses-intro relative z-10 mx-auto max-w-5xl px-6 py-10 text-center md:px-16 md:py-12">
+      <header className="courses-intro relative z-10 mx-auto max-w-5xl px-6 pb-6 pt-24 text-center md:px-16 md:pb-8 md:pt-28">
         <p className="courses-header-anim text-overline text-[#625C5C]">El Catálogo</p>
         <h1 className="courses-header-anim mt-3 font-serif text-4xl italic font-bold leading-none tracking-tight md:text-5xl">
           Formaciones Exclusivas.

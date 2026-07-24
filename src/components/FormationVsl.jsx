@@ -20,7 +20,7 @@ export default function FormationVsl() {
             className="aspect-video w-full rounded-[1.15rem] bg-black object-cover md:rounded-[1.35rem]"
             controls
             playsInline
-            preload="metadata"
+            preload="none"
             poster="/videos/formaciones-vsl.webp"
             aria-label="Patricia Songel explica el método de sus formaciones"
           >
