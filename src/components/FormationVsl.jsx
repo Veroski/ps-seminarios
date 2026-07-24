@@ -18,9 +18,10 @@ export default function FormationVsl() {
           </div>
           <video
             className="aspect-video w-full rounded-[1.15rem] bg-black object-cover md:rounded-[1.35rem]"
+            autoPlay
             controls
             playsInline
-            preload="none"
+            preload="auto"
             poster="/videos/formaciones-vsl.webp"
             aria-label="Patricia Songel explica el método de sus formaciones"
           >
