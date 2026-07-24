@@ -10,12 +10,20 @@ export default function FormationVsl() {
     const video = videoRef.current;
     const next = !soundOn;
     setSoundOn(next);
-    if (video) {
-      video.muted = !next;
-      // Safari pauses playback when a muted-autoplay video is unmuted via JS;
-      // re-trigger play() so the video doesn't get stuck paused.
-      void video.play().catch(() => {});
+    if (!video) return;
+    if (next) {
+      // iOS Safari can keep a muted-autoplay video silent even after
+      // video.muted = false unless the "muted" attribute and defaultMuted
+      // are also cleared in the same gesture, so clear all three.
+      video.removeAttribute('muted');
+      video.defaultMuted = false;
+      video.muted = false;
+    } else {
+      video.muted = true;
     }
+    // Safari can pause playback when a muted-autoplay video is unmuted via JS;
+    // re-trigger play() so the video doesn't get stuck paused.
+    void video.play().catch(() => {});
   };
 
   const togglePlay = () => {
