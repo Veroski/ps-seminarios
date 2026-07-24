@@ -129,8 +129,7 @@ export default function Courses() {
         }}
       />
       <header className="courses-intro relative z-10 mx-auto max-w-5xl px-6 pb-6 pt-24 text-center md:px-16 md:pb-8 md:pt-28">
-        <p className="courses-header-anim text-overline text-[#625C5C]">El Catálogo</p>
-        <h1 className="courses-header-anim mt-3 font-serif text-4xl italic font-bold leading-none tracking-tight md:text-5xl">
+        <h1 className="courses-header-anim mt-5 font-serif text-4xl italic font-bold leading-none tracking-tight md:text-5xl">
           Formaciones Exclusivas.
         </h1>
         <p className="courses-header-anim mx-auto mt-4 max-w-2xl text-copy-dark">
