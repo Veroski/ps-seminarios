@@ -273,10 +273,12 @@
 }
 
 .courses-onsite-grid {
+  width: 75%;
   max-width: 100rem;
 }
 
 .courses-online-grid {
+  width: 75%;
   max-width: 80rem;
 }
 

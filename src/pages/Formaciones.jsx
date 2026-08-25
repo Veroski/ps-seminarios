@@ -14,9 +14,9 @@ export default function Formaciones() {
     <main className="min-h-[100svh] bg-surface font-sans text-primary">
       <Seo
         title="Formaciones de micropigmentación | Patricia Songel"
-        description="Descubre las formaciones presenciales y online de Patricia Songel: 4 técnicas, Glow Lips, Hairstrokes, Cejas Online y Labios Online."
+        description="Descubre las formaciones presenciales y online de Patricia Songel: 4 técnicas, Glow Lips Masterclass, Hairstrokes, Brows Shadow Online y Glow Lips Online."
         canonical={`${SITE}/formaciones`}
-        image={`${SITE}/micro20_pagina1_horizontal.webp`}
+        image={`${SITE}/micro20_banner.webp`}
         imageAlt="Formaciones de micropigmentación de Patricia Songel"
         jsonLd={{
           '@context': 'https://schema.org',

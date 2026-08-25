@@ -11,6 +11,7 @@ import CourseFormPage from './pages/CourseFormPage';
 import MicropigmentacionPage from './pages/MicropigmentacionPage';
 import GlowlipsPage from './pages/GlowlipsPage';
 import CejasPage from './pages/CejasPage';
+import HairstrokesIniciacionPage from './pages/HairstrokesIniciacionPage';
 import ConocePatricia from './pages/ConocePatricia';
 import PedirCita from './pages/PedirCita';
 import AlumnosPage from './pages/AlumnosPage';
@@ -65,6 +66,7 @@ function App() {
         <Route path="/formacion/micropigmentacion" element={<MicropigmentacionPage />} />
         <Route path="/formacion/glowlips" element={<GlowlipsPage />} />
         <Route path="/formacion/hairstrokes" element={<CejasPage />} />
+        <Route path="/formacion/hairstrokes-iniciacion" element={<HairstrokesIniciacionPage />} />
         <Route path="/formacion/:slug" element={<CourseFormPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -88,11 +88,10 @@ export default function Courses() {
             Formaciones presenciales
           </p>
           <div className="courses-onsite-grid mx-auto grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-4">
-            {onsite.map((formation, index) => (
+            {onsite.map((formation) => (
               <CourseCard
                 key={formation.slug}
                 formation={formation}
-                className={index === 2 ? 'md:col-span-2 md:w-1/2 md:justify-self-center' : ''}
               />
             ))}
           </div>

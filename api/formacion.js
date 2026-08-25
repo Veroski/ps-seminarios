@@ -1,9 +1,9 @@
 const FORMATIONS = {
   micropigmentacion: { title: 'Formación 4 técnicas', tag: 'lead-micropigmentacion', required: ['experiencia', 'inversion'] },
-  glowlips: { title: 'Glow Lips', tag: 'lead-glowlips', required: ['activa', 'inversion'] },
+  glowlips: { title: 'Glow Lips Masterclass', tag: 'lead-glowlips', required: ['activa', 'inversion'] },
   hairstrokes: { title: 'Hairstrokes Masterclass', tag: 'lead-hairstrokes', required: ['activa', 'inversion'] },
-  'cejas-online': { title: 'Cejas Online', tag: 'lista-espera-cejas-online', online: true, required: ['experiencia'] },
-  'labios-online': { title: 'Labios Online', tag: 'lista-espera-labios-online', online: true, required: ['experiencia'] },
+  'cejas-online': { title: 'Brows Shadow Online', tag: 'lista-espera-cejas-online', online: true, required: ['experiencia'] },
+  'labios-online': { title: 'Glow Lips Online', tag: 'lista-espera-labios-online', online: true, required: ['experiencia'] },
 };
 
 const clean = (value, max = 200) => String(value ?? '').trim().slice(0, max);

@@ -29,11 +29,14 @@ export default async function handler(req, res) {
 
   // Compose an appointment note from the free-form booking fields.
   const notaCita = [
+    data.formacion ? `Formación: ${data.formacion}` : null,
     data.tratamiento ? `Tratamiento: ${data.tratamiento}` : null,
     data.dia ? `Día preferido: ${data.dia}` : null,
     data.hora ? `Hora preferida: ${data.hora}` : null,
     data.mensaje ? `Mensaje: ${data.mensaje}` : null,
   ].filter(Boolean).join(' | ');
+
+  const initiationTag = data.formacion === 'Hairstrokes Iniciación' ? 'lead-hairstrokes-iniciacion' : null;
 
   const payload = {
     locationId: process.env.GHL_LOCATION_ID,
@@ -42,7 +45,7 @@ export default async function handler(req, res) {
     name: data.nombre,
     phone: normalizePhone(data.telefono),
     source: 'Pedir cita — Micropigmentacion',
-    tags: ['lead-cita', data.tratamiento ? `tratamiento-${String(data.tratamiento).toLowerCase()}` : 'tratamiento-consulta'],
+    tags: ['lead-cita', ...(initiationTag ? [initiationTag] : []), data.tratamiento ? `tratamiento-${String(data.tratamiento).toLowerCase()}` : 'tratamiento-consulta'],
   };
 
   const ghlRes = await fetch('https://services.leadconnectorhq.com/contacts/upsert', {

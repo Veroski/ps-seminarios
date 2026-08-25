@@ -9,10 +9,11 @@ import { studentAreaConfig } from '../config/studentArea';
 
 const FORMACIONES = [
   { to: '/formacion/micropigmentacion', label: 'Formación 4 técnicas' },
-  { to: '/formacion/glowlips', label: 'Glow Lips' },
-  { to: '/formacion/hairstrokes', label: 'Cejas · Hairstrokes' },
-  { to: '/formacion/cejas-online', label: 'Cejas Online · Lista de espera' },
-  { to: '/formacion/labios-online', label: 'Labios Online · Lista de espera' },
+  { to: '/formacion/glowlips', label: 'Glow Lips Masterclass' },
+  { to: '/formacion/hairstrokes', label: 'Hairstrokes Masterclass' },
+  { to: '/formacion/hairstrokes-iniciacion', label: 'Hairstrokes Iniciación' },
+  { to: '/formacion/cejas-online', label: 'Brows Shadow Online · Lista de espera' },
+  { to: '/formacion/labios-online', label: 'Glow Lips Online · Lista de espera' },
 ];
 
 export default function Navbar() {

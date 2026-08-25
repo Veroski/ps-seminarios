@@ -11,7 +11,7 @@ describe('validateFormationLead', () => {
   };
 
   it('accepts a known formation and marks online waitlists', () => {
-    expect(validateFormationLead(valid)?.formation).toMatchObject({ title: 'Cejas Online', online: true });
+    expect(validateFormationLead(valid)?.formation).toMatchObject({ title: 'Brows Shadow Online', online: true });
   });
 
   it('rejects unknown formations and malformed contact data', () => {
