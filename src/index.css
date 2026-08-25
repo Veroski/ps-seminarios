@@ -280,12 +280,6 @@
   max-width: 80rem;
 }
 
-@media (min-width: 768px) and (max-height: 800px) {
-  .courses-online-grid {
-    max-width: 54rem;
-  }
-}
-
 .testimonial-rail-card {
   position: absolute;
   top: 50%;

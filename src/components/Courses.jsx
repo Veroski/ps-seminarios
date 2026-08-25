@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { formations } from '../data/formations';
 import FormationVsl from './FormationVsl';
 
-function CourseCard({ formation }) {
+function CourseCard({ formation, className = '' }) {
   return (
     <Link
       to={`/formacion/${formation.slug}`}
       data-course-card
       aria-label={`${formation.online ? 'Apuntarme a la lista de espera de' : 'Solicitar información sobre'} ${formation.title}`}
-      className="course-card group relative block aspect-video min-h-0 overflow-hidden rounded-[1.25rem] border border-[#0A0A0A]/10 bg-[#E9DEC9] shadow-[0_16px_38px_rgba(17,17,19,0.11)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B91C1C] md:rounded-[1.75rem]"
+      className={`course-card group relative block aspect-video min-h-0 overflow-hidden rounded-[1.25rem] border border-[#0A0A0A]/10 bg-[#E9DEC9] shadow-[0_16px_38px_rgba(17,17,19,0.11)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B91C1C] md:rounded-[1.75rem] ${className}`}
     >
       <img
         src={formation.image}
@@ -87,8 +87,14 @@ export default function Courses() {
           <p className="mb-2 text-center text-[0.52rem] font-semibold uppercase tracking-[0.24em] text-[#0A0A0A]/48 md:mb-3 md:text-[0.58rem]">
             Formaciones presenciales
           </p>
-          <div className="courses-onsite-grid mx-auto grid grid-cols-1 gap-2.5 md:grid-cols-3 md:gap-4">
-            {onsite.map((formation) => <CourseCard key={formation.slug} formation={formation} />)}
+          <div className="courses-onsite-grid mx-auto grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-4">
+            {onsite.map((formation, index) => (
+              <CourseCard
+                key={formation.slug}
+                formation={formation}
+                className={index === 2 ? 'md:col-span-2 md:w-1/2 md:justify-self-center' : ''}
+              />
+            ))}
           </div>
 
           <div className="mb-2.5 mt-14 flex items-center gap-3 md:mb-3 md:mt-20">
