@@ -8,6 +8,9 @@ import AvisoLegal from './pages/AvisoLegal';
 import Privacidad from './pages/Privacidad';
 import Terminos from './pages/Terminos';
 import CourseFormPage from './pages/CourseFormPage';
+import MicropigmentacionPage from './pages/MicropigmentacionPage';
+import GlowlipsPage from './pages/GlowlipsPage';
+import CejasPage from './pages/CejasPage';
 import ConocePatricia from './pages/ConocePatricia';
 import PedirCita from './pages/PedirCita';
 import AlumnosPage from './pages/AlumnosPage';
@@ -59,6 +62,9 @@ function App() {
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/privacidad" element={<Privacidad />} />
         <Route path="/terminos" element={<Terminos />} />
+        <Route path="/formacion/micropigmentacion" element={<MicropigmentacionPage />} />
+        <Route path="/formacion/glowlips" element={<GlowlipsPage />} />
+        <Route path="/formacion/hairstrokes" element={<CejasPage />} />
         <Route path="/formacion/:slug" element={<CourseFormPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -91,7 +91,7 @@ export default function Courses() {
             {onsite.map((formation) => <CourseCard key={formation.slug} formation={formation} />)}
           </div>
 
-          <div className="mb-2.5 mt-4 flex items-center gap-3 md:mb-3 md:mt-5">
+          <div className="mb-2.5 mt-14 flex items-center gap-3 md:mb-3 md:mt-20">
             <span className="h-px flex-1 bg-[#0A0A0A]/14" />
             <p className="shrink-0 text-[0.5rem] font-semibold uppercase tracking-[0.22em] text-[#0A0A0A]/52 md:text-[0.56rem]">
               Formaciones online · Lista de espera

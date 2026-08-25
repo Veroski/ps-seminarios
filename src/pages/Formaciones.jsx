@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Courses from '../components/Courses';
-import Curriculum from '../components/Curriculum';
 import FormationShorts from '../components/FormationShorts';
-import TargetAudience from '../components/TargetAudience';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 
@@ -30,8 +28,6 @@ export default function Formaciones() {
       <Navbar />
       <Courses />
       <FormationShorts />
-      <Curriculum />
-      <TargetAudience />
       <Footer />
     </main>
   );

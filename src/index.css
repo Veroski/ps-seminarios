@@ -273,20 +273,16 @@
 }
 
 .courses-onsite-grid {
-  max-width: 76rem;
+  max-width: 100rem;
 }
 
 .courses-online-grid {
-  max-width: 61rem;
+  max-width: 80rem;
 }
 
 @media (min-width: 768px) and (max-height: 800px) {
-  .courses-onsite-grid {
-    max-width: 56rem;
-  }
-
   .courses-online-grid {
-    max-width: 36rem;
+    max-width: 54rem;
   }
 }
 
