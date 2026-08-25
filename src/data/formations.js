@@ -1,0 +1,56 @@
+export const formations = [
+  {
+    slug: 'micropigmentacion',
+    title: 'Formación 4 técnicas',
+    eyebrow: 'Fundamentos · Presencial',
+    image: '/course-4-tecnicas-horizontal.webp',
+    description: 'Cejas, labios y ojos desde una base técnica sólida.',
+    experienceLabel: 'Experiencia previa',
+    experienceOptions: ['Sin experiencia', 'Iniciación', 'Intermedio', 'Avanzado'],
+    investmentOptions: ['Menos de 2.000 €', 'Entre 2.000 y 3.000 €', 'Más de 3.000 €'],
+  },
+  {
+    slug: 'glowlips',
+    title: 'Glow Lips',
+    eyebrow: 'Especialización · Presencial',
+    image: '/course-glowlips-horizontal.webp',
+    description: 'Saturación uniforme y resultados naturales en labios.',
+    experienceLabel: 'Experiencia con labios',
+    experienceOptions: ['Sin experiencia', 'Iniciación', 'Intermedio', 'Avanzado'],
+    investmentOptions: ['Menos de 1.000 €', 'Entre 1.000 y 1.500 €', 'Más de 1.500 €'],
+  },
+  {
+    slug: 'hairstrokes',
+    title: 'Hairstrokes Masterclass',
+    eyebrow: 'Masterclass · Presencial',
+    image: '/course-hairstrokes-horizontal.webp',
+    description: 'Trazos pelo a pelo y diseño hiperrealista de cejas.',
+    experienceLabel: 'Experiencia con cejas',
+    experienceOptions: ['Sin experiencia', 'Efecto polvo básico', 'Hairstrokes básico', 'Hairstrokes avanzado'],
+    investmentOptions: ['Menos de 1.000 €', 'Entre 1.000 y 1.500 €', 'Más de 1.500 €'],
+  },
+  {
+    slug: 'cejas-online',
+    title: 'Cejas Online',
+    eyebrow: 'Online · Lista de espera',
+    image: '/course-hairstrokes-horizontal.webp',
+    description: 'Formación online especializada en diseño y técnica de cejas.',
+    experienceLabel: 'Experiencia con cejas',
+    experienceOptions: ['Sin experiencia', 'Iniciación', 'Intermedio', 'Avanzado'],
+    online: true,
+  },
+  {
+    slug: 'labios-online',
+    title: 'Labios Online',
+    eyebrow: 'Online · Lista de espera',
+    image: '/course-glowlips-horizontal.webp',
+    description: 'Formación online especializada en micropigmentación de labios.',
+    experienceLabel: 'Experiencia con labios',
+    experienceOptions: ['Sin experiencia', 'Iniciación', 'Intermedio', 'Avanzado'],
+    online: true,
+  },
+];
+
+export const formationsBySlug = Object.fromEntries(
+  formations.map((formation) => [formation.slug, formation]),
+);

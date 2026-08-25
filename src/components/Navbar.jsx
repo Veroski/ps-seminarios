@@ -11,6 +11,8 @@ const FORMACIONES = [
   { to: '/formacion/micropigmentacion', label: 'Formación 4 técnicas' },
   { to: '/formacion/glowlips', label: 'Glow Lips' },
   { to: '/formacion/hairstrokes', label: 'Cejas · Hairstrokes' },
+  { to: '/formacion/cejas-online', label: 'Cejas Online · Lista de espera' },
+  { to: '/formacion/labios-online', label: 'Labios Online · Lista de espera' },
 ];
 
 export default function Navbar() {

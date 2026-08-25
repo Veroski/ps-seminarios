@@ -272,6 +272,12 @@
   }
 }
 
+@media (min-width: 768px) and (max-height: 800px) {
+  .course-card {
+    aspect-ratio: 2.8 / 1;
+  }
+}
+
 .testimonial-rail-card {
   position: absolute;
   top: 50%;

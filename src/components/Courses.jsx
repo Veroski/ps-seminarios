@@ -1,234 +1,85 @@
-import React, { useLayoutEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
-import FormationVsl from './FormationVsl';
+import { ArrowUpRight, LockKeyhole } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { formations } from '../data/formations';
 
-gsap.registerPlugin(ScrollTrigger);
+function CourseCard({ formation, className = '' }) {
+  return (
+    <Link
+      to={`/formacion/${formation.slug}`}
+      aria-label={`${formation.online ? 'Apuntarme a la lista de espera de' : 'Solicitar información sobre'} ${formation.title}`}
+      className={`course-card group relative block aspect-video min-h-0 overflow-hidden border border-[#1F1F1F]/10 bg-[#ECEBE7] shadow-[0_16px_40px_rgba(31,31,31,0.08)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C6A75C] ${className}`}
+    >
+      <img
+        src={formation.image}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1F1F1F]/90 via-[#1F1F1F]/12 to-white/5" />
 
-// ─── DATA ──────────────────────────────────────────────────────────────────────
-const courses = [
-  {
-    title: "Formación 4 técnicas",
-    desc: "Los cimientos de la élite. Domina la técnica desde 0 con una base sólida teórica y práctica. Comprende el por qué de cada movimiento, cómo responde la piel y desarrolla un criterio profesional desde el primer día.",
-    tag: "Fundamentos",
-    img: "/micro20_pagina1.webp",
-    path: "/formacion/micropigmentacion",
-    id: "formacion-4-tecnicas",
-  },
-  {
-    title: "Glow Lips",
-    desc: "Efecto labio mordido y saturación perfecta. Consigue resultados voluminosos, naturales y sin bordes marcados. La técnica de labios más demandada del mercado, con metodología clínica y artística.",
-    tag: "Especialización",
-    img: "/glowlips_pagina1.webp",
-    path: "/formacion/glowlips",
-    id: "formacion-glowlips",
-  },
-  {
-    title: "Hairstrokes Masterclass",
-    desc: "El nivel más alto de realismo en cejas. Domina el trazo pelo a pelo, la presión exacta y la dirección de cada vello para crear cejas ultrarrealistas que compiten con los mejores del mundo.",
-    tag: "Masterclass",
-    img: "/cejas_pagina1.webp",
-    path: "/formacion/hairstrokes",
-    id: "formacion-hairstrokes",
-  },
-];
+      {formation.online && (
+        <>
+          <div className="absolute inset-0 bg-[#1F1F1F]/24 backdrop-saturate-50" />
+          <div className="absolute right-3 top-3 flex items-center gap-1.5 border border-white/35 bg-[#1F1F1F]/70 px-2.5 py-1.5 font-mono text-[0.52rem] uppercase tracking-[0.18em] text-white backdrop-blur-md md:right-4 md:top-4">
+            <LockKeyhole aria-hidden="true" size={12} />
+            Completo
+          </div>
+        </>
+      )}
 
-// ─── COURSES SECTION ──────────────────────────────────────────────────────────
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-3.5 md:p-5">
+        <div className="min-w-0">
+          <p className="mb-1 font-mono text-[0.48rem] uppercase tracking-[0.2em] text-white/68 md:text-[0.55rem]">
+            {formation.eyebrow}
+          </p>
+          <h2 className="font-serif text-[clamp(1rem,2vw,1.65rem)] font-bold italic leading-none text-white">
+            {formation.title}
+          </h2>
+        </div>
+        <span className="grid size-8 shrink-0 place-items-center border border-white/35 bg-white/10 text-white backdrop-blur-md transition-colors group-hover:bg-[#C6A75C] group-hover:text-[#1F1F1F] md:size-10">
+          <ArrowUpRight aria-hidden="true" size={17} />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 export default function Courses() {
-  const containerRef = useRef(null);
-  const courseRefs   = useRef([]);
-  const navigate     = useNavigate();
-
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      const courseNodes = courseRefs.current.filter(Boolean);
-
-      gsap.from('.courses-header-anim', {
-        y: 32, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'power3.out',
-        scrollTrigger: { trigger: '.courses-intro', start: 'top 85%' },
-      });
-
-      // Course Scroll Effects
-      courseNodes.forEach((courseEl) => {
-        const mediaEl   = courseEl.querySelector('.course-media');
-        const imgEl     = courseEl.querySelector('.course-image');
-        const contentEl = courseEl.querySelector('.course-content');
-
-        // 3D Image Parallax on Scroll
-        if (mediaEl) {
-          gsap.set(mediaEl, { y: -84, scale: 1.12, rotationX: 7, rotationZ: -0.8, force3D: true });
-          gsap.fromTo(mediaEl,
-            { y: -84, scale: 1.12, rotationX: 7, rotationZ: -0.8, force3D: true },
-            {
-              y: 84,
-              scale: 1.02,
-              rotationX: -7,
-              rotationZ: 0.8,
-              ease: 'none',
-              scrollTrigger: {
-                trigger: courseEl,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true,
-                invalidateOnRefresh: true,
-              },
-            },
-          );
-        }
-
-        if (imgEl) {
-          gsap.set(imgEl, { scale: 1.04, force3D: true });
-          gsap.to(imgEl, {
-            y: 42,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: courseEl,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true,
-              invalidateOnRefresh: true,
-            },
-          });
-        }
-
-        // Content Fade & Slide Up
-        gsap.from(contentEl, {
-          y: 60, opacity: 0, duration: 1.2, ease: 'power3.out',
-          scrollTrigger: { trigger: courseEl, start: 'top 65%' },
-        });
-      });
-
-    }, containerRef);
-
-    ScrollTrigger.refresh();
-
-    return () => ctx.revert();
-  }, []);
+  const onsite = formations.filter(({ online }) => !online);
+  const online = formations.filter(({ online: isOnline }) => isOnline);
 
   return (
-    <section
-      id="formaciones"
-      ref={containerRef}
-      className="w-full overflow-hidden relative text-[#0A0A0A] scroll-mt-32"
-      style={{
-        background: `
-          radial-gradient(circle at 10% 20%, rgba(255,255,255,0.92) 0%, transparent 20%),
-          radial-gradient(circle at 90% 14%, rgba(198,167,92,0.12) 0%, transparent 18%),
-          radial-gradient(circle at 82% 72%, rgba(185,28,28,0.05) 0%, transparent 14%),
-          linear-gradient(180deg, #F3EDE2 0%, #F3EDE2 42%, #F3EDE2 100%)
-        `,
-      }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.1]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, rgba(17,17,19,0.26) 0.9px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }}
-      />
-      <header className="courses-intro relative z-10 mx-auto max-w-5xl px-6 pb-6 pt-24 text-center md:px-16 md:pb-8 md:pt-28">
-        <h1 className="courses-header-anim mt-5 font-serif text-4xl italic font-bold leading-none tracking-tight md:text-5xl">
-          Formaciones Exclusivas.
-        </h1>
-        <p className="courses-header-anim mx-auto mt-4 max-w-2xl text-copy-dark">
-          Especializaciones profundas para profesionales que buscan dominar cada técnica a la perfección.
-        </p>
-      </header>
-      <FormationVsl />
+    <section id="formaciones" className="relative flex min-h-[100svh] items-center overflow-hidden bg-[#F7F7F5] px-4 pb-5 pt-24 text-[#1F1F1F] md:px-8 md:pb-7 md:pt-28">
+      <div aria-hidden="true" className="absolute inset-0 opacity-45 [background-image:linear-gradient(rgba(31,31,31,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(31,31,31,0.035)_1px,transparent_1px)] [background-size:32px_32px]" />
+      <div className="relative mx-auto w-full max-w-[92rem]">
+        <header className="mb-4 text-center md:mb-5">
+          <p className="font-mono text-[0.55rem] uppercase tracking-[0.3em] text-[#1F1F1F]/50">Instituto Patricia Songel</p>
+          <h1 className="mt-2 font-sans text-[clamp(1.7rem,4vw,3.25rem)] font-semibold leading-none tracking-[-0.055em]">
+            Precisión clínica. <span className="font-serif font-normal italic text-[#C6A75C]">Formación experta.</span>
+          </h1>
+        </header>
 
-      <div className="w-full relative z-20 pb-32">
-        {courses.map((course, idx) => {
-          const isEven = idx % 2 === 0;
+        <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3 md:gap-4">
+          {onsite.map((formation, index) => (
+            <CourseCard
+              key={formation.slug}
+              formation={formation}
+              className={index === 2 ? 'col-span-2 w-[calc(50%-0.3125rem)] justify-self-center md:col-span-1 md:w-auto' : ''}
+            />
+          ))}
+        </div>
 
-          return (
-            <div
-              key={idx}
-              ref={el => {
-                courseRefs.current[idx] = el;
-              }}
-              id={course.id}
-              className="w-full min-h-[90vh] scroll-mt-32 relative flex items-center py-20 md:min-h-[100svh] md:py-0 border-t border-[#0A0A0A]/[0.08]"
-              style={{ perspective: '1200px' }}
-            >
-              <div className={`w-full max-w-[100rem] mx-auto px-6 md:px-16 flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center justify-between gap-12 xl:gap-24 relative z-10`}>
+        <div className="mb-2.5 mt-4 flex items-center gap-3 md:mb-3 md:mt-5">
+          <span className="h-px flex-1 bg-[#1F1F1F]/12" />
+          <p className="shrink-0 font-mono text-[0.5rem] uppercase tracking-[0.24em] text-[#1F1F1F]/52 md:text-[0.56rem]">
+            Formaciones online · Lista de espera
+          </p>
+          <span className="h-px flex-1 bg-[#1F1F1F]/12" />
+        </div>
 
-                {/* Image Side — clickable */}
-                <div
-                  className="w-full max-w-[26rem] lg:w-[29%] relative rounded-[3rem] overflow-hidden group shadow-[0_28px_70px_rgba(17,17,19,0.14)] transform-gpu cursor-pointer"
-                  style={{ aspectRatio: '3/4' }}
-                  onClick={() => navigate(course.path)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Ver detalles de ${course.title}`}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate(course.path); }}
-                >
-                  <div className="course-media absolute inset-0 will-change-transform">
-                    <img
-                      src={course.img}
-                      alt={course.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="course-image absolute left-0 top-[-22%] w-full h-[146%] object-cover object-top grayscale-[10%] group-hover:grayscale-0 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/32 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 border-[1px] border-[#0A0A0A]/10 rounded-[3rem] pointer-events-none transition-colors duration-700 group-hover:border-[#0A0A0A]/42" />
-                  <div className="absolute inset-[12px] rounded-[2.45rem] border border-[#E9DEC9]/28 pointer-events-none transition-colors duration-700 group-hover:border-[#E9DEC9]/52" />
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/85 to-transparent pointer-events-none" />
-                  <div className="absolute inset-y-10 right-0 w-px bg-gradient-to-b from-transparent via-[#0A0A0A]/68 to-transparent pointer-events-none" />
-
-                  {/* Hover hint */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="flex items-center gap-2.5 bg-[#F3EDE2]/88 backdrop-blur-md px-5 py-2.5 rounded-full border border-[#0A0A0A]/10 shadow-[0_10px_26px_rgba(17,17,19,0.1)]">
-                      <span className="text-overline-soft text-[#0A0A0A]">Ver detalles</span>
-                      <ArrowRight size={11} className="text-[#B91C1C]" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content Side */}
-                <div className="course-content w-full lg:w-[48%] flex flex-col items-start xl:px-8 relative">
-
-                  {/* Background number */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-serif italic font-bold text-[#0A0A0A]/[0.05] pointer-events-none select-none -z-10">
-                    0{idx + 1}
-                  </div>
-
-                  <div className="flex items-center gap-4 mb-6 md:mb-8">
-                    <span className="text-overline-soft text-[#625C5C] bg-white/82 px-4 py-2 rounded-full border border-[#0A0A0A]/10 backdrop-blur-md shadow-[0_10px_24px_rgba(17,17,19,0.06)]">
-                      {course.tag}
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif italic font-bold text-4xl md:text-5xl xl:text-6xl text-[#0A0A0A] mb-6 md:mb-8 leading-[1.05] tracking-tight">
-                    {course.title}
-                  </h3>
-
-                  <p className="font-sans text-[1rem] leading-[1.85] tracking-[-0.015em] text-[#262222]/74 max-w-lg mb-12">
-                    {course.desc}
-                  </p>
-
-                  {/* CTA */}
-                  <button
-                    onClick={() => navigate(course.path)}
-                    className="group relative inline-flex items-center justify-center bg-[#0A0A0A] border border-[#0A0A0A]/10 text-[#F3EDE2] font-sans font-bold text-sm px-8 md:px-10 py-4 md:py-5 rounded-full overflow-hidden transition-all duration-500 hover:border-[#0A0A0A]/40 hover:shadow-[0_14px_34px_rgba(17,17,19,0.14)] cursor-pointer"
-                  >
-                    <span className="absolute inset-0 w-0 bg-[#0A0A0A] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:w-full" />
-                    <span className="relative z-10 flex items-center gap-3 group-hover:text-[#F3EDE2] transition-colors duration-300">
-                      Ver Detalles
-                      <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                  </button>
-
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        <div className="mx-auto grid max-w-[61rem] grid-cols-2 gap-2.5 md:gap-4">
+          {online.map((formation) => <CourseCard key={formation.slug} formation={formation} />)}
+        </div>
       </div>
-
     </section>
   );
 }
