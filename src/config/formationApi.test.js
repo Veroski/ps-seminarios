@@ -19,4 +19,10 @@ describe('validateFormationLead', () => {
     expect(validateFormationLead({ ...valid, email: 'no-es-un-email' })).toBeNull();
     expect(validateFormationLead({ ...valid, telefono: '123' })).toBeNull();
   });
+
+  it('keeps the required questions from each presencial form', () => {
+    const glowlips = { ...valid, formacion: 'glowlips', activa: 'Sí, activamente', inversion: 'Más de 1.500 €' };
+    expect(validateFormationLead(glowlips)?.activa).toBe('Sí, activamente');
+    expect(validateFormationLead({ ...glowlips, activa: '' })).toBeNull();
+  });
 });

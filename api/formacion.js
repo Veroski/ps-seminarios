@@ -1,9 +1,9 @@
 const FORMATIONS = {
-  micropigmentacion: { title: 'Formación 4 técnicas', tag: 'lead-micropigmentacion' },
-  glowlips: { title: 'Glow Lips', tag: 'lead-glowlips' },
-  hairstrokes: { title: 'Hairstrokes Masterclass', tag: 'lead-hairstrokes' },
-  'cejas-online': { title: 'Cejas Online', tag: 'lista-espera-cejas-online', online: true },
-  'labios-online': { title: 'Labios Online', tag: 'lista-espera-labios-online', online: true },
+  micropigmentacion: { title: 'Formación 4 técnicas', tag: 'lead-micropigmentacion', required: ['experiencia', 'inversion'] },
+  glowlips: { title: 'Glow Lips', tag: 'lead-glowlips', required: ['activa', 'inversion'] },
+  hairstrokes: { title: 'Hairstrokes Masterclass', tag: 'lead-hairstrokes', required: ['activa', 'inversion'] },
+  'cejas-online': { title: 'Cejas Online', tag: 'lista-espera-cejas-online', online: true, required: ['experiencia'] },
+  'labios-online': { title: 'Labios Online', tag: 'lista-espera-labios-online', online: true, required: ['experiencia'] },
 };
 
 const clean = (value, max = 200) => String(value ?? '').trim().slice(0, max);
@@ -14,13 +14,15 @@ export function validateFormationLead(body = {}) {
     nombre: clean(body.nombre),
     email: clean(body.email),
     telefono: clean(body.telefono, 40),
+    activa: clean(body.activa),
+    tecnica: clean(body.tecnica),
     experiencia: clean(body.experiencia),
     inversion: clean(body.inversion),
     mensaje: clean(body.mensaje, 2000),
   };
 
   const phoneDigits = lead.telefono.replace(/\D/g, '');
-  if (!formation || !lead.nombre || !/^\S+@\S+\.\S+$/.test(lead.email) || phoneDigits.length < 9 || phoneDigits.length > 15 || !lead.experiencia || (!formation.online && !lead.inversion)) {
+  if (!formation || !lead.nombre || !/^\S+@\S+\.\S+$/.test(lead.email) || phoneDigits.length < 9 || phoneDigits.length > 15 || formation.required.some((field) => !lead[field])) {
     return null;
   }
 
@@ -73,6 +75,8 @@ export default async function handler(req, res) {
   const contact = await ghlResponse.json().catch(() => ({}));
   const note = [
     `Formación: ${data.formation.title}`,
+    data.activa && `Practica actualmente: ${data.activa}`,
+    data.tecnica && `Técnica de labios: ${data.tecnica}`,
     `Experiencia: ${data.experiencia}`,
     data.inversion && `Inversión: ${data.inversion}`,
     data.mensaje && `Mensaje: ${data.mensaje}`,

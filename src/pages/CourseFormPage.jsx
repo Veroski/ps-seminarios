@@ -106,12 +106,36 @@ export default function CourseFormPage() {
               <Field label="Teléfono" name="telefono" required>
                 <input className={inputClass} id="telefono" name="telefono" type="tel" inputMode="tel" autoComplete="tel" required value={form.telefono || ''} onChange={update} placeholder="+34 000 000 000" />
               </Field>
-              <Field label={formation.experienceLabel} name="experiencia" required>
-                <select className={`${inputClass} appearance-none`} id="experiencia" name="experiencia" required value={form.experiencia || ''} onChange={update}>
-                  <option value="">Seleccionar…</option>
-                  {formation.experienceOptions.map((option) => <option key={option}>{option}</option>)}
-                </select>
-              </Field>
+              {formation.activeOptions && (
+                <div className="sm:col-span-2">
+                  <Field label="¿Practicas micropigmentación actualmente?" required>
+                    <select className={`${inputClass} appearance-none`} id="activa" name="activa" required value={form.activa || ''} onChange={update}>
+                      <option value="">Seleccionar…</option>
+                      {formation.activeOptions.map((option) => <option key={option}>{option}</option>)}
+                    </select>
+                  </Field>
+                </div>
+              )}
+              {formation.experienceOptions && (
+                <div className={formation.online ? '' : 'sm:col-span-2'}>
+                  <Field label={formation.experienceLabel} required={!formation.activeOptions}>
+                    <select className={`${inputClass} appearance-none`} id="experiencia" name="experiencia" required={!formation.activeOptions} value={form.experiencia || ''} onChange={update}>
+                      <option value="">Seleccionar…</option>
+                      {formation.experienceOptions.map((option) => <option key={option}>{option}</option>)}
+                    </select>
+                  </Field>
+                </div>
+              )}
+              {formation.techniqueOptions && (
+                <div className="sm:col-span-2">
+                  <Field label="Técnica de labios que practicas">
+                    <select className={`${inputClass} appearance-none`} id="tecnica" name="tecnica" value={form.tecnica || ''} onChange={update}>
+                      <option value="">Seleccionar…</option>
+                      {formation.techniqueOptions.map((option) => <option key={option}>{option}</option>)}
+                    </select>
+                  </Field>
+                </div>
+              )}
               {formation.investmentOptions && (
                 <div className="sm:col-span-2">
                   <Field label="¿Cuánto estás dispuesto/a a invertir?" name="inversion" required>

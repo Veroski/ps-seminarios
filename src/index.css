@@ -272,9 +272,21 @@
   }
 }
 
+.courses-onsite-grid {
+  max-width: 76rem;
+}
+
+.courses-online-grid {
+  max-width: 61rem;
+}
+
 @media (min-width: 768px) and (max-height: 800px) {
-  .course-card {
-    aspect-ratio: 2.8 / 1;
+  .courses-onsite-grid {
+    max-width: 56rem;
+  }
+
+  .courses-online-grid {
+    max-width: 36rem;
   }
 }
 
