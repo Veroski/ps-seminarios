@@ -109,17 +109,17 @@ export default function Navbar() {
           </div>
 
           <Link to="/conoce-a-patricia" onClick={closeMenus} className={linkCls}>Conoce a Patricia</Link>
-          <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className={linkCls}>Alumnas</Link>
+          <a href={studentAreaConfig.loginUrl} onClick={closeMenus} className={linkCls}>Alumnas</a>
         </div>
 
         <div className="ml-5 flex items-center gap-2 md:ml-7">
-          <Link
-            to={studentAreaConfig.internalPath}
+          <a
+            href={studentAreaConfig.loginUrl}
             onClick={closeMenus}
             className="hidden sm:inline-flex items-center justify-center border border-primary/20 px-4 py-2.5 font-sans text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-primary/80 transition-colors hover:border-primary hover:text-primary"
           >
             Iniciar sesión
-          </Link>
+          </a>
           <Link
             to="/pedir-cita"
             onClick={closeMenus}
@@ -151,12 +151,12 @@ export default function Navbar() {
               {f.label}
             </Link>
           ))}
-          <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">
+          <a href={studentAreaConfig.loginUrl} onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">
             Área de alumnas
-          </Link>
-          <Link to={studentAreaConfig.internalPath} onClick={closeMenus} className="mt-3 text-center border border-primary/15 text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
+          </a>
+          <a href={studentAreaConfig.loginUrl} onClick={closeMenus} className="mt-3 text-center border border-primary/15 text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Iniciar sesión
-          </Link>
+          </a>
           <Link to="/pedir-cita" onClick={closeMenus} className="mt-3 text-center bg-primary text-surface px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Pedir cita
           </Link>
