@@ -64,10 +64,10 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed inset-x-0 top-0 z-[100] px-5 pt-4 md:px-8 md:pt-5 lg:px-10">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-[100] px-5 pt-4 md:px-8 md:pt-5 lg:px-10">
       <nav
         ref={navRef}
-        className="flex min-h-14 items-center border-b px-1 py-2 transition-all duration-300 md:min-h-16"
+        className="pointer-events-auto flex min-h-14 items-center border-b px-1 py-2 transition-all duration-300 md:min-h-16"
         style={{ color: '#0A0A0A' }}
       >
         <Link to="/" aria-label="Inicio" className="flex shrink-0 items-center gap-2.5 transition-opacity duration-300 hover:opacity-65">
@@ -142,7 +142,7 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'visible opacity-100 scale-100' : 'invisible opacity-0 scale-95 pointer-events-none'}`}
+        className={`md:hidden mt-2 origin-top transition-all duration-200 ${mobileOpen ? 'pointer-events-auto visible opacity-100 scale-100' : 'invisible opacity-0 scale-95 pointer-events-none'}`}
       >
         <div className="ml-auto flex w-[min(22rem,100%)] flex-col border border-primary/10 bg-surface/95 p-4 shadow-xl backdrop-blur-xl">
           <Link to="/" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">Inicio</Link>
