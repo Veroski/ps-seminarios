@@ -44,7 +44,7 @@ export const formations = [
   {
     slug: 'cejas-online',
     title: 'Brows Shadow Online',
-    eyebrow: 'Online · Lista de espera',
+    eyebrow: 'Online · Próximo lanzamiento',
     image: '/brows_shadow_online_banner.webp',
     description: 'Formación online especializada en diseño y técnica de cejas.',
     experienceLabel: 'Experiencia con cejas',
@@ -54,7 +54,7 @@ export const formations = [
   {
     slug: 'labios-online',
     title: 'Glow Lips Online',
-    eyebrow: 'Online · Lista de espera',
+    eyebrow: 'Online · Próximo lanzamiento',
     image: '/glowlips_online_banner.webp',
     description: 'Formación online especializada en micropigmentación de labios.',
     experienceLabel: 'Experiencia con labios',

@@ -1,7 +1,9 @@
 import { AlertCircle, ArrowLeft, Check, Loader2, LockKeyhole } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import LaunchCountdown from '../components/LaunchCountdown';
 import Seo from '../components/Seo';
+import { LAUNCH_LABEL } from '../config/launch';
 import { formationsBySlug } from '../data/formations';
 
 const SITE = 'https://www.patriciasongel.es';
@@ -51,7 +53,7 @@ export default function CourseFormPage() {
   const canonical = `${SITE}/formacion/${formation.slug}`;
   const title = `${formation.title} | Patricia Songel`;
   const description = formation.online
-    ? `${formation.title}: plazas completas. Apúntate a la lista de espera para recibir aviso cuando abramos nuevas plazas.`
+    ? `${formation.title}: próximo lanzamiento el ${LAUNCH_LABEL}. Deja tus datos para ser el primero en enterarte en cuanto abran las plazas.`
     : `${formation.title} con Patricia Songel. Solicita información mediante el formulario sin compromiso.`;
 
   return (
@@ -73,25 +75,32 @@ export default function CourseFormPage() {
           <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-[#1F1F1F]/48">{formation.eyebrow}</p>
           <h1 className="mt-2 font-serif text-[clamp(2rem,6vw,3.5rem)] font-bold italic leading-none tracking-[-0.04em]">{formation.title}</h1>
           <p className="mx-auto mt-3 max-w-lg font-sans text-sm leading-relaxed text-[#1F1F1F]/62">
-            {formation.online ? 'Déjanos tus datos para avisarte en cuanto abramos nuevas plazas.' : 'Rellena el formulario y te contactaremos para darte toda la información.'}
+            {formation.online ? 'Estamos preparando el evento. Deja tus datos para ser el primero o la primera en enterarte en cuanto abran las plazas.' : 'Rellena el formulario y te contactaremos para darte toda la información.'}
           </p>
         </header>
 
         {formation.online && (
-          <div className="mb-6 flex items-start gap-3 border border-[#C6A75C]/35 bg-[#C6A75C]/10 p-4 text-left">
-            <LockKeyhole aria-hidden="true" className="mt-0.5 shrink-0 text-[#8A7138]" size={18} />
-            <p className="font-sans text-sm leading-relaxed text-[#1F1F1F]/75">
-              Todas las plazas de esta formación online están completas. Abriremos nuevas plazas muy pronto. Envía el formulario y te añadiremos a la lista de espera.
-            </p>
-          </div>
+          <>
+            <div className="mb-5 flex items-start gap-3 border border-[#C6A75C]/35 bg-[#C6A75C]/10 p-4 text-left">
+              <LockKeyhole aria-hidden="true" className="mt-0.5 shrink-0 text-[#8A7138]" size={18} />
+              <p className="font-sans text-sm leading-relaxed text-[#1F1F1F]/75">
+                Inscripciones cerradas. Estamos preparando el evento: las plazas abren el {LAUNCH_LABEL}. Envía el formulario y serás de los primeros en recibir el aviso.
+              </p>
+            </div>
+            <LaunchCountdown className="mb-6" />
+          </>
         )}
 
         {status === 'success' ? (
           <div className="flex min-h-72 flex-col items-center justify-center gap-5 text-center" role="status">
             <span className="grid size-14 place-items-center rounded-full border border-[#C6A75C]/35 bg-[#C6A75C]/12 text-[#8A7138]"><Check aria-hidden="true" size={24} /></span>
             <div>
-              <h2 className="font-serif text-3xl font-bold italic">{formation.online ? 'Ya estás en la lista.' : 'Solicitud recibida.'}</h2>
-              <p className="mt-2 font-sans text-sm text-[#1F1F1F]/62">Te contactaremos muy pronto. Gracias por tu interés.</p>
+              <h2 className="font-serif text-3xl font-bold italic">{formation.online ? 'Ya estás dentro.' : 'Solicitud recibida.'}</h2>
+              <p className="mt-2 font-sans text-sm text-[#1F1F1F]/62">
+                {formation.online
+                  ? `Serás de los primeros en recibir el aviso cuando abran las plazas, el ${LAUNCH_LABEL}.`
+                  : 'Te contactaremos muy pronto. Gracias por tu interés.'}
+              </p>
             </div>
           </div>
         ) : (
@@ -162,7 +171,7 @@ export default function CourseFormPage() {
 
             <button type="submit" disabled={status === 'loading'} className="flex w-full items-center justify-center gap-2 bg-[#1F1F1F] px-5 py-4 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-[#F7F7F5] transition hover:bg-[#C6A75C] hover:text-[#1F1F1F] disabled:cursor-wait disabled:opacity-65">
               {status === 'loading' && <Loader2 aria-hidden="true" className="animate-spin" size={17} />}
-              {status === 'loading' ? 'Enviando…' : formation.online ? 'Unirme a la lista de espera' : 'Solicitar información'}
+              {status === 'loading' ? 'Enviando…' : formation.online ? 'Avisadme del lanzamiento' : 'Solicitar información'}
             </button>
             <p className="text-center font-sans text-[0.65rem] leading-relaxed text-[#1F1F1F]/48">
               Sin cobros. Tus datos se tratarán según nuestra <Link to="/privacidad" className="underline underline-offset-2">política de privacidad</Link>.

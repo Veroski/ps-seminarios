@@ -12,8 +12,8 @@ const FORMACIONES = [
   { to: '/formacion/glowlips', label: 'Glow Lips Masterclass' },
   { to: '/formacion/hairstrokes', label: 'Hairstrokes Masterclass' },
   { to: '/formacion/hairstrokes-iniciacion', label: 'Hairstrokes Iniciación' },
-  { to: '/formacion/cejas-online', label: 'Brows Shadow Online · Lista de espera' },
-  { to: '/formacion/labios-online', label: 'Glow Lips Online · Lista de espera' },
+  { to: '/formacion/cejas-online', label: 'Brows Shadow Online · Próximo lanzamiento' },
+  { to: '/formacion/labios-online', label: 'Glow Lips Online · Próximo lanzamiento' },
 ];
 
 export default function Navbar() {

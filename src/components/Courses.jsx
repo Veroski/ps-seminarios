@@ -2,13 +2,14 @@ import { ArrowUpRight, LockKeyhole } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { formations } from '../data/formations';
 import FormationVsl from './FormationVsl';
+import LaunchCountdown from './LaunchCountdown';
 
 function CourseCard({ formation, className = '' }) {
   return (
     <Link
       to={`/formacion/${formation.slug}`}
       data-course-card
-      aria-label={`${formation.online ? 'Apuntarme a la lista de espera de' : 'Solicitar información sobre'} ${formation.title}`}
+      aria-label={`${formation.online ? 'Recibir aviso del lanzamiento de' : 'Solicitar información sobre'} ${formation.title}`}
       className={`course-card group relative block aspect-video min-h-0 overflow-hidden rounded-[1.25rem] border border-[#0A0A0A]/10 bg-[#E9DEC9] shadow-[0_16px_38px_rgba(17,17,19,0.11)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B91C1C] md:rounded-[1.75rem] ${className}`}
     >
       <img
@@ -23,7 +24,7 @@ function CourseCard({ formation, className = '' }) {
           <div className="absolute inset-0 bg-[#0A0A0A]/28 backdrop-saturate-50" />
           <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/35 bg-[#0A0A0A]/72 px-2.5 py-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md md:right-4 md:top-4 md:text-[0.56rem]">
             <LockKeyhole aria-hidden="true" size={12} />
-            Completo
+            Cerrado
           </div>
         </>
       )}
@@ -99,10 +100,12 @@ export default function Courses() {
           <div className="mb-2.5 mt-14 flex items-center gap-3 md:mb-3 md:mt-20">
             <span className="h-px flex-1 bg-[#0A0A0A]/14" />
             <p className="shrink-0 text-[0.5rem] font-semibold uppercase tracking-[0.22em] text-[#0A0A0A]/52 md:text-[0.56rem]">
-              Formaciones online · Lista de espera
+              Próximos lanzamientos · Formaciones online
             </p>
             <span className="h-px flex-1 bg-[#0A0A0A]/14" />
           </div>
+
+          <LaunchCountdown className="mb-4 md:mb-5" />
 
           <div className="courses-online-grid mx-auto grid grid-cols-1 gap-2.5 md:grid-cols-2 md:gap-4">
             {online.map((formation) => <CourseCard key={formation.slug} formation={formation} />)}
