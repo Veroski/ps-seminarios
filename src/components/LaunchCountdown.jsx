@@ -6,13 +6,19 @@ import { getTimeRemaining, LAUNCH_DATE, LAUNCH_LABEL } from '../config/launch';
    formulario de cada formación online. */
 
 const UNITS = [
-  ['days', 'Días'],
-  ['hours', 'Horas'],
-  ['minutes', 'Min'],
-  ['seconds', 'Seg'],
+  ['days', 'Días', 'día', 'días'],
+  ['hours', 'Horas', 'hora', 'horas'],
+  ['minutes', 'Min', 'minuto', 'minutos'],
+  ['seconds', 'Seg', 'segundo', 'segundos'],
 ];
 
 const pad = (value) => String(value).padStart(2, '0');
+
+/* "1 día, 0 horas…" — los lectores de pantalla leen el aria-label, no las cifras. */
+const spellOut = (remaining) => UNITS
+  .map(([key, , one, many]) => `${remaining[key]} ${remaining[key] === 1 ? one : many}`)
+  .join(', ')
+  .replace(/, ([^,]+)$/, ' y $1');
 
 export default function LaunchCountdown({ className = '' }) {
   const [remaining, setRemaining] = useState(() => getTimeRemaining());
@@ -40,7 +46,7 @@ export default function LaunchCountdown({ className = '' }) {
       ) : (
         <time
           dateTime={deadline}
-          aria-label={`Faltan ${remaining.days} días, ${remaining.hours} horas, ${remaining.minutes} minutos y ${remaining.seconds} segundos para la apertura de plazas`}
+          aria-label={`Faltan ${spellOut(remaining)} para la apertura de plazas`}
           className="flex items-start justify-center gap-2 md:gap-3.5"
         >
           {UNITS.map(([key, label], index) => (
