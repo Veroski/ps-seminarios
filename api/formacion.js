@@ -6,6 +6,11 @@ const FORMATIONS = {
   'labios-online': { title: 'Glow Lips Online', tag: 'lista-espera-labios-online', online: true, required: ['experiencia'] },
 };
 
+const ONLINE_PIPELINE = {
+  id: 'ZsTAuRYdsh0nLXyeeHn8',
+  stageId: 'c8aa5b3f-c97b-4756-9579-a6f065d6a73e',
+};
+
 const clean = (value, max = 200) => String(value ?? '').trim().slice(0, max);
 
 export function validateFormationLead(body = {}) {
@@ -73,6 +78,32 @@ export default async function handler(req, res) {
   }
 
   const contact = await ghlResponse.json().catch(() => ({}));
+  const contactId = contact?.contact?.id || contact?.id;
+  if (data.formation.online && !contactId) {
+    console.error('GHL formación error: contact ID missing from upsert response');
+    return res.status(502).json({ ok: false, error: 'CRM contact response incomplete' });
+  }
+
+  if (data.formation.online) {
+    const opportunityResponse = await fetch('https://services.leadconnectorhq.com/opportunities/', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        locationId: process.env.GHL_LOCATION_ID,
+        contactId,
+        name: `${data.formation.title} · ${data.nombre}`,
+        pipelineId: ONLINE_PIPELINE.id,
+        pipelineStageId: ONLINE_PIPELINE.stageId,
+        status: 'open',
+      }),
+    });
+
+    if (!opportunityResponse.ok) {
+      console.error('GHL formación opportunity error:', opportunityResponse.status, await opportunityResponse.text());
+      return res.status(502).json({ ok: false, error: 'CRM opportunity request failed' });
+    }
+  }
+
   const note = [
     `Formación: ${data.formation.title}`,
     data.activa && `Practica actualmente: ${data.activa}`,
@@ -82,9 +113,9 @@ export default async function handler(req, res) {
     data.mensaje && `Mensaje: ${data.mensaje}`,
   ].filter(Boolean).join(' | ');
 
-  if (contact?.contact?.id) {
+  if (contactId) {
     try {
-      await fetch(`https://services.leadconnectorhq.com/contacts/${contact.contact.id}/notes`, {
+      await fetch(`https://services.leadconnectorhq.com/contacts/${contactId}/notes`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ body: note }),

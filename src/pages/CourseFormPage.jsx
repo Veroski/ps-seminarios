@@ -75,7 +75,7 @@ export default function CourseFormPage() {
           <p className="font-mono text-[0.55rem] uppercase tracking-[0.28em] text-[#1F1F1F]/48">{formation.eyebrow}</p>
           <h1 className="mt-2 font-serif text-[clamp(2rem,6vw,3.5rem)] font-bold italic leading-none tracking-[-0.04em]">{formation.title}</h1>
           <p className="mx-auto mt-3 max-w-lg font-sans text-sm leading-relaxed text-[#1F1F1F]/62">
-            {formation.online ? 'Estamos preparando el evento. Deja tus datos para ser el primero o la primera en enterarte en cuanto abran las plazas.' : 'Rellena el formulario y te contactaremos para darte toda la información.'}
+            {formation.online ? formation.waitlistIntro : 'Rellena el formulario y te contactaremos para darte toda la información.'}
           </p>
         </header>
 
