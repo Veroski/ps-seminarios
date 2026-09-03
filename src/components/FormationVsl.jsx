@@ -18,9 +18,8 @@ export default function FormationVsl() {
           </div>
           <iframe
             className="aspect-video w-full rounded-[1.15rem] bg-black md:rounded-[1.35rem]"
-            src="https://www.youtube-nocookie.com/embed/tXrkBmz_psI?rel=0"
+            src="https://www.youtube-nocookie.com/embed/tXrkBmz_psI?autoplay=1&mute=0&playsinline=1&rel=0"
             title="Patricia Songel explica el método de sus formaciones"
-            loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
