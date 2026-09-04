@@ -1,0 +1,17 @@
+{
+  "id": "glowlips",
+  "nombre": "Glow Lips Masterclass",
+  "slug": "glowlips",
+  "descripcionCorta": "Perfecciona el trabajo de labios con una técnica natural, precisa y reproducible.",
+  "imagenPortada": "/glowlips_masterclass_banner.webp",
+  "precioCentimos": 0,
+  "moneda": "EUR",
+  "stripePriceId": "",
+  "publicada": false,
+  "orden": 2,
+  "lessons": [
+    { "id": "preparacion", "titulo": "Preparación del servicio" },
+    { "id": "tecnica", "titulo": "Técnica Glow Lips" },
+    { "id": "casos", "titulo": "Casos y correcciones" }
+  ]
+}

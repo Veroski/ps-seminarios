@@ -29,15 +29,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://www.patriciasongel.es/pedir-cita"/>
   </url>
 
-  <!-- Área de alumnos -->
-  <url>
-    <loc>https://www.patriciasongel.es/alumnos</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://www.patriciasongel.es/alumnos"/>
-  </url>
-
   <!-- Formaciones -->
   <url>
     <loc>https://www.patriciasongel.es/formaciones</loc>

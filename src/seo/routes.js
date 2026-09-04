@@ -34,7 +34,7 @@ export const routes = [
     title: 'Área de alumnas | Patricia Songel',
     description: 'Próximamente: área privada para las alumnas de las formaciones de Patricia Songel.',
     image: img('/patricia-portrait.webp'),
-    robots: 'index, follow',
+    robots: 'noindex, nofollow',
   },
   {
     path: '/formaciones',

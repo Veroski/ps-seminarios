@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "formaciones",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "publicada", "order": "ASCENDING" },
+        { "fieldPath": "slug", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

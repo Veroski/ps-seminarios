@@ -1,0 +1,17 @@
+{
+  "id": "micropigmentacion",
+  "nombre": "Formación 4 técnicas",
+  "slug": "micropigmentacion",
+  "descripcionCorta": "Base clínica y técnica para trabajar cejas, labios y ojos con criterio profesional.",
+  "imagenPortada": "/micro20_banner.webp",
+  "precioCentimos": 0,
+  "moneda": "EUR",
+  "stripePriceId": "",
+  "publicada": false,
+  "orden": 1,
+  "lessons": [
+    { "id": "fundamentos", "titulo": "Fundamentos y preparación" },
+    { "id": "diseno", "titulo": "Diseño y visagismo" },
+    { "id": "practica", "titulo": "Práctica y seguimiento" }
+  ]
+}

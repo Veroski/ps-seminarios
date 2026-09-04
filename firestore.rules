@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function hasFormationAccess(formationId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.productosComprados.hasAny([formationId]);
+    }
+
+    match /formaciones/{formationId} {
+      allow read: if resource.data.publicada == true;
+      allow write: if false;
+
+      match /apartados/{lessonId} {
+        allow read: if hasFormationAccess(formationId);
+        allow write: if false;
+      }
+    }
+
+    match /usuarios/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid)
+        && request.resource.data.keys().hasOnly(['nombre', 'email', 'creadoEn', 'ultimoAccesoEn']);
+      allow update: if isOwner(uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nombre', 'email', 'ultimoAccesoEn']);
+      allow delete: if false;
+
+      match /progreso/{formationId} {
+        allow read: if isOwner(uid);
+        allow create, update: if isOwner(uid)
+          && request.resource.data.keys().hasOnly(['leccionesCompletadas', 'ultimoAccesoEn'])
+          && request.resource.data.leccionesCompletadas is list;
+        allow delete: if false;
+      }
+    }
+
+    match /compras/{sessionId} {
+      allow read: if signedIn() && resource.data.uid == request.auth.uid;
+      allow write: if false;
+    }
+  }
+}

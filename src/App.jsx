@@ -14,9 +14,15 @@ import CejasPage from './pages/CejasPage';
 import HairstrokesIniciacionPage from './pages/HairstrokesIniciacionPage';
 import ConocePatricia from './pages/ConocePatricia';
 import PedirCita from './pages/PedirCita';
-import AlumnosPage from './pages/AlumnosPage';
+import ComingSoonPage from './pages/ComingSoonPage';
+import TestingLoginPage from './pages/TestingLoginPage';
 import Formaciones from './pages/Formaciones';
 import NotFound from './pages/NotFound';
+import StudentCoursesPage from './pages/StudentCoursesPage';
+import StudentCoursePage from './pages/StudentCoursePage';
+import StudentThankYouPage from './pages/StudentThankYouPage';
+import PrivateRoute from './components/PrivateRoute';
+import { AuthProvider } from './context/AuthContext';
 
 const SITE = 'https://www.patriciasongel.es';
 
@@ -53,12 +59,16 @@ function Home() {
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/conoce-a-patricia" element={<ConocePatricia />} />
         <Route path="/pedir-cita" element={<PedirCita />} />
-        <Route path="/alumnos" element={<AlumnosPage />} />
+        <Route path="/alumnos" element={<ComingSoonPage />} />
+        <Route path="/testing-login" element={<TestingLoginPage />} />
+        <Route path="/alumnos/formaciones" element={<PrivateRoute><StudentCoursesPage /></PrivateRoute>} />
+        <Route path="/alumnos/formaciones/:slug" element={<PrivateRoute><StudentCoursePage /></PrivateRoute>} />
+        <Route path="/alumnos/gracias" element={<PrivateRoute><StudentThankYouPage /></PrivateRoute>} />
         <Route path="/formaciones" element={<Formaciones />} />
         <Route path="/aviso-legal" element={<AvisoLegal />} />
         <Route path="/privacidad" element={<Privacidad />} />
@@ -71,7 +81,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <CookieBanner />
-    </>
+    </AuthProvider>
   );
 }
 

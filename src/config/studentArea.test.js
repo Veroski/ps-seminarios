@@ -7,8 +7,8 @@ describe('buildStudentAreaConfig', () => {
 
     expect(config.internalPath).toBe('/alumnos');
     expect(config.loginUrl).toBe('/alumnos');
-    expect(config.auth.provider).toBe('GoHighLevel Client Portal');
-    expect(config.auth.requiresPortalUrl).toBe(true);
+    expect(config.auth.provider).toBe('Firebase Authentication');
+    expect(config.auth.requiresPortalUrl).toBe(false);
   });
 
   it('prefers GHL checkout URLs and preserves legacy Stripe fallback', () => {
@@ -19,7 +19,7 @@ describe('buildStudentAreaConfig', () => {
     });
 
     expect(config.portalUrl).toBe('https://alumnos.example.com');
-    expect(config.loginUrl).toBe('https://alumnos.example.com');
+    expect(config.loginUrl).toBe('/alumnos');
     expect(config.checkout.micropigmentacion).toBe('https://pay.example.com/micro');
     expect(config.checkout.glowlips).toBe('https://buy.stripe.com/glow');
   });
