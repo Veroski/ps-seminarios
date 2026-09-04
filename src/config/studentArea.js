@@ -1,3 +1,10 @@
+export const STUDENT_APP_HOST = 'app.patriciasongel.es';
+export const STUDENT_APP_ORIGIN = `https://${STUDENT_APP_HOST}`;
+
+function browserHostname() {
+  return typeof window === 'undefined' ? '' : window.location.hostname;
+}
+
 function optionalHttpsUrl(env, key) {
   const value = env[key]?.trim();
   if (!value) return '';
@@ -16,14 +23,21 @@ function optionalHttpsUrl(env, key) {
   return url.toString().replace(/\/$/, '');
 }
 
-export function buildStudentAreaConfig(env) {
+export function buildStudentAreaConfig(env, hostname = browserHostname()) {
   const portalUrl = optionalHttpsUrl(env, 'VITE_GHL_PORTAL_URL');
   const checkoutEndpoint = optionalHttpsUrl(env, 'VITE_N8N_CHECKOUT_URL');
+  const isStudentApp = hostname === STUDENT_APP_HOST;
+  const coursesPath = isStudentApp ? '/formaciones' : '/alumnos/formaciones';
 
   return Object.freeze({
-    internalPath: '/alumnos',
+    appOrigin: STUDENT_APP_ORIGIN,
+    isStudentApp,
+    internalPath: isStudentApp ? '/' : '/alumnos',
     portalUrl,
-    loginUrl: '/alumnos',
+    loginUrl: isStudentApp ? '/' : STUDENT_APP_ORIGIN,
+    coursesPath,
+    coursePath: (slug) => `${coursesPath}/${slug}`,
+    thankYouPath: isStudentApp ? '/gracias' : '/alumnos/gracias',
     checkoutEndpoint,
     auth: Object.freeze({
       provider: 'Firebase Authentication',

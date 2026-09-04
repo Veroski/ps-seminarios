@@ -3,6 +3,16 @@
   "trailingSlash": false,
   "rewrites": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "app.patriciasongel.es"
+        }
+      ],
+      "destination": "/"
+    },
+    {
       "source": "/alumnos/formaciones/:path*",
       "destination": "/"
     },

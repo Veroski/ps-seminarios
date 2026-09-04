@@ -3,6 +3,7 @@ import { ArrowRight, Chrome, Mail, RefreshCw } from 'lucide-react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Seo, { SITE } from '../components/Seo';
 import { useAuth } from '../context/AuthContext';
+import { studentAreaConfig } from '../config/studentArea';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -35,10 +36,10 @@ export default function AlumnosPage({ testing = false }) {
   const [success, setSuccess] = useState('');
 
   useEffect(() => {
-    if (!loading && user) navigate('/alumnos/formaciones', { replace: true });
+    if (!loading && user) navigate(studentAreaConfig.coursesPath, { replace: true });
   }, [loading, navigate, user]);
 
-  const destination = searchParams.get('next') || '/alumnos/formaciones';
+  const destination = searchParams.get('next') || studentAreaConfig.coursesPath;
 
   const submit = async (event) => {
     event.preventDefault();
@@ -83,7 +84,7 @@ export default function AlumnosPage({ testing = false }) {
       <Seo
         title="Área de alumnas | Patricia Songel"
         description="Accede al área privada de alumnas de las formaciones de Patricia Songel."
-        canonical={`${SITE}/alumnos`}
+        canonical={studentAreaConfig.appOrigin}
         robots="noindex, nofollow"
         image={`${SITE}/patricia-portrait.webp`}
         imageAlt="Área de alumnas de Patricia Songel"
@@ -123,7 +124,7 @@ export default function AlumnosPage({ testing = false }) {
           <p className="student-auth__switch">
             {mode === 'recover' ? <button type="button" className="student-link" onClick={() => { setMode('login'); setError(''); setSuccess(''); }}>Volver a iniciar sesión</button> : <>{mode === 'login' ? '¿Aún no tienes cuenta? ' : '¿Ya tienes cuenta? '}<button type="button" className="student-link" onClick={() => { setMode(mode === 'login' ? 'register' : 'login'); setError(''); }}>{mode === 'login' ? 'Crear cuenta' : 'Iniciar sesión'}</button>{mode === 'login' && <><br /><button type="button" className="student-link" onClick={() => { setMode('recover'); setError(''); }}>He olvidado mi contraseña</button></>}</>}
           </p>
-          <Link to="/formaciones" className="student-auth__back-link">Ver formaciones públicas <ArrowRight size={14} aria-hidden="true" /></Link>
+          <a href="https://www.patriciasongel.es/formaciones" className="student-auth__back-link">Ver formaciones públicas <ArrowRight size={14} aria-hidden="true" /></a>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ describe('buildStudentAreaConfig', () => {
     const config = buildStudentAreaConfig({});
 
     expect(config.internalPath).toBe('/alumnos');
-    expect(config.loginUrl).toBe('/alumnos');
+    expect(config.loginUrl).toBe('https://app.patriciasongel.es');
     expect(config.auth.provider).toBe('Firebase Authentication');
     expect(config.auth.requiresPortalUrl).toBe(false);
   });
@@ -19,9 +19,18 @@ describe('buildStudentAreaConfig', () => {
     });
 
     expect(config.portalUrl).toBe('https://alumnos.example.com');
-    expect(config.loginUrl).toBe('/alumnos');
+    expect(config.loginUrl).toBe('https://app.patriciasongel.es');
     expect(config.checkout.micropigmentacion).toBe('https://pay.example.com/micro');
     expect(config.checkout.glowlips).toBe('https://buy.stripe.com/glow');
+  });
+
+  it('uses clean portal routes only on the student subdomain', () => {
+    const config = buildStudentAreaConfig({}, 'app.patriciasongel.es');
+
+    expect(config.isStudentApp).toBe(true);
+    expect(config.loginUrl).toBe('/');
+    expect(config.coursesPath).toBe('/formaciones');
+    expect(config.coursePath('micropigmentacion')).toBe('/formaciones/micropigmentacion');
   });
 
   it('rejects non-https external URLs', () => {
