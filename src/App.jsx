@@ -15,6 +15,8 @@ import HairstrokesIniciacionPage from './pages/HairstrokesIniciacionPage';
 import ConocePatricia from './pages/ConocePatricia';
 import PedirCita from './pages/PedirCita';
 import TestingLoginPage from './pages/TestingLoginPage';
+import AlumnosPage from './pages/AlumnosPage';
+import ComingSoonPage from './pages/ComingSoonPage';
 import Formaciones from './pages/Formaciones';
 import NotFound from './pages/NotFound';
 import StudentCoursesPage from './pages/StudentCoursesPage';
@@ -90,7 +92,7 @@ function PublicSiteRoutes() {
     <Route path="/" element={<Home />} />
     <Route path="/conoce-a-patricia" element={<ConocePatricia />} />
     <Route path="/pedir-cita" element={<PedirCita />} />
-    <Route path="/alumnos" element={<StudentAppRedirect to="/" />} />
+    <Route path="/alumnos" element={<ComingSoonPage />} />
     <Route path="/testing-login" element={<TestingLoginPage />} />
     <Route path="/alumnos/formaciones" element={<StudentAppRedirect to="/formaciones" />} />
     <Route path="/alumnos/formaciones/:slug" element={<StudentCourseRedirect />} />

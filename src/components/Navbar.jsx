@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
-import { studentAreaConfig } from '../config/studentArea';
 
 /* Unified site navbar — identical on every page. A "Formación"
    dropdown keeps the bar uncluttered; dark text on a glass pill
@@ -112,12 +111,12 @@ export default function Navbar() {
           </div>
 
           <Link to="/conoce-a-patricia" onClick={closeMenus} className={linkCls}>Conoce a Patricia</Link>
-          <a href={studentAreaConfig.loginUrl} onClick={closeMenus} className={linkCls}>Alumnas</a>
+          <a href="/alumnos" onClick={closeMenus} className={linkCls}>Alumnas</a>
         </div>
 
         <div className="ml-5 flex items-center gap-2 md:ml-7">
           <a
-            href={studentAreaConfig.loginUrl}
+            href="/alumnos"
             onClick={closeMenus}
             className="hidden sm:inline-flex items-center justify-center border border-primary/20 px-4 py-2.5 font-sans text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-primary/80 transition-colors hover:border-primary hover:text-primary"
           >
@@ -154,10 +153,10 @@ export default function Navbar() {
               {f.label}
             </Link>
           ))}
-          <a href={studentAreaConfig.loginUrl} onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">
+          <a href="/alumnos" onClick={closeMenus} className="px-3 py-3 rounded-xl font-sans text-sm font-medium text-primary/85 hover:text-accent hover:bg-primary/[0.04] transition-colors">
             Área de alumnas
           </a>
-          <a href={studentAreaConfig.loginUrl} onClick={closeMenus} className="mt-3 text-center border border-primary/15 text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
+          <a href="/alumnos" onClick={closeMenus} className="mt-3 text-center border border-primary/15 text-primary px-5 py-3 rounded-full font-sans text-sm font-semibold">
             Iniciar sesión
           </a>
           <Link to="/pedir-cita" onClick={closeMenus} className="mt-3 text-center bg-primary text-surface px-5 py-3 rounded-full font-sans text-sm font-semibold">
