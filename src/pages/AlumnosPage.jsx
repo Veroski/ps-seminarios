@@ -79,7 +79,7 @@ export default function AlumnosPage({ testing = false }) {
   if (loading || user) return <div className="student-app"><div className="student-loader" role="status">Preparando tu acceso…</div></div>;
 
   return (
-    <div className="student-auth">
+    <div className="student-app student-auth">
       <Seo
         title="Área de alumnas | Patricia Songel"
         description="Accede al área privada de alumnas de las formaciones de Patricia Songel."
@@ -103,10 +103,10 @@ export default function AlumnosPage({ testing = false }) {
       <div className="student-auth__form">
         <div className="student-auth__panel">
           <p className="student-eyebrow">Área de alumnas</p>
-          <h2>{mode === 'recover' ? 'Recupera tu acceso' : mode === 'register' ? 'Crea tu cuenta' : 'Bienvenida de nuevo'}</h2>
-          <p>{mode === 'recover' ? 'Te enviaremos un enlace seguro a tu email.' : 'Accede a tus formaciones y continúa donde lo dejaste.'}</p>
+          <h2>{mode === 'recover' ? 'Recupera tu acceso' : mode === 'register' ? 'Crea tu cuenta' : testing ? 'Acceso de pruebas' : 'Bienvenida de nuevo'}</h2>
+          <p>{mode === 'recover' ? 'Te enviaremos un enlace seguro a tu email.' : testing ? 'Entra con tu cuenta de prueba o crea una nueva con email y contraseña.' : 'Accede a tus formaciones y continúa donde lo dejaste.'}</p>
 
-          {testing && <div className="student-alert student-alert--info" role="status">Página temporal de pruebas · No compartir este enlace</div>}
+          {testing && <div className="student-alert student-alert--info" role="status">Zona interna de pruebas · No compartas este enlace</div>}
           {!configured && <div className="student-alert student-alert--info" role="status">El área está preparada, pero Firebase aún necesita configurarse en el entorno de la web.</div>}
           {error && <div className="student-form-error" role="alert">{error}</div>}
           {success && <div className="student-success" role="status">{success}</div>}
