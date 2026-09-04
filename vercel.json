@@ -4,11 +4,11 @@
   "rewrites": [
     {
       "source": "/alumnos/formaciones/:path*",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/alumnos/gracias",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
