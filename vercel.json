@@ -3,7 +3,11 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/alumnos/formaciones/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/alumnos/gracias",
       "destination": "/index.html"
     }
   ]
