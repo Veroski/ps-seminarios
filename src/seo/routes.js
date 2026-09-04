@@ -37,6 +37,13 @@ export const routes = [
     robots: 'noindex, nofollow',
   },
   {
+    path: '/testing-login',
+    title: 'Acceso de pruebas | Patricia Songel',
+    description: 'Página temporal de pruebas del acceso de alumnas.',
+    image: img('/patricia-portrait.webp'),
+    robots: 'noindex, nofollow',
+  },
+  {
     path: '/formaciones',
     title: 'Formaciones de micropigmentación | Patricia Songel',
     description: 'Descubre las formaciones presenciales y online de Patricia Songel: 4 técnicas, Glow Lips Masterclass, Hairstrokes, Brows Shadow Online y Glow Lips Online.',
