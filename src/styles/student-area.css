@@ -75,9 +75,14 @@
 .student-course-layout { display:grid; gap:42px; grid-template-columns:250px minmax(0,1fr); margin-top:38px; }
 .student-course-sidebar { align-self:start; position:sticky; top:108px; }
 .student-course-sidebar__title { color:rgba(31,31,31,.52); font-size:10px; letter-spacing:.14em; margin:0 0 14px; text-transform:uppercase; }
-.student-lesson-list { border-left:1px solid rgba(31,31,31,.15); display:grid; }
-.student-lesson-link { background:transparent; border:0; border-left:2px solid transparent; color:rgba(31,31,31,.56); cursor:pointer; font-size:12px; line-height:1.45; padding:11px 12px; text-align:left; }
-.student-lesson-link:hover,.student-lesson-link.is-active { border-left-color:var(--student-gold); color:var(--student-graphite); }
+.student-lesson-list { display:grid; gap:20px; }
+.student-lesson-section { border-left:1px solid rgba(31,31,31,.14); padding-left:12px; }
+.student-lesson-section__heading { align-items:center; color:rgba(31,31,31,.48); display:flex; font-size:10px; gap:9px; letter-spacing:.14em; margin:0 0 7px; text-transform:uppercase; }
+.student-lesson-section__number { color:var(--student-gold); font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:0; }
+.student-lesson-section.is-active .student-lesson-section__heading { color:var(--student-graphite); }
+.student-lesson-section__items { border-left:1px solid rgba(31,31,31,.1); display:grid; margin-left:1px; }
+.student-lesson-link { background:transparent; border:0; border-left:2px solid transparent; color:rgba(31,31,31,.56); cursor:pointer; font-size:12px; line-height:1.45; padding:9px 12px 9px 14px; text-align:left; transition:background .2s,border-color .2s,color .2s; }
+.student-lesson-link:hover,.student-lesson-link.is-active { background:rgba(198,167,92,.08); border-left-color:var(--student-gold); color:var(--student-graphite); }
 .student-lesson-link.is-complete::after { color:var(--student-gold); content:' ✓'; }
 .student-progress { background:var(--student-porcelain); margin-top:26px; padding:16px; }
 .student-progress__label { color:rgba(31,31,31,.55); display:flex; font-size:10px; justify-content:space-between; letter-spacing:.08em; text-transform:uppercase; }
@@ -89,6 +94,9 @@
 .student-course-main__header p { color:rgba(31,31,31,.6); line-height:1.7; max-width:680px; }
 .student-course-select { display:none; background:var(--student-white); border:1px solid rgba(31,31,31,.2); min-height:44px; padding:0 12px; width:100%; }
 .student-lesson { scroll-margin-top:110px; }
+.student-lesson__section { align-items:center; color:rgba(31,31,31,.48); display:flex; font-size:10px; gap:11px; letter-spacing:.16em; margin:0 0 15px; text-transform:uppercase; }
+.student-lesson__section strong { color:var(--student-gold); font-weight:650; }
+.student-lesson__section::after { background:rgba(198,167,92,.65); content:''; height:1px; max-width:90px; width:100%; }
 .student-lesson h2 { font-family:"Bodoni Moda",serif; font-size:clamp(32px,4vw,52px); font-weight:400; letter-spacing:-.05em; line-height:1; margin:0 0 20px; }
 .student-prose { color:rgba(31,31,31,.76); font-size:16px; line-height:1.8; }
 .student-prose h1,.student-prose h2,.student-prose h3 { color:var(--student-graphite); font-family:"Bodoni Moda",serif; font-weight:400; letter-spacing:-.035em; line-height:1.1; margin:1.6em 0 .6em; }

@@ -107,7 +107,6 @@ export default function AlumnosPage({ testing = false }) {
           <h2>{mode === 'recover' ? 'Recupera tu acceso' : mode === 'register' ? 'Crea tu cuenta' : testing ? 'Acceso de pruebas' : 'Bienvenida de nuevo'}</h2>
           <p>{mode === 'recover' ? 'Te enviaremos un enlace seguro a tu email.' : testing ? 'Entra con tu cuenta de prueba o crea una nueva con email y contraseña.' : 'Accede a tus formaciones y continúa donde lo dejaste.'}</p>
 
-          {testing && <div className="student-alert student-alert--info" role="status">Zona interna de pruebas · No compartas este enlace</div>}
           {!configured && <div className="student-alert student-alert--info" role="status">El área está preparada, pero Firebase aún necesita configurarse en el entorno de la web.</div>}
           {error && <div className="student-form-error" role="alert">{error}</div>}
           {success && <div className="student-success" role="status">{success}</div>}

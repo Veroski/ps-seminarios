@@ -10,7 +10,13 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { auth, firebaseConfigured } from '../lib/firebase';
-import { upsertStudentProfile } from '../lib/studentArea';
+import { syncStudentRegistration, upsertStudentProfile } from '../lib/studentArea';
+
+function scheduleRegistrationSync(user, provider) {
+  void syncStudentRegistration(user, provider).catch((error) => {
+    console.warn('No se pudo sincronizar el registro con GHL.', error);
+  });
+}
 
 const AuthContext = createContext(null);
 
@@ -38,18 +44,21 @@ export function AuthProvider({ children }) {
       const credential = await createUserWithEmailAndPassword(auth, email, password);
       if (name?.trim()) await updateProfile(credential.user, { displayName: name.trim() });
       await upsertStudentProfile(credential.user, name?.trim());
+      scheduleRegistrationSync(credential.user, 'password');
       return credential.user;
     },
     async login(email, password) {
       if (!auth) throw new Error('Firebase todavía no está configurado.');
       const credential = await signInWithEmailAndPassword(auth, email, password);
       await upsertStudentProfile(credential.user);
+      scheduleRegistrationSync(credential.user, 'password');
       return credential.user;
     },
     async loginWithGoogle() {
       if (!auth) throw new Error('Firebase todavía no está configurado.');
       const credential = await signInWithPopup(auth, new GoogleAuthProvider());
       await upsertStudentProfile(credential.user);
+      scheduleRegistrationSync(credential.user, 'google');
       return credential.user;
     },
     async resetPassword(email) {

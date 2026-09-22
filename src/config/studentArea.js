@@ -26,6 +26,7 @@ function optionalHttpsUrl(env, key) {
 export function buildStudentAreaConfig(env, hostname = browserHostname()) {
   const portalUrl = optionalHttpsUrl(env, 'VITE_GHL_PORTAL_URL');
   const checkoutEndpoint = optionalHttpsUrl(env, 'VITE_N8N_CHECKOUT_URL');
+  const registrationEndpoint = optionalHttpsUrl(env, 'VITE_N8N_STUDENT_REGISTRATION_URL');
   const isStudentApp = hostname === STUDENT_APP_HOST;
   const coursesPath = isStudentApp ? '/formaciones' : '/alumnos/formaciones';
 
@@ -39,6 +40,7 @@ export function buildStudentAreaConfig(env, hostname = browserHostname()) {
     coursePath: (slug) => `${coursesPath}/${slug}`,
     thankYouPath: isStudentApp ? '/gracias' : '/alumnos/gracias',
     checkoutEndpoint,
+    registrationEndpoint,
     auth: Object.freeze({
       provider: 'Firebase Authentication',
       learnerApp: 'Área privada React',

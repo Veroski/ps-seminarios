@@ -66,6 +66,23 @@ export async function upsertStudentProfile(user, name = '') {
   await setDoc(profileRef, profile, { merge: true });
 }
 
+export async function syncStudentRegistration(user, provider = 'unknown') {
+  if (!user || !studentAreaConfig.registrationEndpoint) return;
+
+  const token = await user.getIdToken();
+  const response = await fetch(studentAreaConfig.registrationEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({
+      eventId: `firebase-registration:${user.uid}`,
+      provider,
+      name: user.displayName || '',
+    }),
+  });
+
+  if (!response.ok) throw new Error(`No se pudo sincronizar el registro (${response.status}).`);
+}
+
 export function hasPurchased(profile, formationId) {
   const purchases = profile?.productosComprados;
   if (!Array.isArray(purchases)) return false;
